@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Letzte Verteidigungslinie: blockt jeden Push, solange irgendeine getrackte
+# Datei privat/geheim ist. Prüft den GESAMTEN getrackten Stand, nicht nur das Delta.
+set -euo pipefail
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+echo "→ pre-push: prüfe gesamten getrackten Stand auf Privates/Geheimes …"
+exec "$REPO_ROOT/tools/security/check-no-private.sh"

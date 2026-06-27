@@ -1,0 +1,29 @@
+# Secrets / lokale Konfiguration — NIEMALS committen
+.env
+.env.*
+!.env.example
+*.local
+secrets/
+*.key
+*.pem
+PROVENANCE-private*
+
+# Privater Teil (liegt als Schwester-Ordner außerhalb des Repos — Schutz falls je verschoben)
+die-eine-kette-private/
+**/die-eine-kette-private/
+
+# Lizenz-Schlüssel / Aktivierungsdateien
+*.license
+license.key
+
+# Abhängigkeiten / Builds
+node_modules/
+dist/
+build/
+.next/
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store

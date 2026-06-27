@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Blockt Commits, die Privates/Geheimes enthalten würden.
+set -euo pipefail
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+exec "$REPO_ROOT/tools/security/check-no-private.sh" --staged
