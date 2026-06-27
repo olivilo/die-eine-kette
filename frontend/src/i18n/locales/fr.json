@@ -33,5 +33,21 @@
     "used": "Utilisé",
     "requests": "Requêtes",
     "role": "Rôle"
-  }
+  },
+  "tokens": {
+    "subtitle": "Vos jetons API",
+    "name": "Nom", "status": "Statut", "used": "Utilisé", "remaining": "Restant", "created": "Créé",
+    "enabled": "Actif", "disabled": "Désactivé", "empty": "Aucun jeton pour l'instant."
+  },
+  "usage": {
+    "subtitle": "Requêtes récentes",
+    "time": "Heure", "model": "Modèle", "tokens": "Jetons", "quota": "Coût", "detail": "Détail",
+    "empty": "Aucune utilisation pour l'instant."
+  },
+  "providers": {
+    "subtitle": "Fournisseurs configurés (canaux)",
+    "name": "Nom", "type": "Type", "status": "Statut", "models": "Modèles",
+    "enabled": "Actif", "disabled": "Désactivé", "auto_disabled": "Auto-désactivé", "empty": "Aucun fournisseur pour l'instant."
+  },
+  "settings": { "subtitle": "Compte et système", "soon": "D'autres paramètres à venir." }
 }

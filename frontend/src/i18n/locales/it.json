@@ -33,5 +33,21 @@
     "used": "Usato",
     "requests": "Richieste",
     "role": "Ruolo"
-  }
+  },
+  "tokens": {
+    "subtitle": "I tuoi token API",
+    "name": "Nome", "status": "Stato", "used": "Usato", "remaining": "Rimanente", "created": "Creato",
+    "enabled": "Attivo", "disabled": "Disattivato", "empty": "Ancora nessun token."
+  },
+  "usage": {
+    "subtitle": "Richieste recenti",
+    "time": "Ora", "model": "Modello", "tokens": "Token", "quota": "Costo", "detail": "Dettaglio",
+    "empty": "Ancora nessun utilizzo."
+  },
+  "providers": {
+    "subtitle": "Provider configurati (canali)",
+    "name": "Nome", "type": "Tipo", "status": "Stato", "models": "Modelli",
+    "enabled": "Attivo", "disabled": "Disattivato", "auto_disabled": "Auto-disattivato", "empty": "Ancora nessun provider."
+  },
+  "settings": { "subtitle": "Account e sistema", "soon": "Altre impostazioni in arrivo." }
 }

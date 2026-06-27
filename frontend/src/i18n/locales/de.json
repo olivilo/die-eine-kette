@@ -33,5 +33,21 @@
     "used": "Verbraucht",
     "requests": "Anfragen",
     "role": "Rolle"
-  }
+  },
+  "tokens": {
+    "subtitle": "Deine API-Tokens",
+    "name": "Name", "status": "Status", "used": "Verbraucht", "remaining": "Verbleibend", "created": "Erstellt",
+    "enabled": "Aktiv", "disabled": "Deaktiviert", "empty": "Noch keine Tokens."
+  },
+  "usage": {
+    "subtitle": "Letzte Anfragen",
+    "time": "Zeit", "model": "Modell", "tokens": "Tokens", "quota": "Kosten", "detail": "Detail",
+    "empty": "Noch keine Nutzung."
+  },
+  "providers": {
+    "subtitle": "Konfigurierte Anbieter (Channels)",
+    "name": "Name", "type": "Typ", "status": "Status", "models": "Modelle",
+    "enabled": "Aktiv", "disabled": "Deaktiviert", "auto_disabled": "Auto-deaktiviert", "empty": "Noch keine Anbieter."
+  },
+  "settings": { "subtitle": "Konto & System", "soon": "Weitere Einstellungen folgen." }
 }

@@ -32,10 +32,57 @@ async function request<T>(path: string, init?: RequestInit): Promise<ApiResponse
   }
 }
 
+export type Token = {
+  id: number;
+  name: string;
+  status: number;
+  used_quota: number;
+  remain_quota: number;
+  unlimited_quota: boolean;
+  created_time: number;
+  expired_time: number;
+};
+
+export type LogEntry = {
+  id: number;
+  created_at: number;
+  type: number;
+  model_name: string;
+  prompt_tokens: number;
+  completion_tokens: number;
+  quota: number;
+  content: string;
+};
+
+export type Channel = {
+  id: number;
+  name: string;
+  type: number;
+  status: number;
+  models: string;
+  response_time: number;
+};
+
 export const api = {
   status: () => request<Record<string, unknown>>("/status"),
   self: () => request<User>("/user/self"),
   login: (username: string, password: string) =>
     request<User>("/user/login", { method: "POST", body: JSON.stringify({ username, password }) }),
   logout: () => request("/user/logout"),
+  tokens: () => request<Token[]>("/token?p=0"),
+  logsSelf: () => request<LogEntry[]>("/log/self?p=0"),
+  channels: () => request<Channel[]>("/channel?p=0"),
 };
+
+// ── Formatierungs-Helfer ─────────────────────────────────────────────
+export function formatNumber(n: number | undefined, lng?: string): string {
+  if (n == null) return "0";
+  return new Intl.NumberFormat(lng, { notation: "compact", maximumFractionDigits: 1 }).format(n);
+}
+
+export function formatDate(epochSeconds: number | undefined, lng?: string): string {
+  if (!epochSeconds) return "—";
+  return new Intl.DateTimeFormat(lng, { dateStyle: "medium", timeStyle: "short" }).format(
+    new Date(epochSeconds * 1000),
+  );
+}

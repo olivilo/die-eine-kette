@@ -27,14 +27,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void refresh();
   }, [refresh]);
 
-  const login = useCallback(async (username: string, password: string) => {
-    const res = await api.login(username, password);
-    if (res.success && res.data) {
-      setUser(res.data);
-      return { ok: true };
-    }
-    return { ok: false, message: res.message };
-  }, []);
+  const login = useCallback(
+    async (username: string, password: string) => {
+      const res = await api.login(username, password);
+      if (res.success && res.data) {
+        // Vollständige Daten (z. B. echtes Kontingent) von /self nachladen.
+        await refresh();
+        return { ok: true };
+      }
+      return { ok: false, message: res.message };
+    },
+    [refresh],
+  );
 
   const logout = useCallback(async () => {
     await api.logout();

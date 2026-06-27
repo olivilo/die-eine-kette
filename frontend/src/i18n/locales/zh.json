@@ -33,5 +33,21 @@
     "used": "已用",
     "requests": "请求数",
     "role": "角色"
-  }
+  },
+  "tokens": {
+    "subtitle": "你的 API 令牌",
+    "name": "名称", "status": "状态", "used": "已用", "remaining": "剩余", "created": "创建时间",
+    "enabled": "启用", "disabled": "已禁用", "empty": "暂无令牌。"
+  },
+  "usage": {
+    "subtitle": "最近请求",
+    "time": "时间", "model": "模型", "tokens": "令牌数", "quota": "费用", "detail": "详情",
+    "empty": "暂无用量。"
+  },
+  "providers": {
+    "subtitle": "已配置的提供商（渠道）",
+    "name": "名称", "type": "类型", "status": "状态", "models": "模型",
+    "enabled": "启用", "disabled": "已禁用", "auto_disabled": "自动禁用", "empty": "暂无提供商。"
+  },
+  "settings": { "subtitle": "账户与系统", "soon": "更多设置即将推出。" }
 }

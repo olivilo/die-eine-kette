@@ -33,5 +33,21 @@
     "used": "Usado",
     "requests": "Solicitudes",
     "role": "Rol"
-  }
+  },
+  "tokens": {
+    "subtitle": "Tus tokens de API",
+    "name": "Nombre", "status": "Estado", "used": "Usado", "remaining": "Restante", "created": "Creado",
+    "enabled": "Activo", "disabled": "Desactivado", "empty": "Aún no hay tokens."
+  },
+  "usage": {
+    "subtitle": "Solicitudes recientes",
+    "time": "Hora", "model": "Modelo", "tokens": "Tokens", "quota": "Coste", "detail": "Detalle",
+    "empty": "Aún no hay uso."
+  },
+  "providers": {
+    "subtitle": "Proveedores configurados (canales)",
+    "name": "Nombre", "type": "Tipo", "status": "Estado", "models": "Modelos",
+    "enabled": "Activo", "disabled": "Desactivado", "auto_disabled": "Auto-desactivado", "empty": "Aún no hay proveedores."
+  },
+  "settings": { "subtitle": "Cuenta y sistema", "soon": "Más ajustes próximamente." }
 }

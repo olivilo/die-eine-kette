@@ -33,5 +33,21 @@
     "used": "Used",
     "requests": "Requests",
     "role": "Role"
-  }
+  },
+  "tokens": {
+    "subtitle": "Your API tokens",
+    "name": "Name", "status": "Status", "used": "Used", "remaining": "Remaining", "created": "Created",
+    "enabled": "Active", "disabled": "Disabled", "empty": "No tokens yet."
+  },
+  "usage": {
+    "subtitle": "Recent requests",
+    "time": "Time", "model": "Model", "tokens": "Tokens", "quota": "Cost", "detail": "Detail",
+    "empty": "No usage yet."
+  },
+  "providers": {
+    "subtitle": "Configured providers (channels)",
+    "name": "Name", "type": "Type", "status": "Status", "models": "Models",
+    "enabled": "Active", "disabled": "Disabled", "auto_disabled": "Auto-disabled", "empty": "No providers yet."
+  },
+  "settings": { "subtitle": "Account & system", "soon": "More settings coming." }
 }
