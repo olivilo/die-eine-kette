@@ -18,7 +18,8 @@ services:
       - SESSION_SECRET=${SESSION_SECRET}
       - TZ=${TZ:-Europe/Berlin}
     volumes:
-      - app_data:/data
+      # Bind-Mounts auf das (externe) Projekt-Volume — schont die kleine interne Platte.
+      - ./data/app:/data
       - ./logs:/app/logs
     depends_on:
       db:
@@ -41,7 +42,8 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - TZ=${TZ:-Europe/Berlin}
     volumes:
-      - db_data:/var/lib/postgresql/data
+      # DB-Daten auf das externe Projekt-Volume (nicht in Docker.raw auf der internen Platte).
+      - ./data/postgres:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
@@ -58,6 +60,7 @@ services:
       timeout: 5s
       retries: 5
 
-volumes:
-  db_data:
-  app_data:
+# Hinweis: Daten liegen als Bind-Mounts unter ./data (externes Projekt-Volume),
+# daher keine benannten Docker-Volumes. Docker-Images/Build-Cache liegen dennoch
+# in Docker.raw (intern) — für volle Image-Builds Docker-Disk verschieben oder
+# Go-Binary nativ bauen (siehe tools/preflight-check.sh).
