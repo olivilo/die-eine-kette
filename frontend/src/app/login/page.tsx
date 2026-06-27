@@ -12,6 +12,8 @@ export default function LoginPage() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [totp, setTotp] = useState("");
+  const [totpRequired, setTotpRequired] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -19,10 +21,16 @@ export default function LoginPage() {
     e.preventDefault();
     setBusy(true);
     setError(null);
-    const res = await login(username, password);
+    const res = await login(username, password, totp);
     setBusy(false);
-    if (res.ok) router.push("/dashboard");
-    else setError(res.message || t("login.error"));
+    if (res.ok) {
+      router.push("/dashboard");
+    } else if (res.totpRequired) {
+      setTotpRequired(true);
+      setError(null);
+    } else {
+      setError(res.message || t("login.error"));
+    }
   }
 
   return (
@@ -50,6 +58,22 @@ export default function LoginPage() {
             className="rounded-md border border-zinc-700 bg-coal px-3 py-2 text-zinc-100 outline-none focus:border-gold"
           />
         </label>
+
+        {totpRequired && (
+          <label className="flex flex-col gap-1 text-sm text-zinc-300">
+            {t("login.totp")}
+            <input
+              value={totp}
+              onChange={(e) => setTotp(e.target.value)}
+              inputMode="numeric"
+              autoComplete="one-time-code"
+              placeholder="000000"
+              autoFocus
+              className="rounded-md border border-zinc-700 bg-coal px-3 py-2 tracking-[0.3em] text-zinc-100 outline-none focus:border-gold"
+            />
+            <span className="text-xs text-zinc-500">{t("login.totp_hint")}</span>
+          </label>
+        )}
 
         {error && <p className="text-sm text-red-400">{error}</p>}
 

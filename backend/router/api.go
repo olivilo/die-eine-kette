@@ -48,6 +48,10 @@ func SetApiRouter(router *gin.Engine) {
 				selfRoute.GET("/aff", controller.GetAffCode)
 				selfRoute.POST("/topup", controller.TopUp)
 				selfRoute.GET("/available_models", controller.GetUserAvailableModels)
+				// 2FA (TOTP) — Die Eine Kette
+				selfRoute.GET("/totp/setup", controller.TotpSetup)
+				selfRoute.POST("/totp/enable", controller.TotpEnable)
+				selfRoute.POST("/totp/disable", controller.TotpDisable)
 			}
 
 			adminRoute := userRoute.Group("/")

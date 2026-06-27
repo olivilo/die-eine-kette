@@ -21,6 +21,7 @@ import (
 type LoginRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
+	TotpCode string `json:"totp_code"`
 }
 
 func Login(c *gin.Context) {
@@ -60,6 +61,21 @@ func Login(c *gin.Context) {
 			"success": false,
 		})
 		return
+	}
+	// 2FA: ist TOTP aktiv, ist nach dem Passwort ein gültiger Code (oder Backup-Code) nötig.
+	if user.TotpEnabled {
+		if loginRequest.TotpCode == "" {
+			c.JSON(http.StatusOK, gin.H{
+				"success": false,
+				"message": "totp_required",
+				"data":    gin.H{"totp_required": true},
+			})
+			return
+		}
+		if !validateTotp(user.TotpSecret, loginRequest.TotpCode) && !consumeBackupCode(&user, loginRequest.TotpCode) {
+			c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_totp"})
+			return
+		}
 	}
 	SetupLogin(&user, c)
 }

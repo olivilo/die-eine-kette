@@ -1,5 +1,8 @@
 {
-  "brand": { "name": "Die Eine Kette", "tagline": "Ein Tor, sie alle zu verbinden." },
+  "brand": {
+    "name": "Die Eine Kette",
+    "tagline": "Ein Tor, sie alle zu verbinden."
+  },
   "nav": {
     "dashboard": "Übersicht",
     "providers": "Anbieter",
@@ -24,7 +27,9 @@
     "username": "Benutzername",
     "password": "Passwort",
     "submit": "Anmelden",
-    "error": "Anmeldung fehlgeschlagen"
+    "error": "Anmeldung fehlgeschlagen",
+    "totp": "2FA-Code",
+    "totp_hint": "Code aus deiner Authenticator-App oder ein Backup-Code"
   },
   "dashboard": {
     "title": "Übersicht",
@@ -36,18 +41,51 @@
   },
   "tokens": {
     "subtitle": "Deine API-Tokens",
-    "name": "Name", "status": "Status", "used": "Verbraucht", "remaining": "Verbleibend", "created": "Erstellt",
-    "enabled": "Aktiv", "disabled": "Deaktiviert", "empty": "Noch keine Tokens."
+    "name": "Name",
+    "status": "Status",
+    "used": "Verbraucht",
+    "remaining": "Verbleibend",
+    "created": "Erstellt",
+    "enabled": "Aktiv",
+    "disabled": "Deaktiviert",
+    "empty": "Noch keine Tokens."
   },
   "usage": {
     "subtitle": "Letzte Anfragen",
-    "time": "Zeit", "model": "Modell", "tokens": "Tokens", "quota": "Kosten", "detail": "Detail",
+    "time": "Zeit",
+    "model": "Modell",
+    "tokens": "Tokens",
+    "quota": "Kosten",
+    "detail": "Detail",
     "empty": "Noch keine Nutzung."
   },
   "providers": {
     "subtitle": "Konfigurierte Anbieter (Channels)",
-    "name": "Name", "type": "Typ", "status": "Status", "models": "Modelle",
-    "enabled": "Aktiv", "disabled": "Deaktiviert", "auto_disabled": "Auto-deaktiviert", "empty": "Noch keine Anbieter."
+    "name": "Name",
+    "type": "Typ",
+    "status": "Status",
+    "models": "Modelle",
+    "enabled": "Aktiv",
+    "disabled": "Deaktiviert",
+    "auto_disabled": "Auto-deaktiviert",
+    "empty": "Noch keine Anbieter."
   },
-  "settings": { "subtitle": "Konto & System", "soon": "Weitere Einstellungen folgen." }
+  "settings": {
+    "subtitle": "Konto & System",
+    "soon": "Weitere Einstellungen folgen."
+  },
+  "twofa": {
+    "title": "Zwei-Faktor-Authentifizierung (2FA)",
+    "on": "Aktiv",
+    "off": "Inaktiv",
+    "desc": "Schütze dein Konto zusätzlich mit einer Authenticator-App (TOTP).",
+    "enable": "2FA aktivieren",
+    "scan": "Scanne den QR-Code mit deiner Authenticator-App und gib dann den 6-stelligen Code ein.",
+    "confirm": "Bestätigen & aktivieren",
+    "cancel": "Abbrechen",
+    "code": "2FA-Code",
+    "disable": "2FA deaktivieren",
+    "invalid": "Ungültiger Code.",
+    "backup_title": "Backup-Codes — sicher aufbewahren, jeder nur einmal nutzbar:"
+  }
 }

@@ -6,7 +6,11 @@ import { api, type User } from "@/lib/api";
 type AuthState = {
   user: User | null;
   loading: boolean;
-  login: (username: string, password: string) => Promise<{ ok: boolean; message?: string }>;
+  login: (
+    username: string,
+    password: string,
+    totpCode?: string,
+  ) => Promise<{ ok: boolean; message?: string; totpRequired?: boolean }>;
   logout: () => Promise<void>;
   refresh: () => Promise<void>;
 };
@@ -28,12 +32,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [refresh]);
 
   const login = useCallback(
-    async (username: string, password: string) => {
-      const res = await api.login(username, password);
+    async (username: string, password: string, totpCode?: string) => {
+      const res = await api.login(username, password, totpCode);
       if (res.success && res.data) {
         // Vollständige Daten (z. B. echtes Kontingent) von /self nachladen.
         await refresh();
         return { ok: true };
+      }
+      if (res.message === "totp_required" || res.data?.totp_required) {
+        return { ok: false, totpRequired: true };
       }
       return { ok: false, message: res.message };
     },

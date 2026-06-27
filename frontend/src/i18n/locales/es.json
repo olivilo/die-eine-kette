@@ -1,5 +1,8 @@
 {
-  "brand": { "name": "Die Eine Kette", "tagline": "Una puerta para conectarlos a todos." },
+  "brand": {
+    "name": "Die Eine Kette",
+    "tagline": "Una puerta para conectarlos a todos."
+  },
   "nav": {
     "dashboard": "Panel",
     "providers": "Proveedores",
@@ -24,7 +27,9 @@
     "username": "Usuario",
     "password": "Contraseña",
     "submit": "Iniciar sesión",
-    "error": "Error al iniciar sesión"
+    "error": "Error al iniciar sesión",
+    "totp": "Código 2FA",
+    "totp_hint": "Código de tu app de autenticación o un código de respaldo"
   },
   "dashboard": {
     "title": "Panel",
@@ -36,18 +41,51 @@
   },
   "tokens": {
     "subtitle": "Tus tokens de API",
-    "name": "Nombre", "status": "Estado", "used": "Usado", "remaining": "Restante", "created": "Creado",
-    "enabled": "Activo", "disabled": "Desactivado", "empty": "Aún no hay tokens."
+    "name": "Nombre",
+    "status": "Estado",
+    "used": "Usado",
+    "remaining": "Restante",
+    "created": "Creado",
+    "enabled": "Activo",
+    "disabled": "Desactivado",
+    "empty": "Aún no hay tokens."
   },
   "usage": {
     "subtitle": "Solicitudes recientes",
-    "time": "Hora", "model": "Modelo", "tokens": "Tokens", "quota": "Coste", "detail": "Detalle",
+    "time": "Hora",
+    "model": "Modelo",
+    "tokens": "Tokens",
+    "quota": "Coste",
+    "detail": "Detalle",
     "empty": "Aún no hay uso."
   },
   "providers": {
     "subtitle": "Proveedores configurados (canales)",
-    "name": "Nombre", "type": "Tipo", "status": "Estado", "models": "Modelos",
-    "enabled": "Activo", "disabled": "Desactivado", "auto_disabled": "Auto-desactivado", "empty": "Aún no hay proveedores."
+    "name": "Nombre",
+    "type": "Tipo",
+    "status": "Estado",
+    "models": "Modelos",
+    "enabled": "Activo",
+    "disabled": "Desactivado",
+    "auto_disabled": "Auto-desactivado",
+    "empty": "Aún no hay proveedores."
   },
-  "settings": { "subtitle": "Cuenta y sistema", "soon": "Más ajustes próximamente." }
+  "settings": {
+    "subtitle": "Cuenta y sistema",
+    "soon": "Más ajustes próximamente."
+  },
+  "twofa": {
+    "title": "Autenticación de dos factores (2FA)",
+    "on": "Activado",
+    "off": "Desactivado",
+    "desc": "Protege más tu cuenta con una app de autenticación (TOTP).",
+    "enable": "Activar 2FA",
+    "scan": "Escanea el código QR con tu app de autenticación y luego introduce el código de 6 dígitos.",
+    "confirm": "Confirmar y activar",
+    "cancel": "Cancelar",
+    "code": "Código 2FA",
+    "disable": "Desactivar 2FA",
+    "invalid": "Código no válido.",
+    "backup_title": "Códigos de respaldo — guárdalos a salvo, cada uno se usa una vez:"
+  }
 }

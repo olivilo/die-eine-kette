@@ -1,5 +1,8 @@
 {
-  "brand": { "name": "Die Eine Kette", "tagline": "Une porte pour les relier tous." },
+  "brand": {
+    "name": "Die Eine Kette",
+    "tagline": "Une porte pour les relier tous."
+  },
   "nav": {
     "dashboard": "Tableau de bord",
     "providers": "Fournisseurs",
@@ -24,7 +27,9 @@
     "username": "Nom d'utilisateur",
     "password": "Mot de passe",
     "submit": "Se connecter",
-    "error": "Échec de la connexion"
+    "error": "Échec de la connexion",
+    "totp": "Code 2FA",
+    "totp_hint": "Code de votre application d'authentification ou un code de secours"
   },
   "dashboard": {
     "title": "Tableau de bord",
@@ -36,18 +41,51 @@
   },
   "tokens": {
     "subtitle": "Vos jetons API",
-    "name": "Nom", "status": "Statut", "used": "Utilisé", "remaining": "Restant", "created": "Créé",
-    "enabled": "Actif", "disabled": "Désactivé", "empty": "Aucun jeton pour l'instant."
+    "name": "Nom",
+    "status": "Statut",
+    "used": "Utilisé",
+    "remaining": "Restant",
+    "created": "Créé",
+    "enabled": "Actif",
+    "disabled": "Désactivé",
+    "empty": "Aucun jeton pour l'instant."
   },
   "usage": {
     "subtitle": "Requêtes récentes",
-    "time": "Heure", "model": "Modèle", "tokens": "Jetons", "quota": "Coût", "detail": "Détail",
+    "time": "Heure",
+    "model": "Modèle",
+    "tokens": "Jetons",
+    "quota": "Coût",
+    "detail": "Détail",
     "empty": "Aucune utilisation pour l'instant."
   },
   "providers": {
     "subtitle": "Fournisseurs configurés (canaux)",
-    "name": "Nom", "type": "Type", "status": "Statut", "models": "Modèles",
-    "enabled": "Actif", "disabled": "Désactivé", "auto_disabled": "Auto-désactivé", "empty": "Aucun fournisseur pour l'instant."
+    "name": "Nom",
+    "type": "Type",
+    "status": "Statut",
+    "models": "Modèles",
+    "enabled": "Actif",
+    "disabled": "Désactivé",
+    "auto_disabled": "Auto-désactivé",
+    "empty": "Aucun fournisseur pour l'instant."
   },
-  "settings": { "subtitle": "Compte et système", "soon": "D'autres paramètres à venir." }
+  "settings": {
+    "subtitle": "Compte et système",
+    "soon": "D'autres paramètres à venir."
+  },
+  "twofa": {
+    "title": "Authentification à deux facteurs (2FA)",
+    "on": "Activé",
+    "off": "Désactivé",
+    "desc": "Protégez davantage votre compte avec une application d'authentification (TOTP).",
+    "enable": "Activer la 2FA",
+    "scan": "Scannez le code QR avec votre application d'authentification, puis saisissez le code à 6 chiffres.",
+    "confirm": "Confirmer et activer",
+    "cancel": "Annuler",
+    "code": "Code 2FA",
+    "disable": "Désactiver la 2FA",
+    "invalid": "Code invalide.",
+    "backup_title": "Codes de secours — à conserver en sécurité, utilisables une fois :"
+  }
 }

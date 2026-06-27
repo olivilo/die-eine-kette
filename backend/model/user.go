@@ -51,6 +51,19 @@ type User struct {
 	Group            string `json:"group" gorm:"type:varchar(32);default:'default'"`
 	AffCode          string `json:"aff_code" gorm:"type:varchar(32);column:aff_code;uniqueIndex"`
 	InviterId        int    `json:"inviter_id" gorm:"type:int;column:inviter_id;index"`
+	// 2FA (TOTP) — Die Eine Kette
+	TotpSecret  string `json:"-" gorm:"type:varchar(64);column:totp_secret"` // geheim, nie ausliefern
+	TotpEnabled bool   `json:"totp_enabled" gorm:"type:bool;default:false;column:totp_enabled"`
+	TotpBackup  string `json:"-" gorm:"type:text;column:totp_backup"` // sha256-Hashes der Backup-Codes, komma-getrennt
+}
+
+// SaveTotp speichert die 2FA-Felder (auch leere/false-Werte → Map-Update).
+func (user *User) SaveTotp() error {
+	return DB.Model(&User{}).Where("id = ?", user.Id).Updates(map[string]interface{}{
+		"totp_secret":  user.TotpSecret,
+		"totp_enabled": user.TotpEnabled,
+		"totp_backup":  user.TotpBackup,
+	}).Error
 }
 
 func GetMaxUserId() int {

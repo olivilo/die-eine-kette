@@ -17,6 +17,7 @@ export type User = {
   quota?: number;
   used_quota?: number;
   request_count?: number;
+  totp_enabled?: boolean;
 };
 
 async function request<T>(path: string, init?: RequestInit): Promise<ApiResponse<T>> {
@@ -66,9 +67,17 @@ export type Channel = {
 export const api = {
   status: () => request<Record<string, unknown>>("/status"),
   self: () => request<User>("/user/self"),
-  login: (username: string, password: string) =>
-    request<User>("/user/login", { method: "POST", body: JSON.stringify({ username, password }) }),
+  login: (username: string, password: string, totpCode?: string) =>
+    request<User & { totp_required?: boolean }>("/user/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password, totp_code: totpCode || "" }),
+    }),
   logout: () => request("/user/logout"),
+  totpSetup: () => request<{ secret: string; uri: string }>("/user/totp/setup"),
+  totpEnable: (code: string) =>
+    request<{ backup_codes: string[] }>("/user/totp/enable", { method: "POST", body: JSON.stringify({ code }) }),
+  totpDisable: (code: string) =>
+    request("/user/totp/disable", { method: "POST", body: JSON.stringify({ code }) }),
   tokens: () => request<Token[]>("/token?p=0"),
   logsSelf: () => request<LogEntry[]>("/log/self?p=0"),
   channels: () => request<Channel[]>("/channel?p=0"),
