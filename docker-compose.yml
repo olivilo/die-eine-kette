@@ -1,0 +1,63 @@
+# ── Die Eine Kette — vollständiger Stack ─────────────────────────────────────
+#   docker compose up -d --build   → App :${APP_PORT}, PostgreSQL, Redis
+# Werte kommen aus .env (Vorlage: .env.example).
+
+services:
+  app:
+    build: ./backend
+    image: die-eine-kette:local
+    container_name: dek-app
+    restart: unless-stopped
+    command: --log-dir /app/logs
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      # Relay-Motor liest klassische One-API-ENV-Variablen.
+      - SQL_DSN=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}?sslmode=disable
+      - REDIS_CONN_STRING=redis://redis:6379/0
+      - SESSION_SECRET=${SESSION_SECRET}
+      - TZ=${TZ:-Europe/Berlin}
+    volumes:
+      - app_data:/data
+      - ./logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://localhost:3000/api/status | grep -o '\"success\":\\s*true'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  db:
+    image: postgres:16-alpine
+    container_name: dek-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - TZ=${TZ:-Europe/Berlin}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: dek-redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
+  app_data:

@@ -25,5 +25,14 @@ __pycache__/
 *.pyc
 .venv/
 
+# Backend (Relay-Motor) — Build-Artefakte & Laufzeitdaten
+backend/die-eine-kette
+backend/one-api
+backend/web/build/
+/logs/
+data/
+*.db
+*.sqlite
+
 # OS
 .DS_Store
