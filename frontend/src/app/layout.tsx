@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import I18nProvider from "@/components/I18nProvider";
+import { AuthProvider } from "@/components/AuthProvider";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -20,8 +21,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de">
       <body>
         <I18nProvider>
-          <Navbar />
-          <main className="mx-auto max-w-6xl px-4">{children}</main>
+          <AuthProvider>
+            <Navbar />
+            <main className="mx-auto max-w-6xl px-4">{children}</main>
+          </AuthProvider>
         </I18nProvider>
       </body>
     </html>

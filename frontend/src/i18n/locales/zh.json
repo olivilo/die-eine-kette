@@ -15,7 +15,23 @@
   },
   "common": {
     "login": "登录",
+    "logout": "退出登录",
     "language": "语言",
     "phase": "第二阶段 · 前端开发中"
+  },
+  "login": {
+    "title": "登录",
+    "username": "用户名",
+    "password": "密码",
+    "submit": "登录",
+    "error": "登录失败"
+  },
+  "dashboard": {
+    "title": "概览",
+    "welcome": "欢迎，{{name}}。",
+    "quota": "配额",
+    "used": "已用",
+    "requests": "请求数",
+    "role": "角色"
   }
 }

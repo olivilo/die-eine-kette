@@ -15,7 +15,23 @@
   },
   "common": {
     "login": "Se connecter",
+    "logout": "Se déconnecter",
     "language": "Langue",
     "phase": "Phase 2 · Frontend en cours"
+  },
+  "login": {
+    "title": "Se connecter",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "error": "Échec de la connexion"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue, {{name}}.",
+    "quota": "Quota",
+    "used": "Utilisé",
+    "requests": "Requêtes",
+    "role": "Rôle"
   }
 }

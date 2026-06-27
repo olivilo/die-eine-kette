@@ -15,7 +15,23 @@
   },
   "common": {
     "login": "Accedi",
+    "logout": "Esci",
     "language": "Lingua",
     "phase": "Fase 2 · Frontend in costruzione"
+  },
+  "login": {
+    "title": "Accedi",
+    "username": "Nome utente",
+    "password": "Password",
+    "submit": "Accedi",
+    "error": "Accesso non riuscito"
+  },
+  "dashboard": {
+    "title": "Cruscotto",
+    "welcome": "Benvenuto, {{name}}.",
+    "quota": "Quota",
+    "used": "Usato",
+    "requests": "Richieste",
+    "role": "Ruolo"
   }
 }

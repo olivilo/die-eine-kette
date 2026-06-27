@@ -15,7 +15,23 @@
   },
   "common": {
     "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
     "language": "Idioma",
     "phase": "Fase 2 · Frontend en construcción"
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "error": "Error al iniciar sesión"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "welcome": "Bienvenido, {{name}}.",
+    "quota": "Cuota",
+    "used": "Usado",
+    "requests": "Solicitudes",
+    "role": "Rol"
   }
 }

@@ -3,9 +3,11 @@
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useAuth } from "./AuthProvider";
 
 export default function Navbar() {
   const { t } = useTranslation();
+  const { user, logout } = useAuth();
   const navKeys = ["dashboard", "providers", "tokens", "usage", "settings"] as const;
 
   return (
@@ -30,12 +32,26 @@ export default function Navbar() {
 
         <div className="ml-auto flex items-center gap-3">
           <LanguageSwitcher />
-          <a
-            href="/login"
-            className="rounded-md bg-gold px-3 py-1.5 text-sm font-semibold text-ink hover:bg-gold-light"
-          >
-            {t("common.login")}
-          </a>
+          {user ? (
+            <>
+              <span className="hidden text-sm text-zinc-300 sm:inline">
+                {user.display_name || user.username}
+              </span>
+              <button
+                onClick={() => void logout()}
+                className="rounded-md border border-zinc-700 px-3 py-1.5 text-sm font-semibold text-zinc-200 hover:border-gold hover:text-gold"
+              >
+                {t("common.logout")}
+              </button>
+            </>
+          ) : (
+            <a
+              href="/login"
+              className="rounded-md bg-gold px-3 py-1.5 text-sm font-semibold text-ink hover:bg-gold-light"
+            >
+              {t("common.login")}
+            </a>
+          )}
         </div>
       </nav>
     </header>

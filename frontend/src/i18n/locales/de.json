@@ -15,7 +15,23 @@
   },
   "common": {
     "login": "Anmelden",
+    "logout": "Abmelden",
     "language": "Sprache",
     "phase": "Phase 2 · Frontend im Aufbau"
+  },
+  "login": {
+    "title": "Anmelden",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "submit": "Anmelden",
+    "error": "Anmeldung fehlgeschlagen"
+  },
+  "dashboard": {
+    "title": "Übersicht",
+    "welcome": "Willkommen, {{name}}.",
+    "quota": "Kontingent",
+    "used": "Verbraucht",
+    "requests": "Anfragen",
+    "role": "Rolle"
   }
 }

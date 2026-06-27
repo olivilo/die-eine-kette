@@ -15,7 +15,23 @@
   },
   "common": {
     "login": "Sign in",
+    "logout": "Sign out",
     "language": "Language",
     "phase": "Phase 2 · Frontend in progress"
+  },
+  "login": {
+    "title": "Sign in",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign in",
+    "error": "Sign-in failed"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {{name}}.",
+    "quota": "Quota",
+    "used": "Used",
+    "requests": "Requests",
+    "role": "Role"
   }
 }
