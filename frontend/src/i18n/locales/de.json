@@ -20,7 +20,11 @@
     "login": "Anmelden",
     "logout": "Abmelden",
     "language": "Sprache",
-    "phase": "Phase 2 · Frontend im Aufbau"
+    "phase": "Phase 2 · Frontend im Aufbau",
+    "create": "Anlegen",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "name": "Name"
   },
   "login": {
     "title": "Anmelden",
@@ -48,7 +52,9 @@
     "created": "Erstellt",
     "enabled": "Aktiv",
     "disabled": "Deaktiviert",
-    "empty": "Noch keine Tokens."
+    "empty": "Noch keine Tokens.",
+    "new": "Neues Token",
+    "create": "Token anlegen"
   },
   "usage": {
     "subtitle": "Letzte Anfragen",
@@ -68,7 +74,12 @@
     "enabled": "Aktiv",
     "disabled": "Deaktiviert",
     "auto_disabled": "Auto-deaktiviert",
-    "empty": "Noch keine Anbieter."
+    "empty": "Noch keine Anbieter.",
+    "new": "Neuer Anbieter",
+    "preset": "Vorlage",
+    "key": "API-Schlüssel",
+    "base_url": "Basis-URL",
+    "create": "Anbieter anlegen"
   },
   "settings": {
     "subtitle": "Konto & System",

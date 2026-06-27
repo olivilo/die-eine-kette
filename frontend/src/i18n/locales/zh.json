@@ -20,7 +20,11 @@
     "login": "登录",
     "logout": "退出登录",
     "language": "语言",
-    "phase": "第二阶段 · 前端开发中"
+    "phase": "第二阶段 · 前端开发中",
+    "create": "创建",
+    "delete": "删除",
+    "cancel": "取消",
+    "name": "名称"
   },
   "login": {
     "title": "登录",
@@ -48,7 +52,9 @@
     "created": "创建时间",
     "enabled": "启用",
     "disabled": "已禁用",
-    "empty": "暂无令牌。"
+    "empty": "暂无令牌。",
+    "new": "新建令牌",
+    "create": "创建令牌"
   },
   "usage": {
     "subtitle": "最近请求",
@@ -68,7 +74,12 @@
     "enabled": "启用",
     "disabled": "已禁用",
     "auto_disabled": "自动禁用",
-    "empty": "暂无提供商。"
+    "empty": "暂无提供商。",
+    "new": "新建提供商",
+    "preset": "预设",
+    "key": "API 密钥",
+    "base_url": "基础 URL",
+    "create": "创建提供商"
   },
   "settings": {
     "subtitle": "账户与系统",

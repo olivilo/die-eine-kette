@@ -79,8 +79,20 @@ export const api = {
   totpDisable: (code: string) =>
     request("/user/totp/disable", { method: "POST", body: JSON.stringify({ code }) }),
   tokens: () => request<Token[]>("/token?p=0"),
+  createToken: (name: string) =>
+    request("/token", {
+      method: "POST",
+      body: JSON.stringify({ name, remain_quota: 500000, expired_time: -1, unlimited_quota: false }),
+    }),
+  deleteToken: (id: number) => request(`/token/${id}`, { method: "DELETE" }),
   logsSelf: () => request<LogEntry[]>("/log/self?p=0"),
   channels: () => request<Channel[]>("/channel?p=0"),
+  createChannel: (body: { name: string; type: number; key: string; base_url: string; models: string }) =>
+    request("/channel", {
+      method: "POST",
+      body: JSON.stringify({ ...body, groups: ["default"], group: "default" }),
+    }),
+  deleteChannel: (id: number) => request(`/channel/${id}`, { method: "DELETE" }),
 };
 
 // ── Formatierungs-Helfer ─────────────────────────────────────────────

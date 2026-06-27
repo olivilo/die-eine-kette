@@ -20,7 +20,11 @@
     "login": "Se connecter",
     "logout": "Se déconnecter",
     "language": "Langue",
-    "phase": "Phase 2 · Frontend en cours"
+    "phase": "Phase 2 · Frontend en cours",
+    "create": "Créer",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
+    "name": "Nom"
   },
   "login": {
     "title": "Se connecter",
@@ -48,7 +52,9 @@
     "created": "Créé",
     "enabled": "Actif",
     "disabled": "Désactivé",
-    "empty": "Aucun jeton pour l'instant."
+    "empty": "Aucun jeton pour l'instant.",
+    "new": "Nouveau jeton",
+    "create": "Créer le jeton"
   },
   "usage": {
     "subtitle": "Requêtes récentes",
@@ -68,7 +74,12 @@
     "enabled": "Actif",
     "disabled": "Désactivé",
     "auto_disabled": "Auto-désactivé",
-    "empty": "Aucun fournisseur pour l'instant."
+    "empty": "Aucun fournisseur pour l'instant.",
+    "new": "Nouveau fournisseur",
+    "preset": "Modèle",
+    "key": "Clé API",
+    "base_url": "URL de base",
+    "create": "Créer le fournisseur"
   },
   "settings": {
     "subtitle": "Compte et système",

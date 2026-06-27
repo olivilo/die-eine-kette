@@ -20,7 +20,11 @@
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
     "language": "Idioma",
-    "phase": "Fase 2 · Frontend en construcción"
+    "phase": "Fase 2 · Frontend en construcción",
+    "create": "Crear",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "name": "Nombre"
   },
   "login": {
     "title": "Iniciar sesión",
@@ -48,7 +52,9 @@
     "created": "Creado",
     "enabled": "Activo",
     "disabled": "Desactivado",
-    "empty": "Aún no hay tokens."
+    "empty": "Aún no hay tokens.",
+    "new": "Nuevo token",
+    "create": "Crear token"
   },
   "usage": {
     "subtitle": "Solicitudes recientes",
@@ -68,7 +74,12 @@
     "enabled": "Activo",
     "disabled": "Desactivado",
     "auto_disabled": "Auto-desactivado",
-    "empty": "Aún no hay proveedores."
+    "empty": "Aún no hay proveedores.",
+    "new": "Nuevo proveedor",
+    "preset": "Plantilla",
+    "key": "Clave API",
+    "base_url": "URL base",
+    "create": "Crear proveedor"
   },
   "settings": {
     "subtitle": "Cuenta y sistema",

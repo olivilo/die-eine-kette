@@ -20,7 +20,11 @@
     "login": "Accedi",
     "logout": "Esci",
     "language": "Lingua",
-    "phase": "Fase 2 · Frontend in costruzione"
+    "phase": "Fase 2 · Frontend in costruzione",
+    "create": "Crea",
+    "delete": "Elimina",
+    "cancel": "Annulla",
+    "name": "Nome"
   },
   "login": {
     "title": "Accedi",
@@ -48,7 +52,9 @@
     "created": "Creato",
     "enabled": "Attivo",
     "disabled": "Disattivato",
-    "empty": "Ancora nessun token."
+    "empty": "Ancora nessun token.",
+    "new": "Nuovo token",
+    "create": "Crea token"
   },
   "usage": {
     "subtitle": "Richieste recenti",
@@ -68,7 +74,12 @@
     "enabled": "Attivo",
     "disabled": "Disattivato",
     "auto_disabled": "Auto-disattivato",
-    "empty": "Ancora nessun provider."
+    "empty": "Ancora nessun provider.",
+    "new": "Nuovo provider",
+    "preset": "Modello",
+    "key": "Chiave API",
+    "base_url": "URL base",
+    "create": "Crea provider"
   },
   "settings": {
     "subtitle": "Account e sistema",

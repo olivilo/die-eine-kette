@@ -20,7 +20,11 @@
     "login": "Sign in",
     "logout": "Sign out",
     "language": "Language",
-    "phase": "Phase 2 · Frontend in progress"
+    "phase": "Phase 2 · Frontend in progress",
+    "create": "Create",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "name": "Name"
   },
   "login": {
     "title": "Sign in",
@@ -48,7 +52,9 @@
     "created": "Created",
     "enabled": "Active",
     "disabled": "Disabled",
-    "empty": "No tokens yet."
+    "empty": "No tokens yet.",
+    "new": "New token",
+    "create": "Create token"
   },
   "usage": {
     "subtitle": "Recent requests",
@@ -68,7 +74,12 @@
     "enabled": "Active",
     "disabled": "Disabled",
     "auto_disabled": "Auto-disabled",
-    "empty": "No providers yet."
+    "empty": "No providers yet.",
+    "new": "New provider",
+    "preset": "Preset",
+    "key": "API key",
+    "base_url": "Base URL",
+    "create": "Create provider"
   },
   "settings": {
     "subtitle": "Account & system",
