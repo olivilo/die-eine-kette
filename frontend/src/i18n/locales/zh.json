@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "Die Eine Kette", "tagline": "一扇门，连接一切。" },
+  "nav": {
+    "dashboard": "概览",
+    "providers": "提供商",
+    "tokens": "令牌",
+    "usage": "用量",
+    "settings": "设置"
+  },
+  "hero": {
+    "title": "一个网关，所有 AI 模型。",
+    "subtitle": "多租户大模型网关，具备成本控制、全面多语言与治理能力——环环相扣的一条链。",
+    "cta_start": "开始使用",
+    "cta_docs": "文档"
+  },
+  "common": {
+    "login": "登录",
+    "language": "语言",
+    "phase": "第二阶段 · 前端开发中"
+  }
+}

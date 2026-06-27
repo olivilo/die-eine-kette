@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" role="img" aria-label="Die Eine Kette">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3DC93"/>
+      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#9C6F1B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ring-Ketten-Mark: drei ineinandergreifende Ringe -->
+  <g transform="translate(8,0)" fill="none" stroke="url(#gold)" stroke-width="7">
+    <circle cx="40" cy="60" r="20"/>
+    <circle cx="66" cy="60" r="20"/>
+    <circle cx="92" cy="60" r="20"/>
+    <!-- Verweb-Akzente: kurze Bögen vorn → Ringe wirken verkettet -->
+    <path d="M 52 47 A 20 20 0 0 1 52 73" stroke-width="7.4"/>
+    <path d="M 78 47 A 20 20 0 0 1 78 73" stroke-width="7.4"/>
+  </g>
+
+  <!-- Wortmarke -->
+  <text x="138" y="58" font-family="Georgia, 'Times New Roman', serif"
+        font-size="34" letter-spacing="3" fill="url(#gold)" font-weight="700">DIE EINE KETTE</text>
+  <text x="140" y="86" font-family="Georgia, 'Times New Roman', serif"
+        font-size="14.5" letter-spacing="0.5" font-style="italic" fill="#B98F3A">
+    Ein Tor, sie alle zu verbinden.
+  </text>
+</svg>

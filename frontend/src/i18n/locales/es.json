@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "Die Eine Kette", "tagline": "Una puerta para conectarlos a todos." },
+  "nav": {
+    "dashboard": "Panel",
+    "providers": "Proveedores",
+    "tokens": "Tokens",
+    "usage": "Uso",
+    "settings": "Ajustes"
+  },
+  "hero": {
+    "title": "Una pasarela. Todos los modelos de IA.",
+    "subtitle": "Pasarela LLM multiinquilino con control de costes, multilingüe y gobernanza — una cadena de anillos.",
+    "cta_start": "Comenzar",
+    "cta_docs": "Documentación"
+  },
+  "common": {
+    "login": "Iniciar sesión",
+    "language": "Idioma",
+    "phase": "Fase 2 · Frontend en construcción"
+  }
+}

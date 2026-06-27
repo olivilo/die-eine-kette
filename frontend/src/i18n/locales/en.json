@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "Die Eine Kette", "tagline": "One gateway to connect them all." },
+  "nav": {
+    "dashboard": "Dashboard",
+    "providers": "Providers",
+    "tokens": "Tokens",
+    "usage": "Usage",
+    "settings": "Settings"
+  },
+  "hero": {
+    "title": "One gateway. Every AI model.",
+    "subtitle": "Multi-tenant LLM gateway with cost control, full multilingual support and governance — a chain of rings.",
+    "cta_start": "Get started",
+    "cta_docs": "Documentation"
+  },
+  "common": {
+    "login": "Sign in",
+    "language": "Language",
+    "phase": "Phase 2 · Frontend in progress"
+  }
+}

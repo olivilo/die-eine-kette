@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "Die Eine Kette", "tagline": "Un varco per connetterli tutti." },
+  "nav": {
+    "dashboard": "Cruscotto",
+    "providers": "Provider",
+    "tokens": "Token",
+    "usage": "Utilizzo",
+    "settings": "Impostazioni"
+  },
+  "hero": {
+    "title": "Un gateway. Tutti i modelli di IA.",
+    "subtitle": "Gateway LLM multi-tenant con controllo dei costi, multilingue e governance — una catena di anelli.",
+    "cta_start": "Inizia",
+    "cta_docs": "Documentazione"
+  },
+  "common": {
+    "login": "Accedi",
+    "language": "Lingua",
+    "phase": "Fase 2 · Frontend in costruzione"
+  }
+}

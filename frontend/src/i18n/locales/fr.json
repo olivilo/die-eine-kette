@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "Die Eine Kette", "tagline": "Une porte pour les relier tous." },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "providers": "Fournisseurs",
+    "tokens": "Jetons",
+    "usage": "Utilisation",
+    "settings": "Paramètres"
+  },
+  "hero": {
+    "title": "Une passerelle. Tous les modèles d'IA.",
+    "subtitle": "Passerelle LLM multi-locataire avec contrôle des coûts, multilingue et gouvernance — une chaîne d'anneaux.",
+    "cta_start": "Commencer",
+    "cta_docs": "Documentation"
+  },
+  "common": {
+    "login": "Se connecter",
+    "language": "Langue",
+    "phase": "Phase 2 · Frontend en cours"
+  }
+}

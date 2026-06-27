@@ -1,0 +1,43 @@
+"use client";
+
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
+
+export default function Navbar() {
+  const { t } = useTranslation();
+  const navKeys = ["dashboard", "providers", "tokens", "usage", "settings"] as const;
+
+  return (
+    <header className="sticky top-0 z-10 border-b border-zinc-800 bg-coal/80 backdrop-blur">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4">
+        <a href="/" className="flex items-center gap-2">
+          <Image src="/brand/mark.svg" alt="" width={32} height={32} priority />
+          <span className="font-serif text-lg font-bold tracking-wide text-gold">
+            {t("brand.name")}
+          </span>
+        </a>
+
+        <ul className="ml-6 hidden gap-5 text-sm text-zinc-300 md:flex">
+          {navKeys.map((k) => (
+            <li key={k}>
+              <a href={`/${k}`} className="hover:text-gold">
+                {t(`nav.${k}`)}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="ml-auto flex items-center gap-3">
+          <LanguageSwitcher />
+          <a
+            href="/login"
+            className="rounded-md bg-gold px-3 py-1.5 text-sm font-semibold text-ink hover:bg-gold-light"
+          >
+            {t("common.login")}
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+}

@@ -1,0 +1,21 @@
+{
+  "brand": { "name": "Die Eine Kette", "tagline": "Ein Tor, sie alle zu verbinden." },
+  "nav": {
+    "dashboard": "Übersicht",
+    "providers": "Anbieter",
+    "tokens": "Tokens",
+    "usage": "Nutzung",
+    "settings": "Einstellungen"
+  },
+  "hero": {
+    "title": "Ein Gateway. Alle KI-Modelle.",
+    "subtitle": "Mandantenfähiges LLM-Gateway mit Kostenkontrolle, voller Mehrsprachigkeit und Governance — eine Kette aus Ringen.",
+    "cta_start": "Loslegen",
+    "cta_docs": "Dokumentation"
+  },
+  "common": {
+    "login": "Anmelden",
+    "language": "Sprache",
+    "phase": "Phase 2 · Frontend im Aufbau"
+  }
+}
