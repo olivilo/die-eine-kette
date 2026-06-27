@@ -8,7 +8,10 @@ FROM node:16 AS frontend
 WORKDIR /web
 COPY ./VERSION .
 COPY ./web .
-RUN npm install --prefix /web/default \
+# /web/build muss existieren — das Theme-Build-Script verschiebt sein Ergebnis
+# nach ../build/<theme> (bei nur 1 Theme legt es sonst niemand an).
+RUN mkdir -p /web/build \
+ && npm install --prefix /web/default \
  && DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) \
     npm run build --prefix /web/default
 
