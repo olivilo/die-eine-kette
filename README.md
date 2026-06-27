@@ -1,3 +1,17 @@
+<p align="center">
+  <img src="./brand/logo.svg" alt="Die Eine Kette" width="460">
+</p>
+
+<p align="center">
+  <b>Deutsch</b> ·
+  <a href="./README.en.md">English</a> ·
+  <a href="./README.fr.md">Français</a> ·
+  <a href="./README.es.md">Español</a> ·
+  <a href="./README.it.md">Italiano</a> ·
+  <a href="./README.sr.md">Српски</a> ·
+  <a href="./README.zh.md">中文</a>
+</p>
+
 # ⛓️ Die Eine Kette (DieEineKette)
 
 > **Ein Tor, sie alle zu verbinden.**
@@ -65,8 +79,11 @@ Die Eine Kette basiert auf **[One API](https://github.com/songquanpeng/one-api)*
 von JustSong (MIT-Lizenz) — insbesondere auf dessen bewährtem Relay-Motor mit
 ~45 Anbieter-Integrationen. Vielen Dank an das One-API-Projekt.
 
-Diese Herkunft wird in allen sprachspezifischen READMEs genannt. Der ursprüngliche
-MIT-Lizenztext bleibt unter [`LICENSE`](./LICENSE) erhalten — wie die Lizenz es verlangt.
+Diese Herkunft wird in allen sprachspezifischen READMEs genannt
+([EN](./README.en.md) · [FR](./README.fr.md) · [ES](./README.es.md) ·
+[IT](./README.it.md) · [SR](./README.sr.md) · [ZH](./README.zh.md)). Der ursprüngliche
+MIT-Lizenztext bleibt unter [`backend/LICENSE`](./backend/LICENSE) erhalten — wie die
+Lizenz es verlangt.
 
 **Dual-Lizenz für Die-Eine-Kette-Eigencode** (UI, B2B, Kostenmodell):
 **frei für private, studentische, akademische und nicht-kommerzielle Nutzung** —
