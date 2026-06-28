@@ -14,6 +14,7 @@ import (
 	"github.com/songquanpeng/one-api/common/config"
 	"github.com/songquanpeng/one-api/common/ctxkey"
 	"github.com/songquanpeng/one-api/common/i18n"
+	"github.com/songquanpeng/one-api/common/license"
 	"github.com/songquanpeng/one-api/common/random"
 	"github.com/songquanpeng/one-api/model"
 )
@@ -570,6 +571,14 @@ func DeleteSelf(c *gin.Context) {
 
 func CreateUser(c *gin.Context) {
 	ctx := c.Request.Context()
+	// Lizenz-Limit: max_seats (Community = 5).
+	if model.CountActiveUsers() >= int64(license.MaxSeats()) {
+		c.JSON(http.StatusOK, gin.H{
+			"success": false,
+			"message": "Nutzer-Limit der Lizenz erreicht (max_seats). Kommerzielle Lizenz nötig.",
+		})
+		return
+	}
 	var user model.User
 	err := json.NewDecoder(c.Request.Body).Decode(&user)
 	if err != nil || user.Username == "" || user.Password == "" {

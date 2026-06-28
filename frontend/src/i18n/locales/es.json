@@ -212,5 +212,17 @@
     "empty": "Sin costes registrados.",
     "export": "Exportar CSV",
     "last_days": "Últimos {{days}} días"
+  },
+  "license": {
+    "title": "Licencia",
+    "desc": "Tier, límites y funciones desbloqueadas.",
+    "community": "Community",
+    "customer": "Cliente",
+    "max_orgs": "Máx. organizaciones",
+    "max_seats": "Máx. usuarios",
+    "max_nodes": "Máx. nodos",
+    "valid_until": "Válida hasta",
+    "features": "Funciones",
+    "upgrade_hint": "Límites Community activos (1 org, 5 usuarios, sin SSO/exportación/white-label). Una licencia comercial desbloquea más."
   }
 }

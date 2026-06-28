@@ -17,6 +17,8 @@ services:
       - REDIS_CONN_STRING=redis://redis:6379/0
       - SESSION_SECRET=${SESSION_SECRET}
       - TZ=${TZ:-Europe/Berlin}
+      # Die Eine Kette — Lizenz-Token (leer = Community-Limits)
+      - DIEEINEKETTE_LICENSE=${DIEEINEKETTE_LICENSE:-}
     volumes:
       # Bind-Mounts auf das (externe) Projekt-Volume — schont die kleine interne Platte.
       - ./data/app:/data

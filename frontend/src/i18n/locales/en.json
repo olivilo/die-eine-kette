@@ -212,5 +212,17 @@
     "empty": "No costs recorded yet.",
     "export": "CSV export",
     "last_days": "Last {{days}} days"
+  },
+  "license": {
+    "title": "License",
+    "desc": "Tier, limits and unlocked features.",
+    "community": "Community",
+    "customer": "Customer",
+    "max_orgs": "Max organizations",
+    "max_seats": "Max users",
+    "max_nodes": "Max nodes",
+    "valid_until": "Valid until",
+    "features": "Features",
+    "upgrade_hint": "Community limits active (1 org, 5 users, no SSO/export/white-label). A commercial license unlocks more."
   }
 }

@@ -20,6 +20,19 @@ const (
 	OrgStatusDisabled = 2
 )
 
+// CountOrganizations / CountActiveUsers — für Lizenz-Limits (max_orgs / max_seats).
+func CountOrganizations() int64 {
+	var n int64
+	DB.Model(&Organization{}).Count(&n)
+	return n
+}
+
+func CountActiveUsers() int64 {
+	var n int64
+	DB.Model(&User{}).Where("status != ?", UserStatusDeleted).Count(&n)
+	return n
+}
+
 func GetAllOrganizations(startIdx int, num int) ([]*Organization, error) {
 	var orgs []*Organization
 	err := DB.Order("id desc").Limit(num).Offset(startIdx).Find(&orgs).Error

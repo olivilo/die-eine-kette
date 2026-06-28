@@ -212,5 +212,17 @@
     "empty": "暂无成本记录。",
     "export": "导出 CSV",
     "last_days": "最近 {{days}} 天"
+  },
+  "license": {
+    "title": "许可证",
+    "desc": "层级、限制与已解锁功能。",
+    "community": "Community",
+    "customer": "客户",
+    "max_orgs": "最大组织数",
+    "max_seats": "最大用户数",
+    "max_nodes": "最大节点数",
+    "valid_until": "有效期至",
+    "features": "功能",
+    "upgrade_hint": "Community 限制生效（1 组织、5 用户，无 SSO/导出/白标）。商业许可证可解锁更多。"
   }
 }

@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/songquanpeng/one-api/common/config"
+	"github.com/songquanpeng/one-api/common/license"
 	"github.com/songquanpeng/one-api/model"
 )
 
@@ -37,6 +38,11 @@ func AddOrganization(c *gin.Context) {
 	var org model.Organization
 	if err := c.ShouldBindJSON(&org); err != nil || org.Name == "" {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_parameter"})
+		return
+	}
+	// Lizenz-Limit: max_orgs (Community = 1).
+	if model.CountOrganizations() >= int64(license.MaxOrgs()) {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": "Organisations-Limit der Lizenz erreicht (max_orgs). Kommerzielle Lizenz nötig."})
 		return
 	}
 	org.Id = 0

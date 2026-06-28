@@ -15,6 +15,7 @@ import (
 	"github.com/songquanpeng/one-api/common/client"
 	"github.com/songquanpeng/one-api/common/config"
 	"github.com/songquanpeng/one-api/common/i18n"
+	"github.com/songquanpeng/one-api/common/license"
 	"github.com/songquanpeng/one-api/common/logger"
 	"github.com/songquanpeng/one-api/controller"
 	"github.com/songquanpeng/one-api/middleware"
@@ -30,6 +31,10 @@ func main() {
 	common.Init()
 	logger.SetupLogger()
 	logger.SysLogf("One API %s started", common.Version)
+
+	// Die Eine Kette — Lizenz laden (Ed25519). Ohne gültige Lizenz: Community-Limits.
+	license.Load()
+	logger.SysLogf("license tier: %s (valid=%t)", license.Current().Tier, license.Current().Valid)
 
 	if os.Getenv("GIN_MODE") != gin.DebugMode {
 		gin.SetMode(gin.ReleaseMode)

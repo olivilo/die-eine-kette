@@ -12,6 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/songquanpeng/one-api/common/ctxkey"
+	"github.com/songquanpeng/one-api/common/license"
 	"github.com/songquanpeng/one-api/model"
 )
 
@@ -62,6 +63,11 @@ func GetCostSummary(c *gin.Context) {
 }
 
 func ExportCostCsv(c *gin.Context) {
+	// Kommerzielles Feature: Kosten-Export erfordert eine gültige Lizenz mit "cost_export".
+	if !license.HasFeature("cost_export") {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": "Kosten-Export erfordert eine kommerzielle Lizenz (Feature cost_export)."})
+		return
+	}
 	orgId := scopeOrg(c)
 	entries, err := model.GetCostEntries(maxZero(orgId), 0, 10000)
 	if err != nil {

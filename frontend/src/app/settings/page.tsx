@@ -5,6 +5,7 @@ import { useRequireAuth } from "@/lib/useRequireAuth";
 import { PageHeader } from "@/components/ui";
 import TwoFactor from "@/components/TwoFactor";
 import SystemSettings from "@/components/SystemSettings";
+import LicenseInfo from "@/components/LicenseInfo";
 
 export default function SettingsPage() {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ export default function SettingsPage() {
   return (
     <section className="py-8">
       <PageHeader title={t("nav.settings")} subtitle={t("settings.subtitle")} />
+      <LicenseInfo />
       <TwoFactor />
       <SystemSettings />
     </section>

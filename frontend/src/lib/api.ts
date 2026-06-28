@@ -180,6 +180,18 @@ export const api = {
       body: JSON.stringify({ ...body, groups: ["default"], group: "default" }),
     }),
   deleteChannel: (id: number) => request(`/channel/${id}`, { method: "DELETE" }),
+  license: () =>
+    request<{
+      tier: string;
+      customer: string;
+      max_orgs: number;
+      max_seats: number;
+      max_nodes: number;
+      features: string[];
+      valid_until: string;
+      valid: boolean;
+      commercial: boolean;
+    }>("/license"),
   options: () => request<{ key: string; value: string }[]>("/option"),
   updateOption: (key: string, value: string) =>
     request("/option", { method: "PUT", body: JSON.stringify({ key, value }) }),

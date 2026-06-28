@@ -212,5 +212,17 @@
     "empty": "Noch keine Kosten erfasst.",
     "export": "CSV-Export",
     "last_days": "Letzte {{days}} Tage"
+  },
+  "license": {
+    "title": "Lizenz",
+    "desc": "Tier, Limits und freigeschaltete Funktionen.",
+    "community": "Community",
+    "customer": "Kunde",
+    "max_orgs": "Max. Organisationen",
+    "max_seats": "Max. Nutzer",
+    "max_nodes": "Max. Nodes",
+    "valid_until": "Gültig bis",
+    "features": "Funktionen",
+    "upgrade_hint": "Community-Limits aktiv (1 Org, 5 Nutzer, kein SSO/Export/White-Label). Kommerzielle Lizenz schaltet mehr frei."
   }
 }
