@@ -224,5 +224,15 @@
     "valid_until": "Gültig bis",
     "features": "Funktionen",
     "upgrade_hint": "Community-Limits aktiv (1 Org, 5 Nutzer, kein SSO/Export/White-Label). Kommerzielle Lizenz schaltet mehr frei."
+  },
+  "navgroup": {
+    "overview": "Überblick",
+    "ai": "KI-Nutzung",
+    "tenants": "Mandanten",
+    "admin": "Verwaltung",
+    "system": "System",
+    "collapse": "Einklappen",
+    "expand": "Ausklappen",
+    "menu": "Menü"
   }
 }

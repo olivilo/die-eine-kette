@@ -224,5 +224,15 @@
     "valid_until": "Valida fino al",
     "features": "Funzioni",
     "upgrade_hint": "Limiti Community attivi (1 org, 5 utenti, senza SSO/export/white-label). Una licenza commerciale sblocca di più."
+  },
+  "navgroup": {
+    "overview": "Panoramica",
+    "ai": "Utilizzo dell'intelligenza artificiale",
+    "tenants": "Inquilini",
+    "admin": "Amministrazione",
+    "system": "Sistema",
+    "collapse": "Crollo",
+    "expand": "Espandere",
+    "menu": "Menu"
   }
 }

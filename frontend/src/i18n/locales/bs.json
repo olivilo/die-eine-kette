@@ -224,5 +224,15 @@
     "valid_until": "Važi do",
     "features": "Funkcije",
     "upgrade_hint": "Community limiti aktivni (1 org, 5 korisnika, bez SSO/izvoza/white-label). Komercijalna licenca otključava više."
+  },
+  "navgroup": {
+    "overview": "Pregled",
+    "ai": "Upotreba AI",
+    "tenants": "Stanari",
+    "admin": "Administracija",
+    "system": "Sistem",
+    "collapse": "Kolaps",
+    "expand": "Proširi",
+    "menu": "Meni"
   }
 }

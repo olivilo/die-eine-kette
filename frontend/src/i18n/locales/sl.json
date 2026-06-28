@@ -224,5 +224,15 @@
     "valid_until": "Velja do",
     "features": "Lastnosti",
     "upgrade_hint": "Omejitve skupnosti so aktivne (1 organizacija, 5 uporabnikov, brez SSO/export/white-label). Komercialna licenca odklene več."
+  },
+  "navgroup": {
+    "overview": "Pregled",
+    "ai": "uporaba AI",
+    "tenants": "Najemniki",
+    "admin": "Administracija",
+    "system": "Sistem",
+    "collapse": "Strni",
+    "expand": "Razširi",
+    "menu": "meni"
   }
 }

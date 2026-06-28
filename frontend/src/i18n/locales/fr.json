@@ -224,5 +224,15 @@
     "valid_until": "Valide jusqu'au",
     "features": "Fonctionnalités",
     "upgrade_hint": "Limites Community actives (1 org, 5 utilisateurs, sans SSO/export/white-label). Une licence commerciale débloque plus."
+  },
+  "navgroup": {
+    "overview": "Aperçu",
+    "ai": "Utilisation de l'IA",
+    "tenants": "Locataires",
+    "admin": "Administration",
+    "system": "Système",
+    "collapse": "Effondrement",
+    "expand": "Développer",
+    "menu": "Menu"
   }
 }

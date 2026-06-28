@@ -224,5 +224,15 @@
     "valid_until": "有效期至",
     "features": "功能",
     "upgrade_hint": "Community 限制生效（1 组织、5 用户，无 SSO/导出/白标）。商业许可证可解锁更多。"
+  },
+  "navgroup": {
+    "overview": "概述",
+    "ai": "人工智能的使用",
+    "tenants": "租户",
+    "admin": "行政",
+    "system": "系统",
+    "collapse": "坍塌",
+    "expand": "扩张",
+    "menu": "菜单"
   }
 }

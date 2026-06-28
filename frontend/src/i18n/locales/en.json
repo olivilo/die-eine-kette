@@ -224,5 +224,15 @@
     "valid_until": "Valid until",
     "features": "Features",
     "upgrade_hint": "Community limits active (1 org, 5 users, no SSO/export/white-label). A commercial license unlocks more."
+  },
+  "navgroup": {
+    "overview": "Overview",
+    "ai": "AI usage",
+    "tenants": "Tenants",
+    "admin": "Administration",
+    "system": "System",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "menu": "Menu"
   }
 }

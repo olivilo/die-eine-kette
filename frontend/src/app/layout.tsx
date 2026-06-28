@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import I18nProvider from "@/components/I18nProvider";
 import { AuthProvider } from "@/components/AuthProvider";
-import Navbar from "@/components/Navbar";
+import AppShell from "@/components/AppShell";
 
 export const metadata: Metadata = {
   title: "Die Eine Kette",
@@ -22,8 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <I18nProvider>
           <AuthProvider>
-            <Navbar />
-            <main className="mx-auto max-w-6xl px-4">{children}</main>
+            <AppShell>{children}</AppShell>
           </AuthProvider>
         </I18nProvider>
       </body>

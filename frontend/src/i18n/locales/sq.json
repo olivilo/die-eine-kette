@@ -224,5 +224,15 @@
     "valid_until": "E vlefshme deri në",
     "features": "Veçoritë",
     "upgrade_hint": "Kufijtë e komunitetit aktiv (1 org, 5 përdorues, pa SSO/eksport/etiketë të bardhë). Një licencë tregtare hap më shumë."
+  },
+  "navgroup": {
+    "overview": "Vështrim i përgjithshëm",
+    "ai": "Përdorimi i AI",
+    "tenants": "Qiramarrësit",
+    "admin": "Administrata",
+    "system": "Sistemi",
+    "collapse": "Kolapsi",
+    "expand": "Zgjero",
+    "menu": "Menyja"
   }
 }
