@@ -9,7 +9,8 @@
     "tokens": "Token",
     "usage": "Utilizzo",
     "settings": "Impostazioni",
-    "users": "Utenti"
+    "users": "Utenti",
+    "logs": "Log"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -80,7 +81,10 @@
     "preset": "Modello",
     "key": "Chiave API",
     "base_url": "URL base",
-    "create": "Crea provider"
+    "create": "Crea provider",
+    "test": "Prova",
+    "test_ok": "OK",
+    "test_fail": "Errore"
   },
   "settings": {
     "subtitle": "Account e sistema",
@@ -117,5 +121,10 @@
     "enable": "Attiva",
     "disable": "Blocca",
     "pw_hint": "Almeno 8 caratteri"
+  },
+  "logs": {
+    "subtitle": "Tutte le richieste (admin)",
+    "user": "Utente",
+    "empty": "Nessun log."
   }
 }

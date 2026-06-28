@@ -9,7 +9,8 @@
     "tokens": "令牌",
     "usage": "用量",
     "settings": "设置",
-    "users": "用户"
+    "users": "用户",
+    "logs": "日志"
   },
   "hero": {
     "title": "一个网关，所有 AI 模型。",
@@ -80,7 +81,10 @@
     "preset": "预设",
     "key": "API 密钥",
     "base_url": "基础 URL",
-    "create": "创建提供商"
+    "create": "创建提供商",
+    "test": "测试",
+    "test_ok": "正常",
+    "test_fail": "失败"
   },
   "settings": {
     "subtitle": "账户与系统",
@@ -117,5 +121,10 @@
     "enable": "启用",
     "disable": "封禁",
     "pw_hint": "至少 8 个字符"
+  },
+  "logs": {
+    "subtitle": "所有请求（管理员）",
+    "user": "用户",
+    "empty": "暂无日志。"
   }
 }

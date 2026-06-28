@@ -20,6 +20,7 @@ export default function ProvidersPage() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [testMsg, setTestMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [presetId, setPresetId] = useState(providerPresets[0].id);
   const [name, setName] = useState("");
   const [apiKey, setApiKey] = useState("");
@@ -62,6 +63,17 @@ export default function ProvidersPage() {
     load();
   }
 
+  async function test(c: Channel) {
+    setTestMsg({ ok: true, text: `${c.name}: …` });
+    const res = await api.testChannel(c.id);
+    if (res.success) {
+      const secs = res.data?.time ? ` (${res.data.time.toFixed(2)}s)` : "";
+      setTestMsg({ ok: true, text: `${c.name}: ${t("providers.test_ok")}${secs}` });
+    } else {
+      setTestMsg({ ok: false, text: `${c.name}: ${res.message || t("providers.test_fail")}` });
+    }
+  }
+
   const input = "rounded-md border border-zinc-700 bg-ink px-3 py-2 text-zinc-100 outline-none focus:border-gold";
   const columns = [t("providers.name"), t("providers.type"), t("providers.status"), t("providers.models"), ""];
   const rows = channels.map((c) => [
@@ -69,7 +81,10 @@ export default function ProvidersPage() {
     c.type,
     statusBadge(c.status, t),
     <span key="m" className="text-zinc-400">{(c.models || "").split(",").slice(0, 3).join(", ") || "—"}</span>,
-    <button key="d" onClick={() => remove(c.id)} className="text-xs text-zinc-500 hover:text-red-400">{t("common.delete")}</button>,
+    <div key="a" className="flex gap-3 text-xs">
+      <button onClick={() => test(c)} className="text-zinc-400 hover:text-gold">{t("providers.test")}</button>
+      <button onClick={() => remove(c.id)} className="text-zinc-500 hover:text-red-400">{t("common.delete")}</button>
+    </div>,
   ]);
 
   const action = (
@@ -110,6 +125,9 @@ export default function ProvidersPage() {
             <button onClick={() => setShowForm(false)} className="rounded-md border border-zinc-700 px-4 py-2 font-semibold text-zinc-200 hover:border-gold">{t("common.cancel")}</button>
           </div>
         </Card>
+      )}
+      {testMsg && (
+        <p className={`mt-4 text-sm ${testMsg.ok ? "text-emerald-400" : "text-red-400"}`}>{testMsg.text}</p>
       )}
       <div className="mt-6">
         <DataTable columns={columns} rows={rows} loading={loading} empty={t("providers.empty")} />

@@ -9,7 +9,8 @@
     "tokens": "Tokens",
     "usage": "Nutzung",
     "settings": "Einstellungen",
-    "users": "Nutzer"
+    "users": "Nutzer",
+    "logs": "Logs"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -80,7 +81,10 @@
     "preset": "Vorlage",
     "key": "API-Schlüssel",
     "base_url": "Basis-URL",
-    "create": "Anbieter anlegen"
+    "create": "Anbieter anlegen",
+    "test": "Testen",
+    "test_ok": "OK",
+    "test_fail": "Fehler"
   },
   "settings": {
     "subtitle": "Konto & System",
@@ -117,5 +121,10 @@
     "enable": "Aktivieren",
     "disable": "Sperren",
     "pw_hint": "Mind. 8 Zeichen"
+  },
+  "logs": {
+    "subtitle": "Alle Anfragen (Admin)",
+    "user": "Nutzer",
+    "empty": "Noch keine Logs."
   }
 }

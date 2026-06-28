@@ -48,6 +48,7 @@ export type LogEntry = {
   id: number;
   created_at: number;
   type: number;
+  username?: string;
   model_name: string;
   prompt_tokens: number;
   completion_tokens: number;
@@ -91,7 +92,9 @@ export const api = {
     }),
   deleteToken: (id: number) => request(`/token/${id}`, { method: "DELETE" }),
   logsSelf: () => request<LogEntry[]>("/log/self?p=0"),
+  logsAll: () => request<LogEntry[]>("/log?p=0"),
   channels: () => request<Channel[]>("/channel?p=0"),
+  testChannel: (id: number) => request<{ time?: number }>(`/channel/test/${id}`),
   createChannel: (body: { name: string; type: number; key: string; base_url: string; models: string }) =>
     request("/channel", {
       method: "POST",

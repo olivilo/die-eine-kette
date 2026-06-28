@@ -9,7 +9,8 @@
     "tokens": "Tokens",
     "usage": "Uso",
     "settings": "Ajustes",
-    "users": "Usuarios"
+    "users": "Usuarios",
+    "logs": "Registros"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -80,7 +81,10 @@
     "preset": "Plantilla",
     "key": "Clave API",
     "base_url": "URL base",
-    "create": "Crear proveedor"
+    "create": "Crear proveedor",
+    "test": "Probar",
+    "test_ok": "OK",
+    "test_fail": "Error"
   },
   "settings": {
     "subtitle": "Cuenta y sistema",
@@ -117,5 +121,10 @@
     "enable": "Activar",
     "disable": "Bloquear",
     "pw_hint": "Mínimo 8 caracteres"
+  },
+  "logs": {
+    "subtitle": "Todas las solicitudes (admin)",
+    "user": "Usuario",
+    "empty": "Sin registros."
   }
 }

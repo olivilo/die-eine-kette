@@ -9,7 +9,8 @@
     "tokens": "Tokens",
     "usage": "Usage",
     "settings": "Settings",
-    "users": "Users"
+    "users": "Users",
+    "logs": "Logs"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -80,7 +81,10 @@
     "preset": "Preset",
     "key": "API key",
     "base_url": "Base URL",
-    "create": "Create provider"
+    "create": "Create provider",
+    "test": "Test",
+    "test_ok": "OK",
+    "test_fail": "Failed"
   },
   "settings": {
     "subtitle": "Account & system",
@@ -117,5 +121,10 @@
     "enable": "Enable",
     "disable": "Block",
     "pw_hint": "At least 8 characters"
+  },
+  "logs": {
+    "subtitle": "All requests (admin)",
+    "user": "User",
+    "empty": "No logs yet."
   }
 }

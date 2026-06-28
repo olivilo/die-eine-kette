@@ -9,7 +9,8 @@
     "tokens": "Jetons",
     "usage": "Utilisation",
     "settings": "Paramètres",
-    "users": "Utilisateurs"
+    "users": "Utilisateurs",
+    "logs": "Journaux"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -80,7 +81,10 @@
     "preset": "Modèle",
     "key": "Clé API",
     "base_url": "URL de base",
-    "create": "Créer le fournisseur"
+    "create": "Créer le fournisseur",
+    "test": "Tester",
+    "test_ok": "OK",
+    "test_fail": "Échec"
   },
   "settings": {
     "subtitle": "Compte et système",
@@ -117,5 +121,10 @@
     "enable": "Activer",
     "disable": "Bloquer",
     "pw_hint": "Au moins 8 caractères"
+  },
+  "logs": {
+    "subtitle": "Toutes les requêtes (admin)",
+    "user": "Utilisateur",
+    "empty": "Aucun journal."
   }
 }
