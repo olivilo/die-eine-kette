@@ -207,7 +207,21 @@ func GetAllUsers(c *gin.Context) {
 	}
 
 	order := c.DefaultQuery("order", "")
-	users, err := model.GetAllUsers(p*config.ItemsPerPage, config.ItemsPerPage, order)
+
+	// Mandanten-Isolation (Die Eine Kette): Root sieht alle Nutzer; ein Org-Admin
+	// sieht nur Nutzer der eigenen Organisation.
+	var users []*model.User
+	var err error
+	if c.GetInt(ctxkey.Role) >= model.RoleRootUser {
+		users, err = model.GetAllUsers(p*config.ItemsPerPage, config.ItemsPerPage, order)
+	} else {
+		me, e := model.GetUserById(c.GetInt(ctxkey.Id), false)
+		if e != nil {
+			c.JSON(http.StatusOK, gin.H{"success": false, "message": e.Error()})
+			return
+		}
+		users, err = model.GetUsersInOrg(me.OrgId, p*config.ItemsPerPage, config.ItemsPerPage)
+	}
 
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{

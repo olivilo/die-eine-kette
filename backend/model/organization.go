@@ -55,11 +55,20 @@ func DeleteOrganizationById(id int) error {
 	return DB.Delete(&Organization{Id: id}).Error
 }
 
-// CountUsersInOrg liefert die Anzahl zugeordneter Nutzer.
+// CountUsersInOrg liefert die Anzahl zugeordneter (nicht gelöschter) Nutzer.
 func CountUsersInOrg(id int) int64 {
 	var n int64
-	DB.Model(&User{}).Where("org_id = ?", id).Count(&n)
+	DB.Model(&User{}).Where("org_id = ? AND status != ?", id, UserStatusDeleted).Count(&n)
 	return n
+}
+
+// GetUsersInOrg liefert die Nutzer eines Mandanten (für Mandanten-Isolation der Admin-Sicht).
+func GetUsersInOrg(orgId int, startIdx int, num int) ([]*User, error) {
+	var users []*User
+	err := DB.Limit(num).Offset(startIdx).Omit("password").
+		Where("status != ? AND org_id = ?", UserStatusDeleted, orgId).
+		Order("id desc").Find(&users).Error
+	return users, err
 }
 
 // AssignUserToOrg ordnet einen Nutzer (per Username) einer Organisation zu (0 = keine).

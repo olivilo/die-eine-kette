@@ -108,9 +108,9 @@ func SetApiRouter(router *gin.Engine) {
 			redemptionRoute.PUT("/", controller.UpdateRedemption)
 			redemptionRoute.DELETE("/:id", controller.DeleteRedemption)
 		}
-		// Die Eine Kette — B2B-Mandanten (Phase 3)
+		// Die Eine Kette — B2B-Mandanten (Phase 3). Mandanten-Verwaltung = Plattform-Ebene (Root).
 		organizationRoute := apiRouter.Group("/organization")
-		organizationRoute.Use(middleware.AdminAuth())
+		organizationRoute.Use(middleware.RootAuth())
 		{
 			organizationRoute.GET("/", controller.GetAllOrganizations)
 			organizationRoute.POST("/", controller.AddOrganization)
