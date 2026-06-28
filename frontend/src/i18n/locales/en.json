@@ -8,7 +8,8 @@
     "providers": "Providers",
     "tokens": "Tokens",
     "usage": "Usage",
-    "settings": "Settings"
+    "settings": "Settings",
+    "users": "Users"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -98,5 +99,23 @@
     "disable": "Disable 2FA",
     "invalid": "Invalid code.",
     "backup_title": "Backup codes — store safely, each usable once:"
+  },
+  "users": {
+    "subtitle": "Manage users & roles",
+    "username": "User",
+    "role": "Role",
+    "status": "Status",
+    "enabled": "Active",
+    "disabled": "Blocked",
+    "role_user": "User",
+    "role_admin": "Admin",
+    "role_root": "Root",
+    "new": "New user",
+    "empty": "No users.",
+    "promote": "Make admin",
+    "demote": "Make user",
+    "enable": "Enable",
+    "disable": "Block",
+    "pw_hint": "At least 8 characters"
   }
 }

@@ -8,7 +8,8 @@
     "providers": "Fournisseurs",
     "tokens": "Jetons",
     "usage": "Utilisation",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "users": "Utilisateurs"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -98,5 +99,23 @@
     "disable": "Désactiver la 2FA",
     "invalid": "Code invalide.",
     "backup_title": "Codes de secours — à conserver en sécurité, utilisables une fois :"
+  },
+  "users": {
+    "subtitle": "Gérer les utilisateurs et les rôles",
+    "username": "Utilisateur",
+    "role": "Rôle",
+    "status": "Statut",
+    "enabled": "Actif",
+    "disabled": "Bloqué",
+    "role_user": "Utilisateur",
+    "role_admin": "Admin",
+    "role_root": "Root",
+    "new": "Nouvel utilisateur",
+    "empty": "Aucun utilisateur.",
+    "promote": "Promouvoir admin",
+    "demote": "Rétrograder",
+    "enable": "Activer",
+    "disable": "Bloquer",
+    "pw_hint": "Au moins 8 caractères"
   }
 }

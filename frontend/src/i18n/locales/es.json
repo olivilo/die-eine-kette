@@ -8,7 +8,8 @@
     "providers": "Proveedores",
     "tokens": "Tokens",
     "usage": "Uso",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "users": "Usuarios"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -98,5 +99,23 @@
     "disable": "Desactivar 2FA",
     "invalid": "Código no válido.",
     "backup_title": "Códigos de respaldo — guárdalos a salvo, cada uno se usa una vez:"
+  },
+  "users": {
+    "subtitle": "Gestionar usuarios y roles",
+    "username": "Usuario",
+    "role": "Rol",
+    "status": "Estado",
+    "enabled": "Activo",
+    "disabled": "Bloqueado",
+    "role_user": "Usuario",
+    "role_admin": "Admin",
+    "role_root": "Root",
+    "new": "Nuevo usuario",
+    "empty": "Sin usuarios.",
+    "promote": "Hacer admin",
+    "demote": "Hacer usuario",
+    "enable": "Activar",
+    "disable": "Bloquear",
+    "pw_hint": "Mínimo 8 caracteres"
   }
 }

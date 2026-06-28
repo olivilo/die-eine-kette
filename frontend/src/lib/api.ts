@@ -73,6 +73,11 @@ export const api = {
       body: JSON.stringify({ username, password, totp_code: totpCode || "" }),
     }),
   logout: () => request("/user/logout"),
+  users: () => request<User[]>("/user?p=0"),
+  createUser: (username: string, password: string) =>
+    request("/user", { method: "POST", body: JSON.stringify({ username, password }) }),
+  manageUser: (username: string, action: "enable" | "disable" | "promote" | "demote" | "delete") =>
+    request("/user/manage", { method: "POST", body: JSON.stringify({ username, action }) }),
   totpSetup: () => request<{ secret: string; uri: string }>("/user/totp/setup"),
   totpEnable: (code: string) =>
     request<{ backup_codes: string[] }>("/user/totp/enable", { method: "POST", body: JSON.stringify({ code }) }),

@@ -8,7 +8,8 @@
     "providers": "Anbieter",
     "tokens": "Tokens",
     "usage": "Nutzung",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "users": "Nutzer"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -98,5 +99,23 @@
     "disable": "2FA deaktivieren",
     "invalid": "Ungültiger Code.",
     "backup_title": "Backup-Codes — sicher aufbewahren, jeder nur einmal nutzbar:"
+  },
+  "users": {
+    "subtitle": "Nutzer & Rollen verwalten",
+    "username": "Benutzer",
+    "role": "Rolle",
+    "status": "Status",
+    "enabled": "Aktiv",
+    "disabled": "Gesperrt",
+    "role_user": "Nutzer",
+    "role_admin": "Admin",
+    "role_root": "Root",
+    "new": "Neuer Nutzer",
+    "empty": "Keine Nutzer.",
+    "promote": "Zum Admin",
+    "demote": "Zum Nutzer",
+    "enable": "Aktivieren",
+    "disable": "Sperren",
+    "pw_hint": "Mind. 8 Zeichen"
   }
 }

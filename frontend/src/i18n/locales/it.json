@@ -8,7 +8,8 @@
     "providers": "Provider",
     "tokens": "Token",
     "usage": "Utilizzo",
-    "settings": "Impostazioni"
+    "settings": "Impostazioni",
+    "users": "Utenti"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -98,5 +99,23 @@
     "disable": "Disattiva 2FA",
     "invalid": "Codice non valido.",
     "backup_title": "Codici di backup — conservali al sicuro, ognuno usabile una volta:"
+  },
+  "users": {
+    "subtitle": "Gestisci utenti e ruoli",
+    "username": "Utente",
+    "role": "Ruolo",
+    "status": "Stato",
+    "enabled": "Attivo",
+    "disabled": "Bloccato",
+    "role_user": "Utente",
+    "role_admin": "Admin",
+    "role_root": "Root",
+    "new": "Nuovo utente",
+    "empty": "Nessun utente.",
+    "promote": "Rendi admin",
+    "demote": "Rendi utente",
+    "enable": "Attiva",
+    "disable": "Blocca",
+    "pw_hint": "Almeno 8 caratteri"
   }
 }

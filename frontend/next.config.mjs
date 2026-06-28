@@ -15,6 +15,7 @@ const nextConfig = {
     return [
       { source: "/api/token", destination: `${BACKEND_URL}/api/token/` },
       { source: "/api/channel", destination: `${BACKEND_URL}/api/channel/` },
+      { source: "/api/user", destination: `${BACKEND_URL}/api/user/` },
       { source: "/api/:path*", destination: `${BACKEND_URL}/api/:path*` },
     ];
   },
