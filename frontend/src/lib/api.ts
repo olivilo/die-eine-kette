@@ -88,6 +88,24 @@ export type Budget = {
   status: number;
 };
 
+export type CostEntry = {
+  id: number;
+  created_at: number;
+  cost_source: string;
+  model: string;
+  prompt_tokens: number;
+  completion_tokens: number;
+  request_ms: number;
+  cost_micro_eur: number;
+};
+
+export type CostSummary = {
+  external_micro_eur: number;
+  self_hosted_micro_eur: number;
+  total_micro_eur: number;
+  recent: CostEntry[];
+};
+
 export type Channel = {
   id: number;
   name: string;
@@ -127,6 +145,7 @@ export const api = {
   deleteOrganization: (id: number) => request(`/organization/${id}`, { method: "DELETE" }),
   assignUserToOrg: (username: string, org_id: number) =>
     request("/organization/assign", { method: "POST", body: JSON.stringify({ username, org_id }) }),
+  costSummary: (days = 30) => request<CostSummary>(`/cost/summary?days=${days}`),
   budgets: () => request<Budget[]>("/budget?p=0"),
   createBudget: (body: { name: string; scope: string; ref: string; amount_micro_eur: number; period: string; on_exhaust: string }) =>
     request("/budget", { method: "POST", body: JSON.stringify(body) }),

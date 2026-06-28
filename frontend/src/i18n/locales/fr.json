@@ -13,7 +13,8 @@
     "logs": "Journaux",
     "redemption": "Codes",
     "organizations": "Organisations",
-    "budgets": "Budgets"
+    "budgets": "Budgets",
+    "costs": "Coûts"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -201,5 +202,15 @@
     "ex_block": "Bloquer",
     "ex_warn": "Avertir",
     "ex_downgrade": "Rétrograder"
+  },
+  "costs": {
+    "subtitle": "Coûts externe vs. auto-hébergé",
+    "external": "Externe",
+    "self_hosted": "Auto-hébergé",
+    "total": "Total",
+    "cost": "Coût",
+    "empty": "Aucun coût enregistré.",
+    "export": "Export CSV",
+    "last_days": "{{days}} derniers jours"
   }
 }

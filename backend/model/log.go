@@ -85,6 +85,8 @@ func RecordConsumeLog(ctx context.Context, log *Log) {
 	log.CreatedAt = helper.GetTimestamp()
 	log.Type = LogTypeConsume
 	recordLogHelper(ctx, log)
+	// Die Eine Kette — Kosten-Ledger (Phase 5): je Verbrauch eine Micro-Euro-Zeile.
+	RecordCostEntry(log)
 }
 
 func RecordTestLog(ctx context.Context, log *Log) {

@@ -13,7 +13,8 @@
     "logs": "Логови",
     "redemption": "Кодови",
     "organizations": "Организације",
-    "budgets": "Буџети"
+    "budgets": "Буџети",
+    "costs": "Трошкови"
   },
   "hero": {
     "title": "Једна капија. Сви АИ модели.",
@@ -201,5 +202,15 @@
     "ex_block": "Блокирај",
     "ex_warn": "Упозори",
     "ex_downgrade": "Downgrade"
+  },
+  "costs": {
+    "subtitle": "Трошкови екстерно vs. self-hosted",
+    "external": "Екстерно",
+    "self_hosted": "Self-hosted",
+    "total": "Укупно",
+    "cost": "Трошак",
+    "empty": "Још нема забележених трошкова.",
+    "export": "CSV извоз",
+    "last_days": "Последњих {{days}} дана"
   }
 }

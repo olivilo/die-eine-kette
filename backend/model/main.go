@@ -168,6 +168,10 @@ func migrateDB() error {
 	if err = DB.AutoMigrate(&Budget{}); err != nil {
 		return err
 	}
+	// Die Eine Kette — Kosten-Ledger (Phase 5)
+	if err = DB.AutoMigrate(&CostEntry{}); err != nil {
+		return err
+	}
 	return nil
 }
 

@@ -13,7 +13,8 @@
     "logs": "Logs",
     "redemption": "Codes",
     "organizations": "Organizations",
-    "budgets": "Budgets"
+    "budgets": "Budgets",
+    "costs": "Costs"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -201,5 +202,15 @@
     "ex_block": "Block",
     "ex_warn": "Warn",
     "ex_downgrade": "Downgrade"
+  },
+  "costs": {
+    "subtitle": "Costs external vs. self-hosted",
+    "external": "External",
+    "self_hosted": "Self-hosted",
+    "total": "Total",
+    "cost": "Cost",
+    "empty": "No costs recorded yet.",
+    "export": "CSV export",
+    "last_days": "Last {{days}} days"
   }
 }

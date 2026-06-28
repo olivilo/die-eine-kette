@@ -117,6 +117,13 @@ func SetApiRouter(router *gin.Engine) {
 			organizationRoute.POST("/assign", controller.AssignUserToOrg)
 			organizationRoute.DELETE("/:id", controller.DeleteOrganization)
 		}
+		// Die Eine Kette — Kosten-Dashboard (Phase 5). Admin (mandantengescoped).
+		costRoute := apiRouter.Group("/cost")
+		costRoute.Use(middleware.AdminAuth())
+		{
+			costRoute.GET("/summary", controller.GetCostSummary)
+			costRoute.GET("/export", controller.ExportCostCsv)
+		}
 		// Die Eine Kette — Budgets (Phase 4). Plattform-Ebene (Root).
 		budgetRoute := apiRouter.Group("/budget")
 		budgetRoute.Use(middleware.RootAuth())

@@ -13,7 +13,8 @@
     "logs": "Log",
     "redemption": "Codici",
     "organizations": "Organizzazioni",
-    "budgets": "Budget"
+    "budgets": "Budget",
+    "costs": "Costi"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -201,5 +202,15 @@
     "ex_block": "Blocca",
     "ex_warn": "Avvisa",
     "ex_downgrade": "Downgrade"
+  },
+  "costs": {
+    "subtitle": "Costi esterno vs. self-hosted",
+    "external": "Esterno",
+    "self_hosted": "Self-hosted",
+    "total": "Totale",
+    "cost": "Costo",
+    "empty": "Nessun costo registrato.",
+    "export": "Esporta CSV",
+    "last_days": "Ultimi {{days}} giorni"
   }
 }

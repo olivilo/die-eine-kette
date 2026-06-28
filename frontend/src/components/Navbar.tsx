@@ -13,7 +13,7 @@ export default function Navbar() {
   const navKeys = [
     "dashboard", "providers", "tokens", "usage",
     ...(isRoot ? ["organizations", "budgets"] : []),
-    ...(isAdmin ? ["users", "logs", "redemption"] : []),
+    ...(isAdmin ? ["users", "logs", "costs", "redemption"] : []),
     "settings",
   ];
 

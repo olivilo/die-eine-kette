@@ -13,7 +13,8 @@
     "logs": "日志",
     "redemption": "兑换码",
     "organizations": "组织",
-    "budgets": "预算"
+    "budgets": "预算",
+    "costs": "成本"
   },
   "hero": {
     "title": "一个网关，所有 AI 模型。",
@@ -201,5 +202,15 @@
     "ex_block": "阻止",
     "ex_warn": "警告",
     "ex_downgrade": "降级"
+  },
+  "costs": {
+    "subtitle": "成本：外部 vs. 自托管",
+    "external": "外部",
+    "self_hosted": "自托管",
+    "total": "合计",
+    "cost": "成本",
+    "empty": "暂无成本记录。",
+    "export": "导出 CSV",
+    "last_days": "最近 {{days}} 天"
   }
 }

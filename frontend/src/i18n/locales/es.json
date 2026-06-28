@@ -13,7 +13,8 @@
     "logs": "Registros",
     "redemption": "Códigos",
     "organizations": "Organizaciones",
-    "budgets": "Presupuestos"
+    "budgets": "Presupuestos",
+    "costs": "Costes"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -201,5 +202,15 @@
     "ex_block": "Bloquear",
     "ex_warn": "Avisar",
     "ex_downgrade": "Degradar"
+  },
+  "costs": {
+    "subtitle": "Costes externo vs. autoalojado",
+    "external": "Externo",
+    "self_hosted": "Autoalojado",
+    "total": "Total",
+    "cost": "Coste",
+    "empty": "Sin costes registrados.",
+    "export": "Exportar CSV",
+    "last_days": "Últimos {{days}} días"
   }
 }
