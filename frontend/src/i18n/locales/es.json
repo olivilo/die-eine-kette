@@ -87,7 +87,17 @@
     "create": "Crear proveedor",
     "test": "Probar",
     "test_ok": "OK",
-    "test_fail": "Error"
+    "test_fail": "Error",
+    "cost_source": "Fuente de coste",
+    "cs_external": "Externo",
+    "cs_self_hosted": "Autoalojado",
+    "sh_kw": "Potencia (kW)",
+    "sh_eurkwh": "Electricidad (€/kWh)",
+    "sh_capex": "Hardware (€)",
+    "sh_life": "Vida útil (h)",
+    "sh_maint": "Mantenimiento (€/mes)",
+    "sh_tput": "Rendimiento (k-tokens/h)",
+    "sh_hint": "Autoalojado: electricidad + amortización + mantenimiento → micro-euro por solicitud."
   },
   "settings": {
     "subtitle": "Cuenta y sistema",

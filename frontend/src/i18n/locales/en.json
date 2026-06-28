@@ -87,7 +87,17 @@
     "create": "Create provider",
     "test": "Test",
     "test_ok": "OK",
-    "test_fail": "Failed"
+    "test_fail": "Failed",
+    "cost_source": "Cost source",
+    "cs_external": "External",
+    "cs_self_hosted": "Self-hosted",
+    "sh_kw": "Power (kW)",
+    "sh_eurkwh": "Electricity (€/kWh)",
+    "sh_capex": "Hardware (€)",
+    "sh_life": "Lifetime (h)",
+    "sh_maint": "Maintenance (€/mo)",
+    "sh_tput": "Throughput (k-tokens/h)",
+    "sh_hint": "Self-hosted: electricity + amortization + maintenance → micro-euro per request."
   },
   "settings": {
     "subtitle": "Account & system",

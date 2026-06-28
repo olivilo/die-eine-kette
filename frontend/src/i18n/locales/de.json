@@ -87,7 +87,17 @@
     "create": "Anbieter anlegen",
     "test": "Testen",
     "test_ok": "OK",
-    "test_fail": "Fehler"
+    "test_fail": "Fehler",
+    "cost_source": "Kostenquelle",
+    "cs_external": "Extern",
+    "cs_self_hosted": "Self-Hosted",
+    "sh_kw": "Leistung (kW)",
+    "sh_eurkwh": "Strompreis (€/kWh)",
+    "sh_capex": "Hardware (€)",
+    "sh_life": "Lebensdauer (h)",
+    "sh_maint": "Wartung (€/Monat)",
+    "sh_tput": "Durchsatz (k-Token/h)",
+    "sh_hint": "Self-Hosted: Strom + Amortisation + Wartung → Micro-Euro je Request."
   },
   "settings": {
     "subtitle": "Konto & System",

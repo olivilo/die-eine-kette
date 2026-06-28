@@ -87,7 +87,17 @@
     "create": "Креирај провајдера",
     "test": "Тестирај",
     "test_ok": "OK",
-    "test_fail": "Грешка"
+    "test_fail": "Грешка",
+    "cost_source": "Извор трошка",
+    "cs_external": "Екстерно",
+    "cs_self_hosted": "Self-hosted",
+    "sh_kw": "Снага (kW)",
+    "sh_eurkwh": "Струја (€/kWh)",
+    "sh_capex": "Хардвер (€)",
+    "sh_life": "Век трајања (h)",
+    "sh_maint": "Одржавање (€/мес)",
+    "sh_tput": "Проток (k-токена/h)",
+    "sh_hint": "Self-hosted: струја + амортизација + одржавање → микро-евро по захтеву."
   },
   "settings": {
     "subtitle": "Налог и систем",

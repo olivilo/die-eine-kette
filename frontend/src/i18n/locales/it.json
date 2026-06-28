@@ -87,7 +87,17 @@
     "create": "Crea provider",
     "test": "Prova",
     "test_ok": "OK",
-    "test_fail": "Errore"
+    "test_fail": "Errore",
+    "cost_source": "Fonte di costo",
+    "cs_external": "Esterno",
+    "cs_self_hosted": "Self-hosted",
+    "sh_kw": "Potenza (kW)",
+    "sh_eurkwh": "Elettricità (€/kWh)",
+    "sh_capex": "Hardware (€)",
+    "sh_life": "Durata (h)",
+    "sh_maint": "Manutenzione (€/mese)",
+    "sh_tput": "Throughput (k-token/h)",
+    "sh_hint": "Self-hosted: elettricità + ammortamento + manutenzione → micro-euro per richiesta."
   },
   "settings": {
     "subtitle": "Account e sistema",

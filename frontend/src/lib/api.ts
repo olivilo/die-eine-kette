@@ -95,6 +95,16 @@ export type Channel = {
   status: number;
   models: string;
   response_time: number;
+  cost_source?: string;
+};
+
+export type SelfHostedProfile = {
+  power_draw_kw: number;
+  electricity_eur_per_kwh: number;
+  hardware_capex_eur: number;
+  hardware_lifetime_hours: number;
+  maintenance_eur_per_month: number;
+  throughput_ktokens_per_hour: number;
 };
 
 export const api = {
@@ -138,7 +148,14 @@ export const api = {
   logsAll: () => request<LogEntry[]>("/log?p=0"),
   channels: () => request<Channel[]>("/channel?p=0"),
   testChannel: (id: number) => request<{ time?: number }>(`/channel/test/${id}`),
-  createChannel: (body: { name: string; type: number; key: string; base_url: string; models: string }) =>
+  createChannel: (body: {
+    name: string;
+    type: number;
+    key: string;
+    base_url: string;
+    models: string;
+    cost_source?: string;
+  } & Partial<SelfHostedProfile>) =>
     request("/channel", {
       method: "POST",
       body: JSON.stringify({ ...body, groups: ["default"], group: "default" }),

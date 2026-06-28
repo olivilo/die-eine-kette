@@ -87,7 +87,17 @@
     "create": "创建提供商",
     "test": "测试",
     "test_ok": "正常",
-    "test_fail": "失败"
+    "test_fail": "失败",
+    "cost_source": "成本来源",
+    "cs_external": "外部",
+    "cs_self_hosted": "自托管",
+    "sh_kw": "功率 (kW)",
+    "sh_eurkwh": "电价 (€/kWh)",
+    "sh_capex": "硬件 (€)",
+    "sh_life": "寿命 (h)",
+    "sh_maint": "维护 (€/月)",
+    "sh_tput": "吞吐 (k-token/h)",
+    "sh_hint": "自托管：电费 + 摊销 + 维护 → 每次请求的微欧元。"
   },
   "settings": {
     "subtitle": "账户与系统",

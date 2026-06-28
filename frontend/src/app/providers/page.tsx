@@ -26,6 +26,15 @@ export default function ProvidersPage() {
   const [apiKey, setApiKey] = useState("");
   const [baseUrl, setBaseUrl] = useState(providerPresets[0].base_url);
   const [models, setModels] = useState(providerPresets[0].models);
+  const [costSource, setCostSource] = useState<"external" | "self_hosted">("external");
+  const [profile, setProfile] = useState({
+    power_draw_kw: 0.45,
+    electricity_eur_per_kwh: 0.32,
+    hardware_capex_eur: 4000,
+    hardware_lifetime_hours: 26280,
+    maintenance_eur_per_month: 40,
+    throughput_ktokens_per_hour: 1800,
+  });
 
   const load = useCallback(() => {
     api.channels().then((res) => {
@@ -45,6 +54,7 @@ export default function ProvidersPage() {
     setPresetId(id);
     setBaseUrl(p.base_url);
     setModels(p.models);
+    setCostSource(id === "ollama" ? "self_hosted" : "external");
     if (!name) setName(p.label);
   }
 
@@ -52,7 +62,14 @@ export default function ProvidersPage() {
     const p = providerPresets.find((x) => x.id === presetId)!;
     if (!name.trim()) return;
     setBusy(true);
-    await api.createChannel({ name: name.trim(), type: p.type, key: apiKey, base_url: baseUrl, models });
+    // Self-Hosted-Nodes brauchen oft keinen echten Key; der Motor verlangt aber einen
+    // nicht-leeren Wert (Multi-Key-Anlage). Platzhalter setzen, falls leer.
+    const key = apiKey || (costSource === "self_hosted" ? "local-node" : apiKey);
+    await api.createChannel({
+      name: name.trim(), type: p.type, key, base_url: baseUrl, models,
+      cost_source: costSource,
+      ...(costSource === "self_hosted" ? profile : {}),
+    });
     setBusy(false);
     setName(""); setApiKey(""); setShowForm(false);
     load();
@@ -75,10 +92,13 @@ export default function ProvidersPage() {
   }
 
   const input = "rounded-md border border-zinc-700 bg-ink px-3 py-2 text-zinc-100 outline-none focus:border-gold";
-  const columns = [t("providers.name"), t("providers.type"), t("providers.status"), t("providers.models"), ""];
+  const columns = [t("providers.name"), t("providers.type"), t("providers.cost_source"), t("providers.status"), t("providers.models"), ""];
   const rows = channels.map((c) => [
     <span key="n" className="font-medium text-zinc-100">{c.name || "—"}</span>,
     c.type,
+    <Badge key="cs" tone={c.cost_source === "self_hosted" ? "neutral" : "off"}>
+      {t(`providers.cs_${c.cost_source || "external"}`, { defaultValue: c.cost_source || "external" })}
+    </Badge>,
     statusBadge(c.status, t),
     <span key="m" className="text-zinc-400">{(c.models || "").split(",").slice(0, 3).join(", ") || "—"}</span>,
     <div key="a" className="flex gap-3 text-xs">
@@ -120,7 +140,33 @@ export default function ProvidersPage() {
             {t("providers.models")}
             <input value={models} onChange={(e) => setModels(e.target.value)} className={input} />
           </label>
-          <div className="flex gap-2 sm:col-span-2">
+          <label className="flex flex-col gap-1 text-sm text-zinc-300">
+            {t("providers.cost_source")}
+            <select value={costSource} onChange={(e) => setCostSource(e.target.value as "external" | "self_hosted")} className={input}>
+              <option value="external">{t("providers.cs_external")}</option>
+              <option value="self_hosted">{t("providers.cs_self_hosted")}</option>
+            </select>
+          </label>
+          {costSource === "self_hosted" && (
+            <div className="grid gap-3 sm:col-span-3 sm:grid-cols-3">
+              {([
+                ["power_draw_kw", "kw"],
+                ["electricity_eur_per_kwh", "eurkwh"],
+                ["hardware_capex_eur", "capex"],
+                ["hardware_lifetime_hours", "life"],
+                ["maintenance_eur_per_month", "maint"],
+                ["throughput_ktokens_per_hour", "tput"],
+              ] as const).map(([key, k]) => (
+                <label key={key} className="flex flex-col gap-1 text-sm text-zinc-300">
+                  {t(`providers.sh_${k}`)}
+                  <input type="number" step="any" value={profile[key]}
+                    onChange={(e) => setProfile({ ...profile, [key]: Number(e.target.value) })} className={input} />
+                </label>
+              ))}
+              <p className="text-xs text-zinc-500 sm:col-span-3">{t("providers.sh_hint")}</p>
+            </div>
+          )}
+          <div className="flex gap-2 sm:col-span-3">
             <button onClick={create} disabled={busy} className="rounded-md bg-gold px-4 py-2 font-semibold text-ink hover:bg-gold-light disabled:opacity-60">{t("providers.create")}</button>
             <button onClick={() => setShowForm(false)} className="rounded-md border border-zinc-700 px-4 py-2 font-semibold text-zinc-200 hover:border-gold">{t("common.cancel")}</button>
           </div>

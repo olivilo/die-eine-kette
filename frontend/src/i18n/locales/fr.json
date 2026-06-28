@@ -87,7 +87,17 @@
     "create": "Créer le fournisseur",
     "test": "Tester",
     "test_ok": "OK",
-    "test_fail": "Échec"
+    "test_fail": "Échec",
+    "cost_source": "Source de coût",
+    "cs_external": "Externe",
+    "cs_self_hosted": "Auto-hébergé",
+    "sh_kw": "Puissance (kW)",
+    "sh_eurkwh": "Électricité (€/kWh)",
+    "sh_capex": "Matériel (€)",
+    "sh_life": "Durée de vie (h)",
+    "sh_maint": "Maintenance (€/mois)",
+    "sh_tput": "Débit (k-jetons/h)",
+    "sh_hint": "Auto-hébergé : électricité + amortissement + maintenance → micro-euro par requête."
   },
   "settings": {
     "subtitle": "Compte et système",

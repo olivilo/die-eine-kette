@@ -38,6 +38,37 @@ type Channel struct {
 	Priority           *int64  `json:"priority" gorm:"bigint;default:0"`
 	Config             string  `json:"config"`
 	SystemPrompt       *string `json:"system_prompt" gorm:"type:text"`
+	// Die Eine Kette — Kostenmodell (Phase 5): externe vs. selbst gehostete Kosten.
+	CostSource               string  `json:"cost_source" gorm:"type:varchar(16);default:'external'"` // external | self_hosted
+	PowerDrawKw              float64 `json:"power_draw_kw" gorm:"default:0"`
+	ElectricityEurPerKwh     float64 `json:"electricity_eur_per_kwh" gorm:"default:0"`
+	HardwareCapexEur         float64 `json:"hardware_capex_eur" gorm:"default:0"`
+	HardwareLifetimeHours    float64 `json:"hardware_lifetime_hours" gorm:"default:0"`
+	MaintenanceEurPerMonth   float64 `json:"maintenance_eur_per_month" gorm:"default:0"`
+	ThroughputKtokensPerHour float64 `json:"throughput_ktokens_per_hour" gorm:"default:0"`
+}
+
+// NodeEurPerHour: effektive Stundenkosten eines self-hosted Nodes (Strom + Amortisation + Wartung).
+func (channel *Channel) NodeEurPerHour() float64 {
+	eur := channel.PowerDrawKw * channel.ElectricityEurPerKwh
+	if channel.HardwareLifetimeHours > 0 {
+		eur += channel.HardwareCapexEur / channel.HardwareLifetimeHours
+	}
+	eur += channel.MaintenanceEurPerMonth / (30 * 24)
+	return eur
+}
+
+// SelfHostedCostMicroEur: Kosten eines self-hosted Requests in Micro-Euro.
+// Tokenbasiert (fair bei Parallelität); Fallback zeitbasiert, wenn kein Durchsatz hinterlegt.
+func (channel *Channel) SelfHostedCostMicroEur(totalTokens int, requestMs int64) int64 {
+	perHour := channel.NodeEurPerHour()
+	var eur float64
+	if channel.ThroughputKtokensPerHour > 0 {
+		eur = perHour / channel.ThroughputKtokensPerHour * (float64(totalTokens) / 1000.0)
+	} else {
+		eur = perHour * (float64(requestMs) / 1000.0 / 3600.0)
+	}
+	return int64(eur * 1_000_000)
 }
 
 type ChannelConfig struct {
