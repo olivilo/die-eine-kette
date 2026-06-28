@@ -9,7 +9,7 @@ export default function Navbar() {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
   const isAdmin = (user?.role ?? 0) >= 10;
-  const navKeys = ["dashboard", "providers", "tokens", "usage", ...(isAdmin ? ["users", "logs"] : []), "settings"];
+  const navKeys = ["dashboard", "providers", "tokens", "usage", ...(isAdmin ? ["users", "logs", "redemption"] : []), "settings"];
 
   return (
     <header className="sticky top-0 z-10 border-b border-zinc-800 bg-coal/80 backdrop-blur">

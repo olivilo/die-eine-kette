@@ -10,7 +10,8 @@
     "usage": "Nutzung",
     "settings": "Einstellungen",
     "users": "Nutzer",
-    "logs": "Logs"
+    "logs": "Logs",
+    "redemption": "Codes"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -126,5 +127,18 @@
     "subtitle": "Alle Anfragen (Admin)",
     "user": "Nutzer",
     "empty": "Noch keine Logs."
+  },
+  "redemption": {
+    "subtitle": "Einlöse-/Guthaben-Codes",
+    "name": "Name",
+    "key": "Code",
+    "quota": "Guthaben",
+    "status": "Status",
+    "created": "Erstellt",
+    "count": "Anzahl",
+    "unused": "Offen",
+    "used": "Eingelöst",
+    "new": "Neue Codes",
+    "empty": "Noch keine Codes."
   }
 }

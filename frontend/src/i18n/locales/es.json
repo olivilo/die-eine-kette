@@ -10,7 +10,8 @@
     "usage": "Uso",
     "settings": "Ajustes",
     "users": "Usuarios",
-    "logs": "Registros"
+    "logs": "Registros",
+    "redemption": "Códigos"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -126,5 +127,18 @@
     "subtitle": "Todas las solicitudes (admin)",
     "user": "Usuario",
     "empty": "Sin registros."
+  },
+  "redemption": {
+    "subtitle": "Códigos de canje / crédito",
+    "name": "Nombre",
+    "key": "Código",
+    "quota": "Crédito",
+    "status": "Estado",
+    "created": "Creado",
+    "count": "Cantidad",
+    "unused": "Sin usar",
+    "used": "Canjeado",
+    "new": "Nuevos códigos",
+    "empty": "Sin códigos."
   }
 }

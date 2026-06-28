@@ -10,7 +10,8 @@
     "usage": "Utilizzo",
     "settings": "Impostazioni",
     "users": "Utenti",
-    "logs": "Log"
+    "logs": "Log",
+    "redemption": "Codici"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -126,5 +127,18 @@
     "subtitle": "Tutte le richieste (admin)",
     "user": "Utente",
     "empty": "Nessun log."
+  },
+  "redemption": {
+    "subtitle": "Codici di riscatto / credito",
+    "name": "Nome",
+    "key": "Codice",
+    "quota": "Credito",
+    "status": "Stato",
+    "created": "Creato",
+    "count": "Quantità",
+    "unused": "Non usato",
+    "used": "Riscattato",
+    "new": "Nuovi codici",
+    "empty": "Nessun codice."
   }
 }

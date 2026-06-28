@@ -10,7 +10,8 @@
     "usage": "Utilisation",
     "settings": "Paramètres",
     "users": "Utilisateurs",
-    "logs": "Journaux"
+    "logs": "Journaux",
+    "redemption": "Codes"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -126,5 +127,18 @@
     "subtitle": "Toutes les requêtes (admin)",
     "user": "Utilisateur",
     "empty": "Aucun journal."
+  },
+  "redemption": {
+    "subtitle": "Codes de crédit / d'échange",
+    "name": "Nom",
+    "key": "Code",
+    "quota": "Crédit",
+    "status": "Statut",
+    "created": "Créé",
+    "count": "Nombre",
+    "unused": "Non utilisé",
+    "used": "Échangé",
+    "new": "Nouveaux codes",
+    "empty": "Aucun code."
   }
 }

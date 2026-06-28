@@ -10,7 +10,8 @@
     "usage": "Usage",
     "settings": "Settings",
     "users": "Users",
-    "logs": "Logs"
+    "logs": "Logs",
+    "redemption": "Codes"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -126,5 +127,18 @@
     "subtitle": "All requests (admin)",
     "user": "User",
     "empty": "No logs yet."
+  },
+  "redemption": {
+    "subtitle": "Redemption / credit codes",
+    "name": "Name",
+    "key": "Code",
+    "quota": "Credit",
+    "status": "Status",
+    "created": "Created",
+    "count": "Count",
+    "unused": "Unused",
+    "used": "Redeemed",
+    "new": "New codes",
+    "empty": "No codes yet."
   }
 }

@@ -56,6 +56,15 @@ export type LogEntry = {
   content: string;
 };
 
+export type Redemption = {
+  id: number;
+  key: string;
+  name: string;
+  status: number;
+  quota: number;
+  created_time: number;
+};
+
 export type Channel = {
   id: number;
   name: string;
@@ -101,6 +110,10 @@ export const api = {
       body: JSON.stringify({ ...body, groups: ["default"], group: "default" }),
     }),
   deleteChannel: (id: number) => request(`/channel/${id}`, { method: "DELETE" }),
+  redemptions: () => request<Redemption[]>("/redemption?p=0"),
+  createRedemptions: (name: string, quota: number, count: number) =>
+    request("/redemption", { method: "POST", body: JSON.stringify({ name, quota, count }) }),
+  deleteRedemption: (id: number) => request(`/redemption/${id}`, { method: "DELETE" }),
 };
 
 // ── Formatierungs-Helfer ─────────────────────────────────────────────

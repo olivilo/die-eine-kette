@@ -10,7 +10,8 @@
     "usage": "用量",
     "settings": "设置",
     "users": "用户",
-    "logs": "日志"
+    "logs": "日志",
+    "redemption": "兑换码"
   },
   "hero": {
     "title": "一个网关，所有 AI 模型。",
@@ -126,5 +127,18 @@
     "subtitle": "所有请求（管理员）",
     "user": "用户",
     "empty": "暂无日志。"
+  },
+  "redemption": {
+    "subtitle": "兑换 / 额度码",
+    "name": "名称",
+    "key": "兑换码",
+    "quota": "额度",
+    "status": "状态",
+    "created": "创建时间",
+    "count": "数量",
+    "unused": "未使用",
+    "used": "已兑换",
+    "new": "新建码",
+    "empty": "暂无兑换码。"
   }
 }
