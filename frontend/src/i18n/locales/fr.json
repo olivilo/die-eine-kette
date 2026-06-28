@@ -14,7 +14,8 @@
     "redemption": "Codes",
     "organizations": "Organisations",
     "budgets": "Budgets",
-    "costs": "Coûts"
+    "costs": "Coûts",
+    "faq": "Aide"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -234,5 +235,59 @@
     "collapse": "Effondrement",
     "expand": "Développer",
     "menu": "Menu"
+  },
+  "faq": {
+    "title": "Aide et FAQ",
+    "subtitle": "Réponses aux questions courantes",
+    "items": [
+      {
+        "q": "Qu'est-ce que Die Eine Kette ?",
+        "a": "Une passerelle multi-tenant qui achemine vos demandes vers de nombreux fournisseurs d'IA (OpenAI, Anthropic, Gemini, modèles locaux) via une interface compatible OpenAI — avec contrôle des coûts, budgets et gouvernance."
+      },
+      {
+        "q": "Comment puis-je me connecter ?",
+        "a": "Utilisez votre nom d'utilisateur et votre mot de passe sur la page de connexion. Si l'authentification à deux facteurs est activée, vous saisissez également un code à 6 chiffres depuis votre application d'authentification."
+      },
+      {
+        "q": "Comment activer l'authentification à deux facteurs (2FA) ?",
+        "a": "Ouvrez Paramètres, choisissez Activer 2FA, scannez le code QR avec une application d'authentification, entrez le code et stockez vos codes de sauvegarde dans un endroit sûr."
+      },
+      {
+        "q": "Comment créer un jeton API ?",
+        "a": "Accédez à Jetons et sélectionnez Nouveau jeton. Le jeton fonctionne avec n'importe quel client compatible OpenAI sur le point de terminaison de la passerelle /v1."
+      },
+      {
+        "q": "Comment ajouter un fournisseur d'IA ?",
+        "a": "Accédez à Fournisseurs, choisissez un point de terminaison prédéfini ou personnalisé, entrez la clé API et les modèles autorisés. Choisissez Externe pour les API achetés ou Self-hosted pour votre propre matériel."
+      },
+      {
+        "q": "Quelle est la différence entre le coût externe et le coût self-hosted ?",
+        "a": "Les fournisseurs externes sont facturés par token. Les fournisseurs Self-hosted facturent l'électricité, l'amortissement du matériel et la maintenance — les deux apparaissent ensemble sur une seule facture en euros."
+      },
+      {
+        "q": "Comment fonctionnent les budgets ?",
+        "a": "Un budget fixe une limite en euros pour une organisation, un groupe, un utilisateur ou un token avec un cycle de réinitialisation (quotidien, hebdomadaire, mensuel). Lorsqu'il est épuisé, l'action choisie s'applique : bloquer, avertir ou rétrograder vers un modèle moins cher ou local."
+      },
+      {
+        "q": "Où puis-je voir les coûts ?",
+        "a": "La page Coûts affiche les dépenses réparties entre externes et self-hosted, avec un filtre temporel et une exportation CSV (l'exportation nécessite une licence commerciale)."
+      },
+      {
+        "q": "Que sont les organisations ?",
+        "a": "Les organisations sont des locataires : des sociétés ou des équipes distinctes. Chaque utilisateur appartient à une organisation et les administrateurs d'une organisation ne voient que les données de leur propre organisation."
+      },
+      {
+        "q": "Quelles langues sont prises en charge ?",
+        "a": "L'ensemble de l'interface est disponible en 12 langues. Changez de langue avec le sélecteur dans la barre latérale."
+      },
+      {
+        "q": "Quelle est la différence entre la version gratuite et la version commerciale ?",
+        "a": "Le niveau gratuit Community couvre une utilisation de base (une organisation, jusqu'à cinq utilisateurs). Les fonctionnalités commerciales (plus d'organisations et d'utilisateurs, SSO, exportation des coûts, white-label) nécessitent une licence payante."
+      },
+      {
+        "q": "Comment mes données sont-elles traitées ?",
+        "a": "La passerelle s'exécute sur votre propre serveur (self-hosted). Grâce à la gouvernance des données, vous pouvez supprimer les données sensibles avant qu'elles n'atteignent des modèles externes et conserver une piste d'audit complète."
+      }
+    ]
   }
 }

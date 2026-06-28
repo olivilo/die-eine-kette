@@ -14,7 +14,8 @@
     "redemption": "Kode",
     "organizations": "Organizacije",
     "budgets": "Proračuni",
-    "costs": "Stroški"
+    "costs": "Stroški",
+    "faq": "Pomoč"
   },
   "hero": {
     "title": "En prehod. Vsak model AI.",
@@ -234,5 +235,59 @@
     "collapse": "Strni",
     "expand": "Razširi",
     "menu": "meni"
+  },
+  "faq": {
+    "title": "Pomoč in pogosta vprašanja",
+    "subtitle": "Odgovori na pogosta vprašanja",
+    "items": [
+      {
+        "q": "Kaj je Die Eine Kette?",
+        "a": "Prehod z več najemniki, ki usmerja vaše zahteve do številnih ponudnikov umetne inteligence (OpenAI, Anthropic, Gemini, lokalni modeli) prek enega vmesnika, združljivega z OpenAI — z nadzorom stroškov, proračunov in upravljanja."
+      },
+      {
+        "q": "Kako se prijavim?",
+        "a": "Uporabite svoje uporabniško ime in geslo na strani za prijavo. Če je omogočeno dvostopenjsko preverjanje pristnosti, vnesete tudi 6-mestno kodo iz aplikacije za preverjanje pristnosti."
+      },
+      {
+        "q": "Kako omogočim dvostopenjsko avtentikacijo (2FA)?",
+        "a": "Odprite Nastavitve, izberite Omogoči 2FA, skenirajte kodo QR z aplikacijo za preverjanje pristnosti, vnesite kodo in shranite rezervne kode na varno mesto."
+      },
+      {
+        "q": "Kako ustvarim žeton API?",
+        "a": "Pojdite na Žetoni in izberite Nov žeton. Žeton deluje s katerim koli odjemalcem, združljivim z OpenAI, proti končni točki prehoda /v1."
+      },
+      {
+        "q": "Kako dodam ponudnika AI?",
+        "a": "Pojdite na Ponudniki, izberite prednastavitev ali končno točko po meri, vnesite ključ API in dovoljene modele. Izberite External za kupljene API ali Self-hosted za svojo strojno opremo."
+      },
+      {
+        "q": "Kakšna je razlika med zunanjimi stroški in stroški self-hosted?",
+        "a": "Zunanji ponudniki se zaračunajo na žeton. Ponudniki Self-hosted se obračunajo z elektriko, amortizacijo strojne opreme in vzdrževanjem – oboje je prikazano skupaj na enem računu v evrih."
+      },
+      {
+        "q": "Kako delujejo proračuni?",
+        "a": "Proračun določa omejitev v evrih za organizacijo, skupino, uporabnika ali žeton s ciklom ponastavitve (dnevno, tedensko, mesečno). Ko ga zmanjka, velja izbrano dejanje: blokiranje, opozorilo ali znižanje na cenejši ali lokalni model."
+      },
+      {
+        "q": "Kje vidim stroške?",
+        "a": "Stran s stroški prikazuje porabo, razdeljeno na zunanjo in self-hosted, s časovnim filtrom in izvozom CSV (za izvoz je potrebna komercialna licenca)."
+      },
+      {
+        "q": "Kaj so organizacije?",
+        "a": "Organizacije so najemniki – ločena podjetja ali ekipe. Vsak uporabnik pripada eni organizaciji in skrbniki organizacije vidijo samo svoje podatke organizacije."
+      },
+      {
+        "q": "Kateri jeziki so podprti?",
+        "a": "Celoten vmesnik je na voljo v 12 jezikih. Preklopite jezik z izbirnikom v stranski vrstici."
+      },
+      {
+        "q": "Kakšna je razlika med brezplačno in komercialno različico?",
+        "a": "Brezplačna stopnja Community pokriva osnovno uporabo (ena organizacija, do pet uporabnikov). Komercialne funkcije (več organizacij in uporabnikov, SSO, izvoz stroškov, white-label) zahtevajo plačljivo licenco."
+      },
+      {
+        "q": "Kako se ravna z mojimi podatki?",
+        "a": "Prehod deluje na vašem strežniku (self-hosted). Z upravljanjem podatkov lahko popravite občutljive podatke, preden dosežejo zunanje modele, in ohranite popolno revizijsko sled."
+      }
+    ]
   }
 }

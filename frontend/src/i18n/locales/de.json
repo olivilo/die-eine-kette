@@ -14,7 +14,8 @@
     "redemption": "Codes",
     "organizations": "Organisationen",
     "budgets": "Budgets",
-    "costs": "Kosten"
+    "costs": "Kosten",
+    "faq": "Hilfe"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -234,5 +235,59 @@
     "collapse": "Einklappen",
     "expand": "Ausklappen",
     "menu": "Menü"
+  },
+  "faq": {
+    "title": "Hilfe & FAQ",
+    "subtitle": "Antworten auf häufige Fragen",
+    "items": [
+      {
+        "q": "Was ist Die Eine Kette?",
+        "a": "Ein mandantenfähiges Gateway, das deine Anfragen über eine OpenAI-kompatible Schnittstelle an viele KI-Anbieter (OpenAI, Anthropic, Gemini, lokale Modelle) leitet — mit Kostenkontrolle, Budgets und Governance."
+      },
+      {
+        "q": "Wie melde ich mich an?",
+        "a": "Mit Benutzername und Passwort auf der Anmeldeseite. Ist Zwei-Faktor-Authentifizierung aktiv, gibst du zusätzlich einen 6-stelligen Code aus deiner Authenticator-App ein."
+      },
+      {
+        "q": "Wie aktiviere ich Zwei-Faktor-Authentifizierung (2FA)?",
+        "a": "Öffne die Einstellungen, wähle 2FA aktivieren, scanne den QR-Code mit einer Authenticator-App, gib den Code ein und bewahre die Backup-Codes sicher auf."
+      },
+      {
+        "q": "Wie erstelle ich ein API-Token?",
+        "a": "Gehe zu Tokens und wähle Neues Token. Das Token funktioniert mit jedem OpenAI-kompatiblen Client gegen den /v1-Endpunkt des Gateways."
+      },
+      {
+        "q": "Wie füge ich einen KI-Anbieter hinzu?",
+        "a": "Gehe zu Anbieter, wähle eine Vorlage oder einen eigenen Endpunkt, gib den API-Schlüssel und die erlaubten Modelle an. Wähle Extern für eingekaufte APIs oder Self-hosted für eigene Hardware."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen externen und self-hosted Kosten?",
+        "a": "Externe Anbieter werden pro Token abgerechnet. Self-hosted-Anbieter werden aus Strom, Hardware-Amortisation und Wartung berechnet — beide erscheinen gemeinsam in einer Abrechnung in Euro."
+      },
+      {
+        "q": "Wie funktionieren Budgets?",
+        "a": "Ein Budget setzt ein Euro-Limit für Organisation, Gruppe, Nutzer oder Token mit Reset-Zyklus (täglich, wöchentlich, monatlich). Ist es erschöpft, greift die gewählte Aktion: blockieren, warnen oder auf ein günstigeres bzw. lokales Modell herunterstufen."
+      },
+      {
+        "q": "Wo sehe ich die Kosten?",
+        "a": "Die Kosten-Seite zeigt die Ausgaben getrennt nach extern und self-hosted, mit Zeitfilter und CSV-Export (der Export erfordert eine kommerzielle Lizenz)."
+      },
+      {
+        "q": "Was sind Organisationen?",
+        "a": "Organisationen sind Mandanten — getrennte Firmen oder Teams. Jeder Nutzer gehört zu einer Organisation, und deren Admins sehen nur die Daten der eigenen Organisation."
+      },
+      {
+        "q": "Welche Sprachen werden unterstützt?",
+        "a": "Die gesamte Oberfläche ist in 12 Sprachen verfügbar. Die Sprache wechselst du über die Auswahl in der Seitenleiste."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Free- und kommerzieller Version?",
+        "a": "Das kostenlose Community-Tier deckt die Basisnutzung ab (eine Organisation, bis zu fünf Nutzer). Kommerzielle Funktionen (mehr Organisationen und Nutzer, SSO, Kosten-Export, White-Label) erfordern eine kostenpflichtige Lizenz."
+      },
+      {
+        "q": "Wie wird mit meinen Daten umgegangen?",
+        "a": "Das Gateway läuft auf deinem eigenen Server (self-hosted). Mit Daten-Governance kannst du sensible Daten schwärzen, bevor sie externe Modelle erreichen, und ein lückenloses Audit führen."
+      }
+    ]
   }
 }

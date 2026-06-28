@@ -14,7 +14,8 @@
     "redemption": "Codes",
     "organizations": "Organizations",
     "budgets": "Budgets",
-    "costs": "Costs"
+    "costs": "Costs",
+    "faq": "Help"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -234,5 +235,59 @@
     "collapse": "Collapse",
     "expand": "Expand",
     "menu": "Menu"
+  },
+  "faq": {
+    "title": "Help & FAQ",
+    "subtitle": "Answers to common questions",
+    "items": [
+      {
+        "q": "What is Die Eine Kette?",
+        "a": "A multi-tenant gateway that routes your requests to many AI providers (OpenAI, Anthropic, Gemini, local models) through one OpenAI-compatible interface — with cost control, budgets and governance."
+      },
+      {
+        "q": "How do I sign in?",
+        "a": "Use your username and password on the login page. If two-factor authentication is enabled, you also enter a 6-digit code from your authenticator app."
+      },
+      {
+        "q": "How do I enable two-factor authentication (2FA)?",
+        "a": "Open Settings, choose Enable 2FA, scan the QR code with an authenticator app, enter the code and store your backup codes somewhere safe."
+      },
+      {
+        "q": "How do I create an API token?",
+        "a": "Go to Tokens and select New token. The token works with any OpenAI-compatible client against the gateway /v1 endpoint."
+      },
+      {
+        "q": "How do I add an AI provider?",
+        "a": "Go to Providers, choose a preset or a custom endpoint, enter the API key and the allowed models. Pick External for purchased APIs or Self-hosted for your own hardware."
+      },
+      {
+        "q": "What is the difference between external and self-hosted cost?",
+        "a": "External providers are billed per token. Self-hosted providers are costed from electricity, hardware amortization and maintenance — both appear together in one bill in euro."
+      },
+      {
+        "q": "How do budgets work?",
+        "a": "A budget sets a euro limit for an organization, group, user or token with a reset cycle (daily, weekly, monthly). When it runs out, the chosen action applies: block, warn or downgrade to a cheaper or local model."
+      },
+      {
+        "q": "Where do I see costs?",
+        "a": "The Costs page shows spend split into external versus self-hosted, with a time filter and CSV export (the export requires a commercial license)."
+      },
+      {
+        "q": "What are organizations?",
+        "a": "Organizations are tenants — separate companies or teams. Each user belongs to one organization, and an organization admins only see their own organization data."
+      },
+      {
+        "q": "Which languages are supported?",
+        "a": "The whole interface is available in 12 languages. Switch language with the selector in the sidebar."
+      },
+      {
+        "q": "What is the difference between the free and the commercial version?",
+        "a": "The free Community tier covers basic use (one organization, up to five users). Commercial features (more organizations and users, SSO, cost export, white-label) require a paid license."
+      },
+      {
+        "q": "How is my data handled?",
+        "a": "The gateway runs on your own server (self-hosted). With data governance you can redact sensitive data before it reaches external models and keep a full audit trail."
+      }
+    ]
   }
 }

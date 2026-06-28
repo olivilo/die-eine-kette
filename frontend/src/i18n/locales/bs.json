@@ -14,7 +14,8 @@
     "redemption": "Kodovi",
     "organizations": "Organizacije",
     "budgets": "Budžeti",
-    "costs": "Troškovi"
+    "costs": "Troškovi",
+    "faq": "Pomoć"
   },
   "hero": {
     "title": "Jedna kapija. Svi AI modeli.",
@@ -234,5 +235,59 @@
     "collapse": "Kolaps",
     "expand": "Proširi",
     "menu": "Meni"
+  },
+  "faq": {
+    "title": "Pomoć & FAQ",
+    "subtitle": "Odgovori na uobičajena pitanja",
+    "items": [
+      {
+        "q": "Šta je Die Eine Kette?",
+        "a": "Gateway sa više zakupaca koji vaše zahtjeve usmjerava na mnoge AI provajdere (OpenAI, Anthropic, Gemini, lokalni modeli) preko jednog sučelja kompatibilnog s OpenAI — s kontrolom troškova, budžeta i upravljanja."
+      },
+      {
+        "q": "Kako da se prijavim?",
+        "a": "Koristite svoje korisničko ime i lozinku na stranici za prijavu. Ako je omogućena dvofaktorska autentikacija, unosite i 6-cifreni kod iz aplikacije za autentifikaciju."
+      },
+      {
+        "q": "Kako mogu omogućiti dvofaktorsku autentifikaciju (2FA)?",
+        "a": "Otvorite Postavke, odaberite Omogući 2FA, skenirajte QR kod pomoću aplikacije za autentifikaciju, unesite kod i pohranite svoje rezervne kodove negdje na sigurno."
+      },
+      {
+        "q": "Kako da kreiram API token?",
+        "a": "Idite na Tokeni i odaberite Novi token. Token radi sa bilo kojim klijentom kompatibilnim s OpenAI na krajnjoj tački gatewaya /v1."
+      },
+      {
+        "q": "Kako da dodam AI provajdera?",
+        "a": "Idite na Dobavljači, odaberite unaprijed postavljenu ili prilagođenu krajnju točku, unesite ključ API i dozvoljene modele. Izaberite External za kupljene API ili Self-hosted za svoj hardver."
+      },
+      {
+        "q": "Koja je razlika između eksternih i self-hosted troškova?",
+        "a": "Vanjski provajderi se naplaćuju po tokenu. Provajderi Self-hosted se obračunavaju iz električne energije, amortizacije hardvera i održavanja — oboje se pojavljuju zajedno u jednom računu u eurima."
+      },
+      {
+        "q": "Kako funkcioniraju budžeti?",
+        "a": "Budžet postavlja ograničenje eura za organizaciju, grupu, korisnika ili token sa ciklusom resetovanja (dnevno, sedmično, mjesečno). Kada istekne, primjenjuje se odabrana radnja: blokiranje, upozorenje ili prelazak na jeftiniji ili lokalni model."
+      },
+      {
+        "q": "Gdje mogu vidjeti troškove?",
+        "a": "Stranica Troškovi prikazuje podjelu potrošnje na eksternu u odnosu na self-hosted, sa vremenskim filterom i izvozom CSV (za izvoz je potrebna komercijalna licenca)."
+      },
+      {
+        "q": "Šta su organizacije?",
+        "a": "Organizacije su zakupci — odvojene kompanije ili timovi. Svaki korisnik pripada jednoj organizaciji, a administratori organizacije vide samo svoje podatke o organizaciji."
+      },
+      {
+        "q": "Koji jezici su podržani?",
+        "a": "Cijeli interfejs je dostupan na 12 jezika. Promijenite jezik pomoću selektora na bočnoj traci."
+      },
+      {
+        "q": "Koja je razlika između besplatne i komercijalne verzije?",
+        "a": "Besplatni Community nivo pokriva osnovnu upotrebu (jedna organizacija, do pet korisnika). Komercijalne funkcije (više organizacija i korisnika, SSO, izvoz troškova, white-label) zahtijevaju plaćenu licencu."
+      },
+      {
+        "q": "Kako se rukuje mojim podacima?",
+        "a": "Gateway radi na vašem vlastitom serveru (self-hosted). Uz upravljanje podacima možete redigovati osjetljive podatke prije nego što stignu do eksternih modela i zadržati potpuni revizorski trag."
+      }
+    ]
   }
 }

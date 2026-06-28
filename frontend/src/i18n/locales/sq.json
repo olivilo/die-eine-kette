@@ -14,7 +14,8 @@
     "redemption": "Kodet",
     "organizations": "Organizatat",
     "budgets": "Buxhetet",
-    "costs": "Kostot"
+    "costs": "Kostot",
+    "faq": "Ndihmë"
   },
   "hero": {
     "title": "Një portë. Çdo model i AI.",
@@ -234,5 +235,59 @@
     "collapse": "Kolapsi",
     "expand": "Zgjero",
     "menu": "Menyja"
+  },
+  "faq": {
+    "title": "Ndihmë & FAQ",
+    "subtitle": "Përgjigjet për pyetjet e zakonshme",
+    "items": [
+      {
+        "q": "Çfarë është Die Eine Kette?",
+        "a": "Një portë me shumë qiramarrës që drejton kërkesat tuaja te shumë ofrues të AI (OpenAI, Anthropic, Gemini, modele lokale) përmes një ndërfaqeje të përputhshme me OpenAI — me kontrollin e kostos, buxhetet dhe qeverisjen."
+      },
+      {
+        "q": "Si mund të identifikohem?",
+        "a": "Përdorni emrin e përdoruesit dhe fjalëkalimin në faqen e hyrjes. Nëse është aktivizuar vërtetimi me dy faktorë, futni gjithashtu një kod 6-shifror nga aplikacioni juaj i vërtetuesit."
+      },
+      {
+        "q": "Si mund të aktivizoj vërtetimin me dy faktorë (2FA)?",
+        "a": "Hapni Cilësimet, zgjidhni Aktivizo 2FA, skanoni kodin QR me një aplikacion vërtetues, futni kodin dhe ruani kodet tuaja rezervë diku të sigurt."
+      },
+      {
+        "q": "Si mund të krijoj një shenjë API?",
+        "a": "Shkoni te Tokens dhe zgjidhni Token i ri. Shenja funksionon me çdo klient të pajtueshëm me OpenAI kundrejt pikës fundore të portës /v1."
+      },
+      {
+        "q": "Si mund të shtoj një ofrues të AI?",
+        "a": "Shkoni te Ofruesit, zgjidhni një paracaktuar ose një pikë fundore të personalizuar, futni tastin API dhe modelet e lejuara. Zgjidhni External për API të blera ose Self-hosted për harduerin tuaj."
+      },
+      {
+        "q": "Cili është ndryshimi midis kostos së jashtme dhe self-hosted?",
+        "a": "Ofruesit e jashtëm faturohen për token. Ofruesit e Self-hosted kushtojnë nga energjia elektrike, amortizimi i harduerit dhe mirëmbajtja — të dyja shfaqen së bashku në një faturë në euro."
+      },
+      {
+        "q": "Si funksionojnë buxhetet?",
+        "a": "Një buxhet vendos një kufi në euro për një organizatë, grup, përdorues ose shenjë me një cikël rivendosjeje (ditore, javore, mujore). Kur mbaron, zbatohet veprimi i zgjedhur: blloko, paralajmëro ose redukto në një model më të lirë ose lokal."
+      },
+      {
+        "q": "Ku i shoh kostot?",
+        "a": "Faqja e kostove tregon shpenzimet e ndara në të jashtme kundrejt self-hosted, me një filtër kohor dhe eksport CSV (eksporti kërkon një licencë tregtare)."
+      },
+      {
+        "q": "Çfarë janë organizatat?",
+        "a": "Organizatat janë qiramarrës - kompani ose ekipe të veçanta. Çdo përdorues i përket një organizate dhe administratorët e një organizate shohin vetëm të dhënat e tyre të organizatës."
+      },
+      {
+        "q": "Cilat gjuhë mbështeten?",
+        "a": "E gjithë ndërfaqja është e disponueshme në 12 gjuhë. Ndërroni gjuhën me përzgjedhësin në shiritin anësor."
+      },
+      {
+        "q": "Cili është ndryshimi midis versionit falas dhe atij komercial?",
+        "a": "Niveli falas Community mbulon përdorimin bazë (një organizatë, deri në pesë përdorues). Veçoritë komerciale (më shumë organizata dhe përdorues, SSO, eksporti i kostos, white-label) kërkojnë një licencë me pagesë."
+      },
+      {
+        "q": "Si trajtohen të dhënat e mia?",
+        "a": "Porta funksionon në serverin tuaj (self-hosted). Me qeverisjen e të dhënave ju mund të redaktoni të dhënat e ndjeshme përpara se të arrijnë modele të jashtme dhe të mbani një gjurmë të plotë auditimi."
+      }
+    ]
   }
 }

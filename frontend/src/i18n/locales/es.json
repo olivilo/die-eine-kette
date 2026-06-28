@@ -14,7 +14,8 @@
     "redemption": "Códigos",
     "organizations": "Organizaciones",
     "budgets": "Presupuestos",
-    "costs": "Costes"
+    "costs": "Costes",
+    "faq": "Ayuda"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -234,5 +235,59 @@
     "collapse": "Colapsar",
     "expand": "Expandir",
     "menu": "Menú"
+  },
+  "faq": {
+    "title": "Ayuda y preguntas frecuentes",
+    "subtitle": "Respuestas a preguntas comunes",
+    "items": [
+      {
+        "q": "¿Qué es Die Eine Kette?",
+        "a": "Una puerta de enlace multiinquilino que enruta sus solicitudes a muchos proveedores de IA (OpenAI, Anthropic, Gemini, modelos locales) a través de una interfaz compatible con OpenAI, con control de costos, presupuestos y gobernanza."
+      },
+      {
+        "q": "¿Cómo inicio sesión?",
+        "a": "Utilice su nombre de usuario y contraseña en la página de inicio de sesión. Si la autenticación de dos factores está habilitada, también ingresa un código de 6 dígitos desde su aplicación de autenticación."
+      },
+      {
+        "q": "¿Cómo habilito la autenticación de dos factores (2FA)?",
+        "a": "Abra Configuración, elija Habilitar 2FA, escanee el código QR con una aplicación de autenticación, ingrese el código y guarde sus códigos de respaldo en un lugar seguro."
+      },
+      {
+        "q": "¿Cómo creo un token API?",
+        "a": "Vaya a Tokens y seleccione Nuevo token. El token funciona con cualquier cliente compatible con OpenAI contra el punto final /v1 de la puerta de enlace."
+      },
+      {
+        "q": "¿Cómo agrego un proveedor de IA?",
+        "a": "Vaya a Proveedores, elija un punto final preestablecido o personalizado, ingrese la clave API y los modelos permitidos. Elija Externo para API comprados o Self-hosted para su propio hardware."
+      },
+      {
+        "q": "¿Cuál es la diferencia entre el costo externo y self-hosted?",
+        "a": "A los proveedores externos se les factura por token. A los proveedores de Self-hosted se les cobra el coste de la electricidad, la amortización del hardware y el mantenimiento; ambos aparecen juntos en una factura en euros."
+      },
+      {
+        "q": "¿Cómo funcionan los presupuestos?",
+        "a": "Un presupuesto establece un límite en euros para una organización, grupo, usuario o token con un ciclo de reinicio (diario, semanal, mensual). Cuando se agota, se aplica la acción elegida: bloquear, avisar o bajar a un modelo más barato o local."
+      },
+      {
+        "q": "¿Dónde veo los costos?",
+        "a": "La página Costos muestra el gasto dividido en externo versus self-hosted, con un filtro de tiempo y exportación CSV (la exportación requiere una licencia comercial)."
+      },
+      {
+        "q": "¿Qué son las organizaciones?",
+        "a": "Las organizaciones son inquilinos: empresas o equipos separados. Cada usuario pertenece a una organización y los administradores de una organización solo ven los datos de su propia organización."
+      },
+      {
+        "q": "¿Qué idiomas son compatibles?",
+        "a": "Toda la interfaz está disponible en 12 idiomas. Cambia de idioma con el selector en la barra lateral."
+      },
+      {
+        "q": "¿Cuál es la diferencia entre la versión gratuita y la comercial?",
+        "a": "El nivel gratuito Community cubre el uso básico (una organización, hasta cinco usuarios). Las funciones comerciales (más organizaciones y usuarios, SSO, exportación de costos, white-label) requieren una licencia paga."
+      },
+      {
+        "q": "¿Cómo se manejan mis datos?",
+        "a": "La puerta de enlace se ejecuta en su propio servidor (self-hosted). Con el gobierno de datos, puede redactar datos confidenciales antes de que lleguen a modelos externos y mantener un seguimiento de auditoría completo."
+      }
+    ]
   }
 }

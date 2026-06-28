@@ -14,7 +14,8 @@
     "redemption": "Codici",
     "organizations": "Organizzazioni",
     "budgets": "Budget",
-    "costs": "Costi"
+    "costs": "Costi",
+    "faq": "Aiuto"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -234,5 +235,59 @@
     "collapse": "Crollo",
     "expand": "Espandere",
     "menu": "Menu"
+  },
+  "faq": {
+    "title": "Aiuto e domande frequenti",
+    "subtitle": "Risposte a domande comuni",
+    "items": [
+      {
+        "q": "Cos'è Die Eine Kette?",
+        "a": "Un gateway multi-tenant che instrada le tue richieste a molti fornitori di intelligenza artificiale (OpenAI, Anthropic, Gemini, modelli locali) attraverso un'unica interfaccia compatibile con OpenAI, con controllo dei costi, budget e governance."
+      },
+      {
+        "q": "Come faccio ad accedere?",
+        "a": "Utilizza il tuo nome utente e password nella pagina di accesso. Se l'autenticazione a due fattori è abilitata, inserisci anche un codice a 6 cifre dalla tua app di autenticazione."
+      },
+      {
+        "q": "Come posso abilitare l'autenticazione a due fattori (2FA)?",
+        "a": "Apri Impostazioni, scegli Abilita 2FA, scansiona il codice QR con un'app di autenticazione, inserisci il codice e memorizza i codici di backup in un posto sicuro."
+      },
+      {
+        "q": "Come posso creare un token API?",
+        "a": "Vai su Token e seleziona Nuovo token. Il token funziona con qualsiasi client compatibile con OpenAI sull'endpoint /v1 del gateway."
+      },
+      {
+        "q": "Come faccio ad aggiungere un fornitore di intelligenza artificiale?",
+        "a": "Vai su Provider, scegli un endpoint preimpostato o personalizzato, inserisci la chiave API e i modelli consentiti. Scegli Esterno per API acquistati o Self-hosted per il tuo hardware."
+      },
+      {
+        "q": "Qual è la differenza tra il costo esterno e quello self-hosted?",
+        "a": "I fornitori esterni vengono fatturati per token. I costi dei fornitori Self-hosted comprendono l'elettricità, l'ammortamento dell'hardware e la manutenzione: entrambi compaiono insieme in un'unica fattura in euro."
+      },
+      {
+        "q": "Come funzionano i budget?",
+        "a": "Un budget stabilisce un limite di euro per un'organizzazione, un gruppo, un utente o un token con un ciclo di ripristino (giornaliero, settimanale, mensile). Quando si esaurisce, si applica l'azione scelta: bloccare, avvisare o retrocedere a un modello più economico o locale."
+      },
+      {
+        "q": "Dove vedo i costi?",
+        "a": "La pagina Costi mostra la spesa suddivisa in esterna rispetto a self-hosted, con un filtro temporale e l'esportazione CSV (l'esportazione richiede una licenza commerciale)."
+      },
+      {
+        "q": "Cosa sono le organizzazioni?",
+        "a": "Le organizzazioni sono inquilini: società o team separati. Ogni utente appartiene a un'organizzazione e gli amministratori di un'organizzazione vedono solo i dati della propria organizzazione."
+      },
+      {
+        "q": "Quali lingue sono supportate?",
+        "a": "L'intera interfaccia è disponibile in 12 lingue. Cambia lingua con il selettore nella barra laterale."
+      },
+      {
+        "q": "Qual è la differenza tra la versione gratuita e quella commerciale?",
+        "a": "Il livello Community gratuito copre l'uso di base (un'organizzazione, fino a cinque utenti). Le funzionalità commerciali (più organizzazioni e utenti, SSO, esportazione dei costi, white-label) richiedono una licenza a pagamento."
+      },
+      {
+        "q": "Come vengono gestiti i miei dati?",
+        "a": "Il gateway viene eseguito sul tuo server (self-hosted). Con la governance dei dati puoi oscurare i dati sensibili prima che raggiungano modelli esterni e mantenere una traccia di controllo completa."
+      }
+    ]
   }
 }

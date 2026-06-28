@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import {
   LayoutDashboard, Server, KeyRound, Activity, Euro, Building2, Wallet,
-  Users, ScrollText, Ticket, Settings, LogOut, PanelLeftClose, PanelLeftOpen, X,
+  Users, ScrollText, Ticket, Settings, HelpCircle, LogOut, PanelLeftClose, PanelLeftOpen, X,
   type LucideIcon,
 } from "lucide-react";
 import { useAuth } from "./AuthProvider";
@@ -32,7 +32,10 @@ const GROUPS: Group[] = [
     { k: "logs", Icon: ScrollText, min: 10 },
     { k: "redemption", Icon: Ticket, min: 10 },
   ] },
-  { key: "system", items: [{ k: "settings", Icon: Settings }] },
+  { key: "system", items: [
+    { k: "settings", Icon: Settings },
+    { k: "faq", Icon: HelpCircle },
+  ] },
 ];
 
 export default function Sidebar({
