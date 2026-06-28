@@ -11,7 +11,8 @@
     "settings": "Paramètres",
     "users": "Utilisateurs",
     "logs": "Journaux",
-    "redemption": "Codes"
+    "redemption": "Codes",
+    "organizations": "Organisations"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -151,5 +152,16 @@
     "used": "Échangé",
     "new": "Nouveaux codes",
     "empty": "Aucun code."
+  },
+  "orgs": {
+    "subtitle": "Gérer les locataires B2B",
+    "name": "Nom",
+    "users": "Utilisateurs",
+    "status": "Statut",
+    "created": "Créé",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "new": "Nouvelle organisation",
+    "empty": "Aucune organisation."
   }
 }

@@ -11,7 +11,8 @@
     "settings": "Ajustes",
     "users": "Usuarios",
     "logs": "Registros",
-    "redemption": "Códigos"
+    "redemption": "Códigos",
+    "organizations": "Organizaciones"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -151,5 +152,16 @@
     "used": "Canjeado",
     "new": "Nuevos códigos",
     "empty": "Sin códigos."
+  },
+  "orgs": {
+    "subtitle": "Gestionar inquilinos B2B",
+    "name": "Nombre",
+    "users": "Usuarios",
+    "status": "Estado",
+    "created": "Creado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "new": "Nueva organización",
+    "empty": "Sin organizaciones."
   }
 }

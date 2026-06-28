@@ -51,6 +51,8 @@ type User struct {
 	Group            string `json:"group" gorm:"type:varchar(32);default:'default'"`
 	AffCode          string `json:"aff_code" gorm:"type:varchar(32);column:aff_code;uniqueIndex"`
 	InviterId        int    `json:"inviter_id" gorm:"type:int;column:inviter_id;index"`
+	// B2B-Mandant (Phase 3): Zuordnung zu einer Organisation (0 = keine)
+	OrgId int `json:"org_id" gorm:"type:int;default:0;index;column:org_id"`
 	// 2FA (TOTP) — Die Eine Kette
 	TotpSecret  string `json:"-" gorm:"type:varchar(64);column:totp_secret"` // geheim, nie ausliefern
 	TotpEnabled bool   `json:"totp_enabled" gorm:"type:bool;default:false;column:totp_enabled"`

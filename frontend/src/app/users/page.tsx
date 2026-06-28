@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/components/AuthProvider";
 import { PageHeader, DataTable, Badge, Card } from "@/components/ui";
-import { api, formatNumber, type User } from "@/lib/api";
+import { api, formatNumber, type User, type Organization } from "@/lib/api";
 
 function roleLabel(role: number | undefined, t: (k: string) => string) {
   if ((role ?? 0) >= 100) return t("users.role_root");
@@ -19,6 +19,7 @@ export default function UsersPage() {
   const router = useRouter();
   const lng = i18n.resolvedLanguage;
   const [users, setUsers] = useState<User[]>([]);
+  const [orgs, setOrgs] = useState<Organization[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [username, setUsername] = useState("");
@@ -37,7 +38,13 @@ export default function UsersPage() {
       setUsers(Array.isArray(res.data) ? res.data : []);
       setLoading(false);
     });
+    api.organizations().then((res) => setOrgs(Array.isArray(res.data) ? res.data : []));
   }, []);
+
+  async function assignOrg(u: User, orgId: number) {
+    await api.assignUserToOrg(u.username, orgId);
+    load();
+  }
 
   useEffect(() => {
     if (user && isAdmin) load();
@@ -59,13 +66,18 @@ export default function UsersPage() {
     load();
   }
 
-  const columns = [t("users.username"), t("users.role"), t("users.status"), t("dashboard.quota"), ""];
+  const columns = [t("users.username"), t("users.role"), t("nav.organizations"), t("users.status"), t("dashboard.quota"), ""];
   const rows = users.map((u) => {
     const enabled = u.status === 1;
     const self = u.id === user.id;
     return [
       <span key="n" className="font-medium text-zinc-100">{u.display_name || u.username}<span className="ml-2 text-xs text-zinc-500">@{u.username}</span></span>,
       roleLabel(u.role, t),
+      <select key="o" value={u.org_id ?? 0} onChange={(e) => assignOrg(u, Number(e.target.value))}
+        className="rounded-md border border-zinc-700 bg-ink px-2 py-1 text-xs text-zinc-200 outline-none focus:border-gold">
+        <option value={0}>—</option>
+        {orgs.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}
+      </select>,
       enabled ? <Badge key="s" tone="ok">{t("users.enabled")}</Badge> : <Badge key="s" tone="off">{t("users.disabled")}</Badge>,
       formatNumber(u.quota, lng),
       self ? <span key="a" className="text-xs text-zinc-600">—</span> : (

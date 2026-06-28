@@ -11,7 +11,8 @@
     "settings": "Einstellungen",
     "users": "Nutzer",
     "logs": "Logs",
-    "redemption": "Codes"
+    "redemption": "Codes",
+    "organizations": "Organisationen"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -151,5 +152,16 @@
     "used": "Eingelöst",
     "new": "Neue Codes",
     "empty": "Noch keine Codes."
+  },
+  "orgs": {
+    "subtitle": "B2B-Mandanten verwalten",
+    "name": "Name",
+    "users": "Nutzer",
+    "status": "Status",
+    "created": "Erstellt",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "new": "Neue Organisation",
+    "empty": "Noch keine Organisationen."
   }
 }

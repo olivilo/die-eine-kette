@@ -18,6 +18,15 @@ export type User = {
   used_quota?: number;
   request_count?: number;
   totp_enabled?: boolean;
+  org_id?: number;
+};
+
+export type Organization = {
+  id: number;
+  name: string;
+  status: number;
+  created_time: number;
+  user_count?: number;
 };
 
 async function request<T>(path: string, init?: RequestInit): Promise<ApiResponse<T>> {
@@ -88,6 +97,12 @@ export const api = {
     request("/user", { method: "POST", body: JSON.stringify({ username, password }) }),
   manageUser: (username: string, action: "enable" | "disable" | "promote" | "demote" | "delete") =>
     request("/user/manage", { method: "POST", body: JSON.stringify({ username, action }) }),
+  organizations: () => request<Organization[]>("/organization?p=0"),
+  createOrganization: (name: string) =>
+    request("/organization", { method: "POST", body: JSON.stringify({ name }) }),
+  deleteOrganization: (id: number) => request(`/organization/${id}`, { method: "DELETE" }),
+  assignUserToOrg: (username: string, org_id: number) =>
+    request("/organization/assign", { method: "POST", body: JSON.stringify({ username, org_id }) }),
   totpSetup: () => request<{ secret: string; uri: string }>("/user/totp/setup"),
   totpEnable: (code: string) =>
     request<{ backup_codes: string[] }>("/user/totp/enable", { method: "POST", body: JSON.stringify({ code }) }),

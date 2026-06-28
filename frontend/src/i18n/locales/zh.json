@@ -11,7 +11,8 @@
     "settings": "设置",
     "users": "用户",
     "logs": "日志",
-    "redemption": "兑换码"
+    "redemption": "兑换码",
+    "organizations": "组织"
   },
   "hero": {
     "title": "一个网关，所有 AI 模型。",
@@ -151,5 +152,16 @@
     "used": "已兑换",
     "new": "新建码",
     "empty": "暂无兑换码。"
+  },
+  "orgs": {
+    "subtitle": "管理 B2B 租户",
+    "name": "名称",
+    "users": "用户",
+    "status": "状态",
+    "created": "创建时间",
+    "active": "启用",
+    "inactive": "停用",
+    "new": "新建组织",
+    "empty": "暂无组织。"
   }
 }

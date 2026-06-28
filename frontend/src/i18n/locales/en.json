@@ -11,7 +11,8 @@
     "settings": "Settings",
     "users": "Users",
     "logs": "Logs",
-    "redemption": "Codes"
+    "redemption": "Codes",
+    "organizations": "Organizations"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -151,5 +152,16 @@
     "used": "Redeemed",
     "new": "New codes",
     "empty": "No codes yet."
+  },
+  "orgs": {
+    "subtitle": "Manage B2B tenants",
+    "name": "Name",
+    "users": "Users",
+    "status": "Status",
+    "created": "Created",
+    "active": "Active",
+    "inactive": "Inactive",
+    "new": "New organization",
+    "empty": "No organizations yet."
   }
 }

@@ -11,7 +11,8 @@
     "settings": "Impostazioni",
     "users": "Utenti",
     "logs": "Log",
-    "redemption": "Codici"
+    "redemption": "Codici",
+    "organizations": "Organizzazioni"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -151,5 +152,16 @@
     "used": "Riscattato",
     "new": "Nuovi codici",
     "empty": "Nessun codice."
+  },
+  "orgs": {
+    "subtitle": "Gestisci i tenant B2B",
+    "name": "Nome",
+    "users": "Utenti",
+    "status": "Stato",
+    "created": "Creato",
+    "active": "Attivo",
+    "inactive": "Inattivo",
+    "new": "Nuova organizzazione",
+    "empty": "Nessuna organizzazione."
   }
 }

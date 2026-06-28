@@ -108,6 +108,15 @@ func SetApiRouter(router *gin.Engine) {
 			redemptionRoute.PUT("/", controller.UpdateRedemption)
 			redemptionRoute.DELETE("/:id", controller.DeleteRedemption)
 		}
+		// Die Eine Kette — B2B-Mandanten (Phase 3)
+		organizationRoute := apiRouter.Group("/organization")
+		organizationRoute.Use(middleware.AdminAuth())
+		{
+			organizationRoute.GET("/", controller.GetAllOrganizations)
+			organizationRoute.POST("/", controller.AddOrganization)
+			organizationRoute.POST("/assign", controller.AssignUserToOrg)
+			organizationRoute.DELETE("/:id", controller.DeleteOrganization)
+		}
 		logRoute := apiRouter.Group("/log")
 		logRoute.GET("/", middleware.AdminAuth(), controller.GetAllLogs)
 		logRoute.DELETE("/", middleware.AdminAuth(), controller.DeleteHistoryLogs)

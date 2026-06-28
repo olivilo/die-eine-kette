@@ -160,6 +160,10 @@ func migrateDB() error {
 	if err = DB.AutoMigrate(&Channel{}); err != nil {
 		return err
 	}
+	// Die Eine Kette — B2B-Mandanten (Phase 3)
+	if err = DB.AutoMigrate(&Organization{}); err != nil {
+		return err
+	}
 	return nil
 }
 
