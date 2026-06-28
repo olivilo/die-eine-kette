@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { languages, STORAGE_KEY } from "@/i18n/config";
+import { languages, STORAGE_KEY, applyDir } from "@/i18n/config";
 
 export default function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
@@ -10,7 +10,7 @@ export default function LanguageSwitcher() {
     const lng = e.target.value;
     void i18n.changeLanguage(lng);
     if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, lng);
-    document.documentElement.lang = lng;
+    applyDir(lng); // setzt lang + dir (RTL/LTR)
   }
 
   return (

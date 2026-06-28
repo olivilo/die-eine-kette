@@ -7,6 +7,8 @@ import fr from "./locales/fr.json";
 import es from "./locales/es.json";
 import it from "./locales/it.json";
 import sr from "./locales/sr.json";
+import hr from "./locales/hr.json";
+import bs from "./locales/bs.json";
 import zh from "./locales/zh.json";
 
 export const languages = [
@@ -16,12 +18,26 @@ export const languages = [
   { code: "es", label: "Español" },
   { code: "it", label: "Italiano" },
   { code: "sr", label: "Српски" },
+  { code: "hr", label: "Hrvatski" },
+  { code: "bs", label: "Bosanski" },
   { code: "zh", label: "中文" },
 ] as const;
 
 export type LanguageCode = (typeof languages)[number]["code"];
 export const defaultLng: LanguageCode = "de";
 export const STORAGE_KEY = "dek.lng";
+
+// RTL-Vorbereitung: Sprachen mit Rechts-nach-links-Schreibrichtung (z. B. ar/he/fa später).
+const RTL = new Set(["ar", "he", "fa", "ur"]);
+export function isRtl(lng?: string): boolean {
+  return !!lng && RTL.has(lng.split("-")[0]);
+}
+export function applyDir(lng?: string) {
+  if (typeof document !== "undefined") {
+    document.documentElement.dir = isRtl(lng) ? "rtl" : "ltr";
+    if (lng) document.documentElement.lang = lng;
+  }
+}
 
 if (!i18n.isInitialized) {
   i18n.use(initReactI18next).init({
@@ -32,6 +48,8 @@ if (!i18n.isInitialized) {
       es: { translation: es },
       it: { translation: it },
       sr: { translation: sr },
+      hr: { translation: hr },
+      bs: { translation: bs },
       zh: { translation: zh },
     },
     // Deterministisch fürs SSR — Client wechselt nach Mount via LanguageSwitcher.
