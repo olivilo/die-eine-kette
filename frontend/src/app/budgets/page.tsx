@@ -70,7 +70,18 @@ export default function BudgetsPage() {
     t(`budgets.scope_${b.scope}`, { defaultValue: b.scope }),
     <span key="r" className="text-zinc-400">{b.ref || "—"}</span>,
     euro(b.amount_micro_eur),
-    euro(b.used_micro_eur),
+    (() => {
+      const pct = b.amount_micro_eur > 0 ? Math.min(100, (b.used_micro_eur / b.amount_micro_eur) * 100) : 0;
+      const over = b.amount_micro_eur > 0 && b.used_micro_eur >= b.amount_micro_eur;
+      return (
+        <div key="u" className="min-w-28">
+          <div className="text-zinc-200">{euro(b.used_micro_eur)} <span className="text-xs text-zinc-500">({pct.toFixed(0)}%)</span></div>
+          <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+            <div className={`h-full ${over ? "bg-red-500" : pct > 80 ? "bg-amber-500" : "bg-gold"}`} style={{ width: `${pct}%` }} />
+          </div>
+        </div>
+      );
+    })(),
     t(`budgets.period_${b.period}`, { defaultValue: b.period }),
     <Badge key="e" tone={b.on_exhaust === "block" ? "off" : b.on_exhaust === "warn" ? "warn" : "ok"}>{t(`budgets.ex_${b.on_exhaust}`, { defaultValue: b.on_exhaust })}</Badge>,
     b.reset_at ? formatDate(b.reset_at, lng) : "—",

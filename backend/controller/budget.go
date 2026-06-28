@@ -21,6 +21,7 @@ func GetAllBudgets(c *gin.Context) {
 	if p < 0 {
 		p = 0
 	}
+	model.DisableExpiredBudgets() // harte Timer (valid_until) durchsetzen
 	budgets, err := model.GetAllBudgets(p*config.ItemsPerPage, config.ItemsPerPage)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})

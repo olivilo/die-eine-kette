@@ -73,6 +73,8 @@ func RecordCostEntry(log *Log) {
 	if err := DB.Create(&entry).Error; err != nil {
 		logger.SysError("RecordCostEntry insert: " + err.Error())
 	}
+	// Burndown: Kosten auf passende Budgets buchen (Phase 4↔5).
+	AddBudgetUsage(costMicro, orgId, log.Username)
 }
 
 // SumCostBySource summiert Micro-Euro je cost_source (optional Org-/Zeit-gefiltert).

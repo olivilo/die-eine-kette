@@ -8,6 +8,8 @@ package model
 import (
 	"errors"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type Budget struct {
@@ -72,6 +74,35 @@ func DeleteBudgetById(id int) error {
 		return errors.New("id ist leer")
 	}
 	return DB.Delete(&Budget{Id: id}).Error
+}
+
+// AddBudgetUsage bucht Kosten (Micro-Euro) auf passende aktive Budgets (Burndown).
+// Aktuell: Scope user (ref=Username) und organization (ref=Org-Name). Best-effort.
+func AddBudgetUsage(costMicroEur int64, orgId int, username string) {
+	if costMicroEur <= 0 {
+		return
+	}
+	if username != "" {
+		DB.Model(&Budget{}).
+			Where("status = ? AND scope = ? AND ref = ?", BudgetStatusEnabled, "user", username).
+			UpdateColumn("used_micro_eur", gorm.Expr("used_micro_eur + ?", costMicroEur))
+	}
+	if orgId != 0 {
+		var org Organization
+		if err := DB.Select("name").First(&org, "id = ?", orgId).Error; err == nil && org.Name != "" {
+			DB.Model(&Budget{}).
+				Where("status = ? AND scope = ? AND ref = ?", BudgetStatusEnabled, "organization", org.Name).
+				UpdateColumn("used_micro_eur", gorm.Expr("used_micro_eur + ?", costMicroEur))
+		}
+	}
+}
+
+// DisableExpiredBudgets deaktiviert Budgets, deren harter Timer (valid_until) abgelaufen ist.
+func DisableExpiredBudgets() {
+	now := time.Now().Unix()
+	DB.Model(&Budget{}).
+		Where("status = ? AND valid_until > 0 AND valid_until < ?", BudgetStatusEnabled, now).
+		Update("status", BudgetStatusDisabled)
 }
 
 // Reset setzt den Verbrauch auf 0 und plant den nächsten Reset (für Periode).
