@@ -12,7 +12,8 @@
     "users": "Nutzer",
     "logs": "Logs",
     "redemption": "Codes",
-    "organizations": "Organisationen"
+    "organizations": "Organisationen",
+    "budgets": "Budgets"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -163,5 +164,32 @@
     "inactive": "Inaktiv",
     "new": "Neue Organisation",
     "empty": "Noch keine Organisationen."
+  },
+  "budgets": {
+    "subtitle": "Budgets, Reset & Timer",
+    "name": "Name",
+    "scope": "Scope",
+    "ref": "Bezug",
+    "ref_hint": "Org-Name / Gruppe / Nutzer",
+    "limit": "Limit",
+    "limit_eur": "Limit (€)",
+    "used": "Verbraucht",
+    "period": "Periode",
+    "on_exhaust": "Bei Erschöpfung",
+    "reset_at": "Nächster Reset",
+    "new": "Neues Budget",
+    "empty": "Noch keine Budgets.",
+    "reset": "Reset",
+    "scope_organization": "Organisation",
+    "scope_group": "Gruppe",
+    "scope_user": "Nutzer",
+    "scope_token": "Token",
+    "period_none": "Keine",
+    "period_daily": "Täglich",
+    "period_weekly": "Wöchentlich",
+    "period_monthly": "Monatlich",
+    "ex_block": "Blockieren",
+    "ex_warn": "Warnen",
+    "ex_downgrade": "Downgrade"
   }
 }

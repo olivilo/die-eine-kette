@@ -117,6 +117,15 @@ func SetApiRouter(router *gin.Engine) {
 			organizationRoute.POST("/assign", controller.AssignUserToOrg)
 			organizationRoute.DELETE("/:id", controller.DeleteOrganization)
 		}
+		// Die Eine Kette — Budgets (Phase 4). Plattform-Ebene (Root).
+		budgetRoute := apiRouter.Group("/budget")
+		budgetRoute.Use(middleware.RootAuth())
+		{
+			budgetRoute.GET("/", controller.GetAllBudgets)
+			budgetRoute.POST("/", controller.AddBudget)
+			budgetRoute.POST("/:id/reset", controller.ResetBudget)
+			budgetRoute.DELETE("/:id", controller.DeleteBudget)
+		}
 		logRoute := apiRouter.Group("/log")
 		logRoute.GET("/", middleware.AdminAuth(), controller.GetAllLogs)
 		logRoute.DELETE("/", middleware.AdminAuth(), controller.DeleteHistoryLogs)

@@ -12,7 +12,8 @@
     "users": "Utenti",
     "logs": "Log",
     "redemption": "Codici",
-    "organizations": "Organizzazioni"
+    "organizations": "Organizzazioni",
+    "budgets": "Budget"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -163,5 +164,32 @@
     "inactive": "Inattivo",
     "new": "Nuova organizzazione",
     "empty": "Nessuna organizzazione."
+  },
+  "budgets": {
+    "subtitle": "Budget, reset e timer",
+    "name": "Nome",
+    "scope": "Ambito",
+    "ref": "Riferimento",
+    "ref_hint": "Nome org / gruppo / utente",
+    "limit": "Limite",
+    "limit_eur": "Limite (€)",
+    "used": "Usato",
+    "period": "Periodo",
+    "on_exhaust": "All'esaurimento",
+    "reset_at": "Prossimo reset",
+    "new": "Nuovo budget",
+    "empty": "Nessun budget.",
+    "reset": "Reset",
+    "scope_organization": "Organizzazione",
+    "scope_group": "Gruppo",
+    "scope_user": "Utente",
+    "scope_token": "Token",
+    "period_none": "Nessuno",
+    "period_daily": "Giornaliero",
+    "period_weekly": "Settimanale",
+    "period_monthly": "Mensile",
+    "ex_block": "Blocca",
+    "ex_warn": "Avvisa",
+    "ex_downgrade": "Downgrade"
   }
 }

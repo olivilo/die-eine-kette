@@ -12,7 +12,8 @@
     "users": "Utilisateurs",
     "logs": "Journaux",
     "redemption": "Codes",
-    "organizations": "Organisations"
+    "organizations": "Organisations",
+    "budgets": "Budgets"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -163,5 +164,32 @@
     "inactive": "Inactif",
     "new": "Nouvelle organisation",
     "empty": "Aucune organisation."
+  },
+  "budgets": {
+    "subtitle": "Budgets, réinitialisation et minuteurs",
+    "name": "Nom",
+    "scope": "Portée",
+    "ref": "Référence",
+    "ref_hint": "Nom d'org / groupe / utilisateur",
+    "limit": "Limite",
+    "limit_eur": "Limite (€)",
+    "used": "Utilisé",
+    "period": "Période",
+    "on_exhaust": "À l'épuisement",
+    "reset_at": "Prochaine réinit.",
+    "new": "Nouveau budget",
+    "empty": "Aucun budget.",
+    "reset": "Réinit.",
+    "scope_organization": "Organisation",
+    "scope_group": "Groupe",
+    "scope_user": "Utilisateur",
+    "scope_token": "Jeton",
+    "period_none": "Aucune",
+    "period_daily": "Quotidienne",
+    "period_weekly": "Hebdomadaire",
+    "period_monthly": "Mensuelle",
+    "ex_block": "Bloquer",
+    "ex_warn": "Avertir",
+    "ex_downgrade": "Rétrograder"
   }
 }

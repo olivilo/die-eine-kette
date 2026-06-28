@@ -12,7 +12,8 @@
     "users": "Usuarios",
     "logs": "Registros",
     "redemption": "Códigos",
-    "organizations": "Organizaciones"
+    "organizations": "Organizaciones",
+    "budgets": "Presupuestos"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -163,5 +164,32 @@
     "inactive": "Inactivo",
     "new": "Nueva organización",
     "empty": "Sin organizaciones."
+  },
+  "budgets": {
+    "subtitle": "Presupuestos, reinicio y temporizadores",
+    "name": "Nombre",
+    "scope": "Ámbito",
+    "ref": "Referencia",
+    "ref_hint": "Nombre de org / grupo / usuario",
+    "limit": "Límite",
+    "limit_eur": "Límite (€)",
+    "used": "Usado",
+    "period": "Período",
+    "on_exhaust": "Al agotarse",
+    "reset_at": "Próximo reinicio",
+    "new": "Nuevo presupuesto",
+    "empty": "Sin presupuestos.",
+    "reset": "Reiniciar",
+    "scope_organization": "Organización",
+    "scope_group": "Grupo",
+    "scope_user": "Usuario",
+    "scope_token": "Token",
+    "period_none": "Ninguno",
+    "period_daily": "Diario",
+    "period_weekly": "Semanal",
+    "period_monthly": "Mensual",
+    "ex_block": "Bloquear",
+    "ex_warn": "Avisar",
+    "ex_downgrade": "Degradar"
   }
 }

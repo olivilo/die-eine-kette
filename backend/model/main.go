@@ -164,6 +164,10 @@ func migrateDB() error {
 	if err = DB.AutoMigrate(&Organization{}); err != nil {
 		return err
 	}
+	// Die Eine Kette — Budgets (Phase 4)
+	if err = DB.AutoMigrate(&Budget{}); err != nil {
+		return err
+	}
 	return nil
 }
 

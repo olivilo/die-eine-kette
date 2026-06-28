@@ -74,6 +74,20 @@ export type Redemption = {
   created_time: number;
 };
 
+export type Budget = {
+  id: number;
+  name: string;
+  scope: string;
+  ref: string;
+  amount_micro_eur: number;
+  used_micro_eur: number;
+  period: string;
+  on_exhaust: string;
+  reset_at: number;
+  valid_until: number;
+  status: number;
+};
+
 export type Channel = {
   id: number;
   name: string;
@@ -103,6 +117,11 @@ export const api = {
   deleteOrganization: (id: number) => request(`/organization/${id}`, { method: "DELETE" }),
   assignUserToOrg: (username: string, org_id: number) =>
     request("/organization/assign", { method: "POST", body: JSON.stringify({ username, org_id }) }),
+  budgets: () => request<Budget[]>("/budget?p=0"),
+  createBudget: (body: { name: string; scope: string; ref: string; amount_micro_eur: number; period: string; on_exhaust: string }) =>
+    request("/budget", { method: "POST", body: JSON.stringify(body) }),
+  resetBudget: (id: number) => request(`/budget/${id}/reset`, { method: "POST" }),
+  deleteBudget: (id: number) => request(`/budget/${id}`, { method: "DELETE" }),
   totpSetup: () => request<{ secret: string; uri: string }>("/user/totp/setup"),
   totpEnable: (code: string) =>
     request<{ backup_codes: string[] }>("/user/totp/enable", { method: "POST", body: JSON.stringify({ code }) }),

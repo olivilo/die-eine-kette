@@ -12,7 +12,8 @@
     "users": "用户",
     "logs": "日志",
     "redemption": "兑换码",
-    "organizations": "组织"
+    "organizations": "组织",
+    "budgets": "预算"
   },
   "hero": {
     "title": "一个网关，所有 AI 模型。",
@@ -163,5 +164,32 @@
     "inactive": "停用",
     "new": "新建组织",
     "empty": "暂无组织。"
+  },
+  "budgets": {
+    "subtitle": "预算、重置与定时",
+    "name": "名称",
+    "scope": "范围",
+    "ref": "引用",
+    "ref_hint": "组织名 / 组 / 用户",
+    "limit": "限额",
+    "limit_eur": "限额（€）",
+    "used": "已用",
+    "period": "周期",
+    "on_exhaust": "耗尽时",
+    "reset_at": "下次重置",
+    "new": "新建预算",
+    "empty": "暂无预算。",
+    "reset": "重置",
+    "scope_organization": "组织",
+    "scope_group": "组",
+    "scope_user": "用户",
+    "scope_token": "令牌",
+    "period_none": "无",
+    "period_daily": "每日",
+    "period_weekly": "每周",
+    "period_monthly": "每月",
+    "ex_block": "阻止",
+    "ex_warn": "警告",
+    "ex_downgrade": "降级"
   }
 }

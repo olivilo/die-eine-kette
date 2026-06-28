@@ -12,7 +12,8 @@
     "users": "Users",
     "logs": "Logs",
     "redemption": "Codes",
-    "organizations": "Organizations"
+    "organizations": "Organizations",
+    "budgets": "Budgets"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -163,5 +164,32 @@
     "inactive": "Inactive",
     "new": "New organization",
     "empty": "No organizations yet."
+  },
+  "budgets": {
+    "subtitle": "Budgets, reset & timers",
+    "name": "Name",
+    "scope": "Scope",
+    "ref": "Reference",
+    "ref_hint": "Org name / group / user",
+    "limit": "Limit",
+    "limit_eur": "Limit (€)",
+    "used": "Used",
+    "period": "Period",
+    "on_exhaust": "On exhaust",
+    "reset_at": "Next reset",
+    "new": "New budget",
+    "empty": "No budgets yet.",
+    "reset": "Reset",
+    "scope_organization": "Organization",
+    "scope_group": "Group",
+    "scope_user": "User",
+    "scope_token": "Token",
+    "period_none": "None",
+    "period_daily": "Daily",
+    "period_weekly": "Weekly",
+    "period_monthly": "Monthly",
+    "ex_block": "Block",
+    "ex_warn": "Warn",
+    "ex_downgrade": "Downgrade"
   }
 }

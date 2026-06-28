@@ -12,7 +12,8 @@
     "users": "Корисници",
     "logs": "Логови",
     "redemption": "Кодови",
-    "organizations": "Организације"
+    "organizations": "Организације",
+    "budgets": "Буџети"
   },
   "hero": {
     "title": "Једна капија. Сви АИ модели.",
@@ -163,5 +164,32 @@
     "inactive": "Неактивна",
     "new": "Нова организација",
     "empty": "Нема организација."
+  },
+  "budgets": {
+    "subtitle": "Буџети, ресет и тајмери",
+    "name": "Назив",
+    "scope": "Опсег",
+    "ref": "Референца",
+    "ref_hint": "Назив орг / група / корисник",
+    "limit": "Лимит",
+    "limit_eur": "Лимит (€)",
+    "used": "Искоришћено",
+    "period": "Период",
+    "on_exhaust": "При исцрпљењу",
+    "reset_at": "Следећи ресет",
+    "new": "Нови буџет",
+    "empty": "Нема буџета.",
+    "reset": "Ресет",
+    "scope_organization": "Организација",
+    "scope_group": "Група",
+    "scope_user": "Корисник",
+    "scope_token": "Токен",
+    "period_none": "Никад",
+    "period_daily": "Дневно",
+    "period_weekly": "Недељно",
+    "period_monthly": "Месечно",
+    "ex_block": "Блокирај",
+    "ex_warn": "Упозори",
+    "ex_downgrade": "Downgrade"
   }
 }
