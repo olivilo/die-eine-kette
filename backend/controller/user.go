@@ -73,7 +73,7 @@ func Login(c *gin.Context) {
 			})
 			return
 		}
-		if !validateTotp(user.TotpSecret, loginRequest.TotpCode) && !consumeBackupCode(&user, loginRequest.TotpCode) {
+		if !validateTotp(decryptSecret(user.TotpSecret), loginRequest.TotpCode) && !consumeBackupCode(&user, loginRequest.TotpCode) {
 			c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_totp"})
 			return
 		}
@@ -249,12 +249,40 @@ func SearchUsers(c *gin.Context) {
 		})
 		return
 	}
+	// Mandanten-Isolation: Nicht-Root sieht nur Treffer der eigenen Organisation.
+	if c.GetInt(ctxkey.Role) < model.RoleRootUser {
+		me, e := model.GetUserById(c.GetInt(ctxkey.Id), false)
+		filtered := users[:0]
+		if e == nil && me.OrgId != 0 {
+			for _, u := range users {
+				if u.OrgId == me.OrgId {
+					filtered = append(filtered, u)
+				}
+			}
+		}
+		users = filtered
+	}
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": "",
 		"data":    users,
 	})
 	return
+}
+
+// crossOrgDenied — Mandanten-Isolation (Die Eine Kette): für Nicht-Root sicherstellen,
+// dass der Ziel-Nutzer in der EIGENEN Organisation liegt. Schreibt bei Verweigerung die
+// Antwort und gibt true zurück.
+func crossOrgDenied(c *gin.Context, targetOrgId int) bool {
+	if c.GetInt(ctxkey.Role) >= model.RoleRootUser {
+		return false
+	}
+	me, err := model.GetUserById(c.GetInt(ctxkey.Id), false)
+	if err != nil || me.OrgId == 0 || me.OrgId != targetOrgId {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": "Kein Zugriff auf Nutzer einer anderen Organisation."})
+		return true
+	}
+	return false
 }
 
 func GetUser(c *gin.Context) {
@@ -280,6 +308,9 @@ func GetUser(c *gin.Context) {
 			"success": false,
 			"message": "无权获取同级或更高等级用户的信息",
 		})
+		return
+	}
+	if crossOrgDenied(c, user.OrgId) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
@@ -432,6 +463,9 @@ func UpdateUser(c *gin.Context) {
 		})
 		return
 	}
+	if crossOrgDenied(c, originUser.OrgId) {
+		return
+	}
 	if myRole <= updatedUser.Role && myRole != model.RoleRootUser {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
@@ -530,6 +564,9 @@ func DeleteUser(c *gin.Context) {
 			"success": false,
 			"message": "无权删除同权限等级或更高权限等级的用户",
 		})
+		return
+	}
+	if crossOrgDenied(c, originUser.OrgId) {
 		return
 	}
 	err = model.DeleteUserById(id)
@@ -662,6 +699,9 @@ func ManageUser(c *gin.Context) {
 			"success": false,
 			"message": "无权更新同权限等级或更高权限等级的用户信息",
 		})
+		return
+	}
+	if crossOrgDenied(c, user.OrgId) {
 		return
 	}
 	switch req.Action {

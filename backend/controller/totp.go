@@ -3,16 +3,21 @@ package controller
 // 2FA (TOTP, RFC 6238) für „Die Eine Kette" — ohne externe Abhängigkeit.
 
 import (
+	"crypto/aes"
+	"crypto/cipher"
 	"crypto/hmac"
 	"crypto/rand"
 	"crypto/sha1"
 	"crypto/sha256"
+	"crypto/subtle"
 	"encoding/base32"
+	"encoding/base64"
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"time"
 
@@ -23,6 +28,56 @@ import (
 )
 
 const totpIssuer = "Die Eine Kette"
+
+// ── TOTP-Secret-Verschlüsselung at-rest (AES-GCM, Schlüssel aus SESSION_SECRET) ──
+func totpKey() []byte {
+	h := sha256.Sum256([]byte("dek-totp-v1:" + os.Getenv("SESSION_SECRET")))
+	return h[:]
+}
+
+func encryptSecret(plain string) string {
+	if plain == "" {
+		return ""
+	}
+	block, err := aes.NewCipher(totpKey())
+	if err != nil {
+		return plain
+	}
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return plain
+	}
+	nonce := make([]byte, gcm.NonceSize())
+	if _, err := rand.Read(nonce); err != nil {
+		return plain
+	}
+	ct := gcm.Seal(nonce, nonce, []byte(plain), nil)
+	return "enc:" + base64.StdEncoding.EncodeToString(ct)
+}
+
+func decryptSecret(stored string) string {
+	if !strings.HasPrefix(stored, "enc:") {
+		return stored // Legacy/Klartext-Fallback (Abwärtskompatibilität)
+	}
+	raw, err := base64.StdEncoding.DecodeString(stored[4:])
+	if err != nil {
+		return ""
+	}
+	block, err := aes.NewCipher(totpKey())
+	if err != nil {
+		return ""
+	}
+	gcm, err := cipher.NewGCM(block)
+	if err != nil || len(raw) < gcm.NonceSize() {
+		return ""
+	}
+	nonce, ct := raw[:gcm.NonceSize()], raw[gcm.NonceSize():]
+	pt, err := gcm.Open(nil, nonce, ct, nil)
+	if err != nil {
+		return ""
+	}
+	return string(pt)
+}
 
 var b32 = base32.StdEncoding.WithPadding(base32.NoPadding)
 
@@ -57,7 +112,7 @@ func validateTotp(secret, code string) bool {
 	}
 	now := time.Now()
 	for _, skew := range []time.Duration{0, -30 * time.Second, 30 * time.Second} {
-		if totpAt(secret, now.Add(skew)) == code {
+		if subtle.ConstantTimeCompare([]byte(totpAt(secret, now.Add(skew))), []byte(code)) == 1 {
 			return true
 		}
 	}
@@ -101,7 +156,7 @@ func consumeBackupCode(user *model.User, code string) bool {
 	kept := make([]string, 0, len(parts))
 	found := false
 	for _, h := range parts {
-		if h == target && !found {
+		if !found && subtle.ConstantTimeCompare([]byte(h), []byte(target)) == 1 {
 			found = true
 			continue
 		}
@@ -127,9 +182,14 @@ func TotpSetup(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})
 		return
 	}
+	// 2FA bereits aktiv? Setup nicht zum Deaktivieren missbrauchen lassen — erst Disable (mit Code).
+	if user.TotpEnabled {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": "2FA ist bereits aktiv. Bitte zuerst deaktivieren."})
+		return
+	}
 	secret := generateTotpSecret()
-	user.TotpSecret = secret
-	user.TotpEnabled = false
+	user.TotpSecret = encryptSecret(secret) // verschlüsselt at-rest; Klartext nur in URI/QR
+	// TotpEnabled bleibt false (Aktivierung erst nach Code-Bestätigung in TotpEnable).
 	if err := user.SaveTotp(); err != nil {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})
 		return
@@ -155,7 +215,7 @@ func TotpEnable(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})
 		return
 	}
-	if !validateTotp(user.TotpSecret, req.Code) {
+	if !validateTotp(decryptSecret(user.TotpSecret), req.Code) {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_totp"})
 		return
 	}
@@ -184,7 +244,7 @@ func TotpDisable(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})
 		return
 	}
-	if !validateTotp(user.TotpSecret, req.Code) && !consumeBackupCode(user, req.Code) {
+	if !validateTotp(decryptSecret(user.TotpSecret), req.Code) && !consumeBackupCode(user, req.Code) {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_totp"})
 		return
 	}

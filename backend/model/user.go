@@ -54,7 +54,7 @@ type User struct {
 	// B2B-Mandant (Phase 3): Zuordnung zu einer Organisation (0 = keine)
 	OrgId int `json:"org_id" gorm:"type:int;default:0;index;column:org_id"`
 	// 2FA (TOTP) — Die Eine Kette
-	TotpSecret  string `json:"-" gorm:"type:varchar(64);column:totp_secret"` // geheim, nie ausliefern
+	TotpSecret  string `json:"-" gorm:"type:varchar(255);column:totp_secret"` // verschlüsselt (AES-GCM), nie ausliefern
 	TotpEnabled bool   `json:"totp_enabled" gorm:"type:bool;default:false;column:totp_enabled"`
 	TotpBackup  string `json:"-" gorm:"type:text;column:totp_backup"` // sha256-Hashes der Backup-Codes, komma-getrennt
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 
@@ -114,6 +115,8 @@ func main() {
 	middleware.SetUpLogger(server)
 	// Initialize session store
 	store := cookie.NewStore([]byte(config.SessionSecret))
+	// Die Eine Kette — CSRF-Härtung: SameSite=Lax + HttpOnly am Session-Cookie.
+	store.Options(sessions.Options{Path: "/", MaxAge: 86400 * 7, HttpOnly: true, SameSite: http.SameSiteLaxMode})
 	server.Use(sessions.Sessions("session", store))
 
 	router.SetRouter(server, buildFS)

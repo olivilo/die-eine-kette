@@ -15,7 +15,7 @@ func SetApiRouter(router *gin.Engine) {
 	apiRouter.Use(middleware.GlobalAPIRateLimit())
 	{
 		apiRouter.GET("/status", controller.GetStatus)
-		apiRouter.GET("/license", middleware.UserAuth(), controller.GetLicense) // Die Eine Kette
+		apiRouter.GET("/license", middleware.AdminAuth(), controller.GetLicense) // Die Eine Kette (Kundendaten nur Admin)
 		apiRouter.GET("/models", middleware.UserAuth(), controller.DashboardListModels)
 		apiRouter.GET("/notice", controller.GetNotice)
 		apiRouter.GET("/about", controller.GetAbout)
