@@ -9,6 +9,9 @@ import it from "./locales/it.json";
 import sr from "./locales/sr.json";
 import hr from "./locales/hr.json";
 import bs from "./locales/bs.json";
+import sl from "./locales/sl.json";
+import mk from "./locales/mk.json";
+import sq from "./locales/sq.json";
 import zh from "./locales/zh.json";
 
 export const languages = [
@@ -20,6 +23,9 @@ export const languages = [
   { code: "sr", label: "Српски" },
   { code: "hr", label: "Hrvatski" },
   { code: "bs", label: "Bosanski" },
+  { code: "sl", label: "Slovenščina" },
+  { code: "mk", label: "Македонски" },
+  { code: "sq", label: "Shqip" },
   { code: "zh", label: "中文" },
 ] as const;
 
@@ -50,6 +56,9 @@ if (!i18n.isInitialized) {
       sr: { translation: sr },
       hr: { translation: hr },
       bs: { translation: bs },
+      sl: { translation: sl },
+      mk: { translation: mk },
+      sq: { translation: sq },
       zh: { translation: zh },
     },
     // Deterministisch fürs SSR — Client wechselt nach Mount via LanguageSwitcher.
