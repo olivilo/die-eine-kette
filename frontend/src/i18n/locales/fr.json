@@ -89,7 +89,18 @@
   },
   "settings": {
     "subtitle": "Compte et système",
-    "soon": "D'autres paramètres à venir."
+    "soon": "D'autres paramètres à venir.",
+    "system": "Système",
+    "system_desc": "Paramètres globaux (root uniquement).",
+    "saved": "enregistré",
+    "opt": {
+      "SystemName": "Nom du système",
+      "Footer": "Pied de page",
+      "RegisterEnabled": "Inscription activée",
+      "PasswordLoginEnabled": "Connexion par mot de passe",
+      "PasswordRegisterEnabled": "Inscription par mot de passe",
+      "EmailVerificationEnabled": "Vérification e-mail"
+    }
   },
   "twofa": {
     "title": "Authentification à deux facteurs (2FA)",

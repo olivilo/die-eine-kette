@@ -89,7 +89,18 @@
   },
   "settings": {
     "subtitle": "Налог и систем",
-    "soon": "Још подешавања ускоро."
+    "soon": "Још подешавања ускоро.",
+    "system": "Систем",
+    "system_desc": "Глобална подешавања (само root).",
+    "saved": "сачувано",
+    "opt": {
+      "SystemName": "Назив система",
+      "Footer": "Подножје",
+      "RegisterEnabled": "Регистрација омогућена",
+      "PasswordLoginEnabled": "Пријава лозинком",
+      "PasswordRegisterEnabled": "Регистрација лозинком",
+      "EmailVerificationEnabled": "Потврда е-поште"
+    }
   },
   "twofa": {
     "title": "Двофакторска аутентификација (2FA)",

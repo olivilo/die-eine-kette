@@ -89,7 +89,18 @@
   },
   "settings": {
     "subtitle": "账户与系统",
-    "soon": "更多设置即将推出。"
+    "soon": "更多设置即将推出。",
+    "system": "系统",
+    "system_desc": "全局设置（仅 Root）。",
+    "saved": "已保存",
+    "opt": {
+      "SystemName": "系统名称",
+      "Footer": "页脚",
+      "RegisterEnabled": "允许注册",
+      "PasswordLoginEnabled": "密码登录",
+      "PasswordRegisterEnabled": "密码注册",
+      "EmailVerificationEnabled": "邮箱验证"
+    }
   },
   "twofa": {
     "title": "两步验证（2FA）",

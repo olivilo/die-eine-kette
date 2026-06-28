@@ -89,7 +89,18 @@
   },
   "settings": {
     "subtitle": "Account e sistema",
-    "soon": "Altre impostazioni in arrivo."
+    "soon": "Altre impostazioni in arrivo.",
+    "system": "Sistema",
+    "system_desc": "Impostazioni globali (solo root).",
+    "saved": "salvato",
+    "opt": {
+      "SystemName": "Nome sistema",
+      "Footer": "Piè di pagina",
+      "RegisterEnabled": "Registrazione abilitata",
+      "PasswordLoginEnabled": "Login con password",
+      "PasswordRegisterEnabled": "Registrazione con password",
+      "EmailVerificationEnabled": "Verifica e-mail"
+    }
   },
   "twofa": {
     "title": "Autenticazione a due fattori (2FA)",

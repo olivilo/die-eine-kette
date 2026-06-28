@@ -110,6 +110,9 @@ export const api = {
       body: JSON.stringify({ ...body, groups: ["default"], group: "default" }),
     }),
   deleteChannel: (id: number) => request(`/channel/${id}`, { method: "DELETE" }),
+  options: () => request<{ key: string; value: string }[]>("/option"),
+  updateOption: (key: string, value: string) =>
+    request("/option", { method: "PUT", body: JSON.stringify({ key, value }) }),
   redemptions: () => request<Redemption[]>("/redemption?p=0"),
   createRedemptions: (name: string, quota: number, count: number) =>
     request("/redemption", { method: "POST", body: JSON.stringify({ name, quota, count }) }),

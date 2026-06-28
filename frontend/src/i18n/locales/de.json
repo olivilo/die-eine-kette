@@ -89,7 +89,18 @@
   },
   "settings": {
     "subtitle": "Konto & System",
-    "soon": "Weitere Einstellungen folgen."
+    "soon": "Weitere Einstellungen folgen.",
+    "system": "System",
+    "system_desc": "Globale Einstellungen (nur Root).",
+    "saved": "gespeichert",
+    "opt": {
+      "SystemName": "Systemname",
+      "Footer": "Fußzeile",
+      "RegisterEnabled": "Registrierung erlaubt",
+      "PasswordLoginEnabled": "Passwort-Login",
+      "PasswordRegisterEnabled": "Registrierung mit Passwort",
+      "EmailVerificationEnabled": "E-Mail-Verifizierung"
+    }
   },
   "twofa": {
     "title": "Zwei-Faktor-Authentifizierung (2FA)",

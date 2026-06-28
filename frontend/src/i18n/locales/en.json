@@ -89,7 +89,18 @@
   },
   "settings": {
     "subtitle": "Account & system",
-    "soon": "More settings coming."
+    "soon": "More settings coming.",
+    "system": "System",
+    "system_desc": "Global settings (root only).",
+    "saved": "saved",
+    "opt": {
+      "SystemName": "System name",
+      "Footer": "Footer",
+      "RegisterEnabled": "Registration enabled",
+      "PasswordLoginEnabled": "Password login",
+      "PasswordRegisterEnabled": "Password registration",
+      "EmailVerificationEnabled": "Email verification"
+    }
   },
   "twofa": {
     "title": "Two-factor authentication (2FA)",
