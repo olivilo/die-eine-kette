@@ -71,6 +71,30 @@ func GetUsersInOrg(orgId int, startIdx int, num int) ([]*User, error) {
 	return users, err
 }
 
+// GetOrgLogs liefert die Logs aller Nutzer eines Mandanten (Mandanten-Isolation Admin-Sicht).
+func GetOrgLogs(orgId int, logType int, startTimestamp int64, endTimestamp int64, modelName string, tokenName string, startIdx int, num int) ([]*Log, error) {
+	usernames := DB.Model(&User{}).Select("username").Where("org_id = ?", orgId)
+	tx := DB.Where("username IN (?)", usernames)
+	if logType != 0 {
+		tx = tx.Where("type = ?", logType)
+	}
+	if modelName != "" {
+		tx = tx.Where("model_name = ?", modelName)
+	}
+	if tokenName != "" {
+		tx = tx.Where("token_name = ?", tokenName)
+	}
+	if startTimestamp != 0 {
+		tx = tx.Where("created_at >= ?", startTimestamp)
+	}
+	if endTimestamp != 0 {
+		tx = tx.Where("created_at <= ?", endTimestamp)
+	}
+	var logs []*Log
+	err := tx.Order("id desc").Limit(num).Offset(startIdx).Find(&logs).Error
+	return logs, err
+}
+
 // AssignUserToOrg ordnet einen Nutzer (per Username) einer Organisation zu (0 = keine).
 func AssignUserToOrg(username string, orgId int) error {
 	if username == "" {
