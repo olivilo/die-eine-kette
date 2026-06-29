@@ -202,6 +202,14 @@ export const api = {
       commercial: boolean;
     }>("/license"),
   options: () => request<{ key: string; value: string }[]>("/option"),
+  oidcDiscover: (url: string) =>
+    request<{
+      issuer: string;
+      authorization_endpoint: string;
+      token_endpoint: string;
+      userinfo_endpoint: string;
+      well_known: string;
+    }>(`/oidc/discovery?url=${encodeURIComponent(url)}`),
   updateOption: (key: string, value: string) =>
     request("/option", { method: "PUT", body: JSON.stringify({ key, value }) }),
   redemptions: () => request<Redemption[]>("/redemption?p=0"),

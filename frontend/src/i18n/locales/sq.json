@@ -333,5 +333,24 @@
         "a": "Porta funksionon në serverin tuaj (self-hosted). Me qeverisjen e të dhënave ju mund të redaktoni të dhënat e ndjeshme përpara se të arrijnë modele të jashtme dhe të mbani një gjurmë të plotë auditimi."
       }
     ]
+  },
+  "sso": {
+    "on": "Aktiv",
+    "off": "Joaktiv",
+    "provider": "Ofruesi",
+    "discovery_url": "Discovery URL (.well-known)",
+    "discovery_hint": "Një URL në vend të tre pikave fundore — ne i ngarkojmë ato automatikisht (vetëm HTTPS).",
+    "load": "Zbulimi i ngarkesës",
+    "load_ok": "Pikat përfundimtare u ngarkuan",
+    "load_fail": "Zbulimi dështoi",
+    "redirect_note": "Regjistrojeni këtë URI të ridrejtimit te ofruesi i identitetit:",
+    "enable": "Aktivizo identifikimin në OIDC",
+    "fill_first": "plotësoni fillimisht Client ID dhe pikat fundore",
+    "p_custom": "Pika përfundimtare e personalizuar",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

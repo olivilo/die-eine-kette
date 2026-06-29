@@ -5,6 +5,7 @@ import { useRequireAuth } from "@/lib/useRequireAuth";
 import { PageHeader } from "@/components/ui";
 import TwoFactor from "@/components/TwoFactor";
 import SystemSettings from "@/components/SystemSettings";
+import SsoSetup from "@/components/SsoSetup";
 import LicenseInfo from "@/components/LicenseInfo";
 
 export default function SettingsPage() {
@@ -19,6 +20,7 @@ export default function SettingsPage() {
       <LicenseInfo />
       <TwoFactor />
       <SystemSettings />
+      <SsoSetup />
     </section>
   );
 }

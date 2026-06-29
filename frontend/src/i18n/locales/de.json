@@ -333,5 +333,24 @@
         "a": "Das Gateway läuft auf deinem eigenen Server (self-hosted). Mit Daten-Governance kannst du sensible Daten schwärzen, bevor sie externe Modelle erreichen, und ein lückenloses Audit führen."
       }
     ]
+  },
+  "sso": {
+    "on": "Aktiv",
+    "off": "Inaktiv",
+    "provider": "Provider",
+    "discovery_url": "Discovery-URL (.well-known)",
+    "discovery_hint": "Eine URL statt drei Endpunkte — wir laden sie automatisch (nur HTTPS).",
+    "load": "Discovery laden",
+    "load_ok": "Endpunkte geladen",
+    "load_fail": "Discovery fehlgeschlagen",
+    "redirect_note": "Diese Redirect-URI beim Identity-Provider registrieren:",
+    "enable": "OIDC-Login aktivieren",
+    "fill_first": "zuerst Client-ID und Endpunkte ausfüllen",
+    "p_custom": "Eigener Endpunkt",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

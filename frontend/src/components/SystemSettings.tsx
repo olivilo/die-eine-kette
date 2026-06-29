@@ -31,14 +31,7 @@ const SECTIONS: Section[] = [
     { key: "AutomaticDisableChannelEnabled", type: "toggle" }, { key: "AutomaticEnableChannelEnabled", type: "toggle" },
     { key: "ChannelDisableThreshold", type: "number" }, { key: "RetryTimes", type: "number" },
   ] },
-  { id: "sso", fields: [
-    { key: "OidcEnabled", type: "toggle" },
-    { key: "ServerAddress", type: "text" },
-    { key: "OidcClientId", type: "text" }, { key: "OidcClientSecret", type: "password" },
-    { key: "OidcWellKnown", type: "text" },
-    { key: "OidcAuthorizationEndpoint", type: "text" }, { key: "OidcTokenEndpoint", type: "text" },
-    { key: "OidcUserinfoEndpoint", type: "text" },
-  ] },
+  // SSO/OIDC: eigene geführte Komponente (SsoSetup) — nicht hier generisch.
 ];
 
 const inputCls = "rounded-md border border-zinc-700 bg-ink px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold";

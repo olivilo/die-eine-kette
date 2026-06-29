@@ -333,5 +333,24 @@
         "a": "La passerelle s'exécute sur votre propre serveur (self-hosted). Grâce à la gouvernance des données, vous pouvez supprimer les données sensibles avant qu'elles n'atteignent des modèles externes et conserver une piste d'audit complète."
       }
     ]
+  },
+  "sso": {
+    "on": "Sur",
+    "off": "Désactivé",
+    "provider": "Fournisseur",
+    "discovery_url": "Découverte URL (.well-known)",
+    "discovery_hint": "Un URL au lieu de trois points de terminaison — nous les chargeons automatiquement (HTTPS uniquement).",
+    "load": "Charger la découverte",
+    "load_ok": "Points de terminaison chargés",
+    "load_fail": "Échec de la découverte",
+    "redirect_note": "Enregistrez cet URI de redirection auprès du fournisseur d'identité :",
+    "enable": "Activer la connexion OIDC",
+    "fill_first": "remplissez d'abord Client ID et les points de terminaison",
+    "p_custom": "Point de terminaison personnalisé",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

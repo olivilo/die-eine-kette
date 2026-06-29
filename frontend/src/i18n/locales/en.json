@@ -333,5 +333,24 @@
         "a": "The gateway runs on your own server (self-hosted). With data governance you can redact sensitive data before it reaches external models and keep a full audit trail."
       }
     ]
+  },
+  "sso": {
+    "on": "On",
+    "off": "Off",
+    "provider": "Provider",
+    "discovery_url": "Discovery URL (.well-known)",
+    "discovery_hint": "One URL instead of three endpoints — we load them automatically (HTTPS only).",
+    "load": "Load discovery",
+    "load_ok": "Endpoints loaded",
+    "load_fail": "Discovery failed",
+    "redirect_note": "Register this redirect URI at the identity provider:",
+    "enable": "Enable OIDC login",
+    "fill_first": "fill Client ID and endpoints first",
+    "p_custom": "Custom endpoint",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

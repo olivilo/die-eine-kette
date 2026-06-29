@@ -333,5 +333,24 @@
         "a": "Gateway radi na vašem vlastitom serveru (self-hosted). Uz upravljanje podacima možete redigovati osjetljive podatke prije nego što stignu do eksternih modela i zadržati potpuni revizorski trag."
       }
     ]
+  },
+  "sso": {
+    "on": "On",
+    "off": "Isključeno",
+    "provider": "Provajder",
+    "discovery_url": "Discovery URL (.well-known)",
+    "discovery_hint": "Jedan URL umjesto tri krajnje tačke — automatski ih učitavamo (samo HTTPS).",
+    "load": "Otkrivanje učitavanja",
+    "load_ok": "Krajnje tačke učitane",
+    "load_fail": "Otkrivanje nije uspjelo",
+    "redirect_note": "Registrirajte ovaj URI za preusmjeravanje kod provajdera identiteta:",
+    "enable": "Omogućite prijavu na OIDC",
+    "fill_first": "prvo popunite Client ID i krajnje tačke",
+    "p_custom": "Prilagođena krajnja tačka",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

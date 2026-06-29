@@ -333,5 +333,24 @@
         "a": "网关在您自己的服务器（self-hosted）上运行。通过数据治理，您可以在敏感数据到达外部模型之前对其进行编辑，并保留完整的审计跟踪。"
       }
     ]
+  },
+  "sso": {
+    "on": "在",
+    "off": "离开",
+    "provider": "提供者",
+    "discovery_url": "发现URL (.well-known)",
+    "discovery_hint": "一个 URL 而不是三个端点 - 我们自动加载它们（仅限 HTTPS）。",
+    "load": "负载发现",
+    "load_ok": "端点已加载",
+    "load_fail": "发现失败",
+    "redirect_note": "在身份提供商处注册此重定向 URI：",
+    "enable": "启用OIDC登录",
+    "fill_first": "首先填充 Client ID 和端点",
+    "p_custom": "自定义端点",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

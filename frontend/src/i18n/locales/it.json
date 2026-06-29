@@ -333,5 +333,24 @@
         "a": "Il gateway viene eseguito sul tuo server (self-hosted). Con la governance dei dati puoi oscurare i dati sensibili prima che raggiungano modelli esterni e mantenere una traccia di controllo completa."
       }
     ]
+  },
+  "sso": {
+    "on": "SU",
+    "off": "Spento",
+    "provider": "Fornitore",
+    "discovery_url": "Scoperta URL (.well-known)",
+    "discovery_hint": "Uno URL invece di tre endpoint: li carichiamo automaticamente (solo HTTPS).",
+    "load": "Carica rilevamento",
+    "load_ok": "Endpoint caricati",
+    "load_fail": "La scoperta non è riuscita",
+    "redirect_note": "Registra questo URI di reindirizzamento presso il provider di identità:",
+    "enable": "Abilita l'accesso OIDC",
+    "fill_first": "riempire prima Client ID e gli endpoint",
+    "p_custom": "Endpoint personalizzato",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

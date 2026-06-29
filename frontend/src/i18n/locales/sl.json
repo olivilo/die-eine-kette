@@ -333,5 +333,24 @@
         "a": "Prehod deluje na vašem strežniku (self-hosted). Z upravljanjem podatkov lahko popravite občutljive podatke, preden dosežejo zunanje modele, in ohranite popolno revizijsko sled."
       }
     ]
+  },
+  "sso": {
+    "on": "Vklopljeno",
+    "off": "Izključeno",
+    "provider": "Ponudnik",
+    "discovery_url": "Discovery URL (.well-known)",
+    "discovery_hint": "En URL namesto treh končnih točk — samodejno jih naložimo (samo HTTPS).",
+    "load": "Odkrivanje obremenitve",
+    "load_ok": "Končne točke so naložene",
+    "load_fail": "Odkritje ni uspelo",
+    "redirect_note": "Registrirajte ta preusmeritveni URI pri ponudniku identitete:",
+    "enable": "Omogoči prijavo OIDC",
+    "fill_first": "najprej izpolnite Client ID in končne točke",
+    "p_custom": "Končna točka po meri",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }

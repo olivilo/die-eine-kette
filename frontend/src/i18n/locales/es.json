@@ -333,5 +333,24 @@
         "a": "La puerta de enlace se ejecuta en su propio servidor (self-hosted). Con el gobierno de datos, puede redactar datos confidenciales antes de que lleguen a modelos externos y mantener un seguimiento de auditoría completo."
       }
     ]
+  },
+  "sso": {
+    "on": "En",
+    "off": "Apagado",
+    "provider": "Proveedor",
+    "discovery_url": "Descubrimiento URL (.well-known)",
+    "discovery_hint": "Un URL en lugar de tres puntos finales: los cargamos automáticamente (solo HTTPS).",
+    "load": "Descubrimiento de carga",
+    "load_ok": "Puntos finales cargados",
+    "load_fail": "El descubrimiento falló",
+    "redirect_note": "Registre este URI de redireccionamiento en el proveedor de identidad:",
+    "enable": "Habilitar inicio de sesión OIDC",
+    "fill_first": "llene Client ID y los puntos finales primero",
+    "p_custom": "Punto final personalizado",
+    "p_entra": "Microsoft Entra ID",
+    "p_okta": "Okta",
+    "p_google": "Google",
+    "p_keycloak": "Keycloak",
+    "p_onelogin": "One Identity (OneLogin)"
   }
 }
