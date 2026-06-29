@@ -33,6 +33,9 @@ func main() {
 	logger.SetupLogger()
 	logger.SysLogf("One API %s started", common.Version)
 
+	// Die Eine Kette — Sicherheits-Preflight: trivialer SESSION_SECRET verhindert den Start.
+	common.SecurityPreflight()
+
 	// Die Eine Kette — Lizenz laden (Ed25519). Ohne gültige Lizenz: Community-Limits.
 	license.Load()
 	logger.SysLogf("license tier: %s (valid=%t)", license.Current().Tier, license.Current().Valid)
@@ -53,6 +56,8 @@ func main() {
 	if err != nil {
 		logger.FatalLog("database init error: " + err.Error())
 	}
+	// Die Eine Kette — laut warnen, falls root noch das Default-Passwort hat.
+	model.WarnIfRootPasswordIsDefault()
 	defer func() {
 		err := model.CloseDB()
 		if err != nil {

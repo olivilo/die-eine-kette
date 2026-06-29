@@ -26,6 +26,10 @@ var DisplayTokenStatEnabled = true
 
 var SessionSecret = uuid.New().String()
 
+// Die Eine Kette — wird beim Start gesetzt, wenn der root-Account noch das
+// Default-Passwort nutzt. Frontend kann darauf einen Warnbanner zeigen.
+var RootPasswordIsDefault = false
+
 var OptionMap map[string]string
 var OptionMapRWMutex sync.RWMutex
 

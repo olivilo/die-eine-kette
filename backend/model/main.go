@@ -64,6 +64,24 @@ func CreateRootAccountIfNeed() error {
 	return nil
 }
 
+// WarnIfRootPasswordIsDefault meldet laut, wenn der root-Account noch das
+// Default-Passwort ("123456") nutzt, und setzt ein Flag, das das Frontend für
+// einen Warnbanner auswerten kann. Pflicht-Check vor jeder Governance-Anbindung.
+func WarnIfRootPasswordIsDefault() {
+	var root User
+	if err := DB.Where("role = ?", RoleRootUser).First(&root).Error; err != nil {
+		return
+	}
+	if common.ValidatePasswordAndHash("123456", root.Password) {
+		config.RootPasswordIsDefault = true
+		logger.SysError("=================== SICHERHEITSWARNUNG ===================")
+		logger.SysError("Der root-Account nutzt noch das Default-Passwort '123456'.")
+		logger.SysError("SOFORT ändern, bevor das System erreichbar gemacht oder an")
+		logger.SysError("SAP/AD/Serviceware angebunden wird.")
+		logger.SysError("=========================================================")
+	}
+}
+
 func chooseDB(envName string) (*gorm.DB, error) {
 	dsn := os.Getenv(envName)
 
