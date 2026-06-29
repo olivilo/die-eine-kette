@@ -8,11 +8,21 @@
   <a href="./README.fr.md">Français</a> ·
   <a href="./README.es.md">Español</a> ·
   <a href="./README.it.md">Italiano</a> ·
+  <a href="./README.hr.md">Hrvatski</a> ·
+  <a href="./README.bs.md">Bosanski</a> ·
+  <a href="./README.sl.md">Slovenščina</a> ·
   <a href="./README.sr.md">Српски</a> ·
+  <a href="./README.mk.md">Македонски</a> ·
+  <a href="./README.sq.md">Shqip</a> ·
   <a href="./README.zh.md">中文</a>
 </p>
 
 # ⛓️ Die Eine Kette (DieEineKette)
+
+> ⚠️ **Öffentliche Alpha.** Dies ist **nur der kostenlose, öffentliche Teil** von Die Eine
+> Kette und steckt **mitten in der Entwicklung** — er kann Fehler enthalten, unfertige
+> Funktionen zeigen und sich jederzeit ändern. **Noch nicht für den Produktiveinsatz.**
+> Rückmeldungen und Issues sind ausdrücklich willkommen.
 
 > **Ein Tor, sie alle zu verbinden.**
 > Ein mandantenfähiges (B2B) LLM-Gateway mit voller Mehrsprachigkeit, Kostenkontrolle
@@ -40,8 +50,22 @@ für mehrere Enterprises, Abteilungen, Nutzer und Budgets.
 
 ## 🧱 Status
 
-🚧 **Fundament-Phase.** Architektur, Kostenmodell und Sprach-Plan stehen
-(siehe [`docs/`](./docs)). Der App-Code folgt nach Bestätigung der Tech-Entscheidungen.
+🚧 **Öffentliche Alpha.** Architektur, Kostenmodell und Sprach-Plan stehen; der Stack
+läuft per `docker compose up` (App, PostgreSQL, Redis). Der Funktionsumfang wird laufend
+ausgebaut — rechne mit Fehlern, Lücken und Änderungen.
+
+## 🚀 Loslegen
+
+```bash
+cp .env.example .env       # Provider-Keys, LM-Studio-Token, Strompreis usw. setzen
+tools/preflight-check.sh   # Ressourcen vor dem Build prüfen
+docker compose up -d       # App :3000, PostgreSQL, Redis
+```
+
+> 💡 **LM Studio:** läuft die App im Container, ist `localhost` der *Container*, nicht dein
+> Rechner. In `.env` daher `http://host.docker.internal:1234/v1` verwenden. Verlangt deine
+> LM-Studio-Version einen API-Token, in LM Studio einen Token erzeugen und als
+> `LMSTUDIO_API_KEY` eintragen (oder die Token-Pflicht in LM Studio deaktivieren).
 
 ## 📚 Dokumentation
 
@@ -79,9 +103,7 @@ Die Eine Kette basiert auf **[One API](https://github.com/songquanpeng/one-api)*
 von JustSong (MIT-Lizenz) — insbesondere auf dessen bewährtem Relay-Motor mit
 ~45 Anbieter-Integrationen. Vielen Dank an das One-API-Projekt.
 
-Diese Herkunft wird in allen sprachspezifischen READMEs genannt
-([EN](./README.en.md) · [FR](./README.fr.md) · [ES](./README.es.md) ·
-[IT](./README.it.md) · [SR](./README.sr.md) · [ZH](./README.zh.md)). Der ursprüngliche
+Diese Herkunft wird in allen sprachspezifischen READMEs genannt. Der ursprüngliche
 MIT-Lizenztext bleibt unter [`backend/LICENSE`](./backend/LICENSE) erhalten — wie die
 Lizenz es verlangt.
 

@@ -8,11 +8,20 @@
   <a href="./README.fr.md">Français</a> ·
   <a href="./README.es.md">Español</a> ·
   <a href="./README.it.md">Italiano</a> ·
+  <a href="./README.hr.md">Hrvatski</a> ·
+  <a href="./README.bs.md">Bosanski</a> ·
+  <a href="./README.sl.md">Slovenščina</a> ·
   <a href="./README.sr.md">Српски</a> ·
+  <a href="./README.mk.md">Македонски</a> ·
+  <a href="./README.sq.md">Shqip</a> ·
   <a href="./README.zh.md">中文</a>
 </p>
 
 # ⛓️ Die Eine Kette (DieEineKette)
+
+> ⚠️ **Public alpha.** This is **only the free, public part** of Die Eine Kette and is
+> **under active development** — expect bugs, unfinished features and breaking changes.
+> **Not production-ready yet.** Feedback and issues are very welcome.
 
 > **One gateway to connect them all.**
 > A multi-tenant (B2B) LLM gateway with full multilingual support, cost control over
@@ -40,8 +49,9 @@ departments, users and budgets.
 
 ## 🧱 Status
 
-🚧 **Foundation phase.** Architecture, cost model and language plan are in place
-(see [`docs/`](./docs)). Application code follows after the tech decisions are confirmed.
+🚧 **Public alpha.** Architecture, cost model and language plan are in place; the stack
+runs via `docker compose up` (app, PostgreSQL, Redis). Functionality is still being built
+out — expect bugs, gaps and changes.
 
 ## 🚀 Run it
 
@@ -50,6 +60,11 @@ cp .env.example .env       # set provider keys, LM Studio token, electricity pri
 tools/preflight-check.sh   # check resources before building
 docker compose up -d       # app :3000, PostgreSQL, Redis
 ```
+
+> 💡 **LM Studio:** when the app runs in a container, `localhost` is the *container*, not
+> your machine. Use `http://host.docker.internal:1234/v1` in `.env`. If your LM Studio
+> version requires an API token, generate one in LM Studio and set it as `LMSTUDIO_API_KEY`
+> (or disable the token requirement in LM Studio).
 
 ## 📐 Project conventions
 

@@ -8,11 +8,21 @@
   <b>Français</b> ·
   <a href="./README.es.md">Español</a> ·
   <a href="./README.it.md">Italiano</a> ·
+  <a href="./README.hr.md">Hrvatski</a> ·
+  <a href="./README.bs.md">Bosanski</a> ·
+  <a href="./README.sl.md">Slovenščina</a> ·
   <a href="./README.sr.md">Српски</a> ·
+  <a href="./README.mk.md">Македонски</a> ·
+  <a href="./README.sq.md">Shqip</a> ·
   <a href="./README.zh.md">中文</a>
 </p>
 
 # ⛓️ Die Eine Kette (DieEineKette)
+
+> ⚠️ **Alpha publique.** Ceci est **uniquement la partie gratuite et publique** de Die Eine
+> Kette, **en cours de développement actif** — attendez-vous à des bugs, des fonctionnalités
+> inachevées et des changements. **Pas encore prêt pour la production.** Vos retours et
+> issues sont les bienvenus.
 
 > **Une porte pour les relier tous.**
 > Une passerelle LLM multi-locataire (B2B), entièrement multilingue, avec contrôle des
@@ -23,7 +33,7 @@ Gemini, Azure, AWS Bedrock, Ollama, DeepSeek, Mistral, modèles locaux …) derr
 seule interface `/v1` compatible OpenAI, avec une couche de gestion B2B par-dessus
 (entreprises, départements, utilisateurs, budgets).
 
-> 🚧 Phase de fondation — voir [`docs/`](./docs). Démarrage : `docker compose up`.
+> 🚧 Alpha publique — voir [`docs/`](./docs). Démarrage : `docker compose up`.
 
 ---
 
