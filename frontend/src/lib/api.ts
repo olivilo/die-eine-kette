@@ -201,10 +201,15 @@ export const api = {
   totpDisable: (code: string) =>
     request("/user/totp/disable", { method: "POST", body: JSON.stringify({ code }) }),
   tokens: () => request<Token[]>("/token?p=0"),
-  createToken: (name: string) =>
+  createToken: (opts: { name: string; remain_quota?: number; expired_time?: number; unlimited_quota?: boolean }) =>
     request("/token", {
       method: "POST",
-      body: JSON.stringify({ name, remain_quota: 500000, expired_time: -1, unlimited_quota: false }),
+      body: JSON.stringify({
+        name: opts.name,
+        remain_quota: opts.remain_quota ?? 500000,
+        expired_time: opts.expired_time ?? -1,
+        unlimited_quota: opts.unlimited_quota ?? false,
+      }),
     }),
   deleteToken: (id: number) => request(`/token/${id}`, { method: "DELETE" }),
   logsSelf: () => request<LogEntry[]>("/log/self?p=0"),
