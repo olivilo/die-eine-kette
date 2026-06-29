@@ -18,5 +18,8 @@ export const providerPresets: ProviderPreset[] = [
   { id: "deepseek", label: "DeepSeek", type: 36, base_url: "https://api.deepseek.com", models: "deepseek-chat,deepseek-reasoner" },
   { id: "openrouter", label: "OpenRouter", type: 20, base_url: "https://openrouter.ai/api", models: "" },
   { id: "ollama", label: "Ollama (lokal)", type: 30, base_url: "http://localhost:11434", models: "llama3.2,qwen2.5" },
+  // LM Studio: lokaler OpenAI-kompatibler Server. Läuft die App im Container, ist localhost der
+  // Container — daher host.docker.internal. LM Studio ggf. einen API-Token verlangen lassen/abschalten.
+  { id: "lmstudio", label: "LM Studio (lokal)", type: 50, base_url: "http://host.docker.internal:1234/v1", models: "" },
   { id: "custom", label: "OpenAI-kompatibel (eigener Endpunkt)", type: 50, base_url: "", models: "" },
 ];

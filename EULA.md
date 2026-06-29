@@ -1,7 +1,7 @@
 # Endbenutzer-Lizenzvertrag (EULA) — Kommerzielle Lizenz „Die Eine Kette"
 
 > Kurzfassung/Entwurf. Verbindlich ist der bei Kauf ausgestellte, individuelle Vertrag.
-> Für nicht-kommerzielle Nutzung gilt stattdessen die [PolyForm Noncommercial License](./LICENSE-DieEineKette.md).
+> Für nicht-kommerzielle Nutzung gilt stattdessen die [PolyForm Noncommercial License](./LICENSE.md).
 
 ## 1. Gegenstand
 Diese EULA regelt die **kommerzielle** Nutzung des Die-Eine-Kette-Eigencodes (Frontend,

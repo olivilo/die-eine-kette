@@ -1,0 +1,45 @@
+name: "🐞 Bug report / Fehlerbericht"
+description: "Report a bug in the public alpha. / Melde einen Fehler in der öffentlichen Alpha."
+labels: ["bug", "alpha"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **Public alpha — work in progress.** Rough edges are expected. Thanks for helping!
+        ⚠️ **Öffentliche Alpha — in Arbeit.** Fehler sind zu erwarten. Danke fürs Mithelfen!
+
+        🔐 **Do NOT post secrets** (API keys, tokens, `.env` contents, license keys) in issues.
+        🔐 **Keine Geheimnisse posten** (API-Keys, Tokens, `.env`, Lizenzschlüssel).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: "What happened? / Was ist passiert?"
+      description: "Describe the bug and what you expected instead."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce / Schritte zur Reproduktion"
+      placeholder: |
+        1. …
+        2. …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: "Environment / Umgebung"
+      description: "OS, Docker version, browser, deployment (local `docker compose` etc.)."
+      placeholder: "macOS 15, Docker 29, Chrome 130, local docker compose"
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs / Screenshots"
+      description: "Relevant logs or screenshots — please REDACT any secrets first."
+      render: shell
+    validations:
+      required: false

@@ -1,0 +1,31 @@
+name: "💡 Feature request / Funktionswunsch"
+description: "Suggest an improvement. / Schlage eine Verbesserung vor."
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problem / Use case"
+      description: "What are you trying to do? What's missing or awkward today?"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed solution / Lösungsvorschlag"
+    validations:
+      required: false
+  - type: dropdown
+    id: area
+    attributes:
+      label: "Area / Bereich"
+      options:
+        - "UI / UX"
+        - "Provider / model integration"
+        - "Tokens / limits / budgets"
+        - "Users / groups / multi-tenant"
+        - "Security / governance"
+        - "Docs / i18n"
+        - "Other"
+    validations:
+      required: false
