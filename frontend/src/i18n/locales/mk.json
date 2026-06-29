@@ -40,7 +40,11 @@
     "submit": "Пријавете се",
     "error": "Најавувањето не успеа",
     "totp": "2FA код",
-    "totp_hint": "Код од вашата апликација за автентикатор или резервен код"
+    "totp_hint": "Код од вашата апликација за автентикатор или резервен код",
+    "or": "или",
+    "sso": "Пријавете се со SSO",
+    "sso_error": "Најавувањето на SSO не успеа",
+    "sso_progress": "Се најавува…"
   },
   "dashboard": {
     "title": "Контролна табла",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Автоматски оневозможи канали",
       "AutomaticEnableChannelEnabled": "Автоматско овозможување на канали",
       "ChannelDisableThreshold": "Автоматско оневозможување на прагот",
-      "RetryTimes": "Се обидува повторно"
+      "RetryTimes": "Се обидува повторно",
+      "OidcEnabled": "Најавата за OIDC е овозможена",
+      "ServerAddress": "Адреса на серверот (јавна URL)",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Крајна точка за овластување",
+      "OidcTokenEndpoint": "Token крајна точка",
+      "OidcUserinfoEndpoint": "Userinfo крајна точка"
     },
     "sec": {
       "system": "Систем",
       "pricing": "Моделни цени",
       "smtp": "Е-пошта (SMTP)",
-      "reliability": "Доверливост на каналот"
+      "reliability": "Доверливост на каналот",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Општи системски поставки.",
       "pricing": "Како токените се претвораат во цена.",
       "smtp": "Испраќање е-пошта за потврда и ресетирање на лозинка.",
-      "reliability": "Автоматизација за неуспешни провајдери."
+      "reliability": "Автоматизација за неуспешни провајдери.",
+      "sso": "Најавете се преку давателот на идентитетот на вашата компанија (Entra ID, Okta, One Identity). Адресата на серверот мора да одговара на оваа јавна апликација URL."
     },
     "root_only": "Овие поставки се видливи само за root."
   },

@@ -40,7 +40,11 @@
     "submit": "Iniciar sesión",
     "error": "Error al iniciar sesión",
     "totp": "Código 2FA",
-    "totp_hint": "Código de tu app de autenticación o un código de respaldo"
+    "totp_hint": "Código de tu app de autenticación o un código de respaldo",
+    "or": "o",
+    "sso": "Iniciar sesión con SSO",
+    "sso_error": "Error al iniciar sesión en SSO",
+    "sso_progress": "Iniciando sesión…"
   },
   "dashboard": {
     "title": "Panel",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Canales deshabilitados automáticamente",
       "AutomaticEnableChannelEnabled": "Activar canales automáticamente",
       "ChannelDisableThreshold": "Umbral de desactivación automática",
-      "RetryTimes": "Reintentos"
+      "RetryTimes": "Reintentos",
+      "OidcEnabled": "Inicio de sesión OIDC habilitado",
+      "ServerAddress": "Dirección del servidor (público URL)",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Punto final de autorización",
+      "OidcTokenEndpoint": "Punto final Token",
+      "OidcUserinfoEndpoint": "Punto final Userinfo"
     },
     "sec": {
       "system": "Sistema",
       "pricing": "Precios del modelo",
       "smtp": "Correo electrónico (SMTP)",
-      "reliability": "Fiabilidad del canal"
+      "reliability": "Fiabilidad del canal",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Configuraciones generales del sistema.",
       "pricing": "Cómo los tokens se convierten en costos.",
       "smtp": "Envío de correo electrónico para verificación y restablecimiento de contraseña.",
-      "reliability": "Automatización para proveedores fallidos."
+      "reliability": "Automatización para proveedores fallidos.",
+      "sso": "Inicie sesión a través del proveedor de identidad de su empresa (Entra ID, Okta, One Identity). La dirección del servidor debe coincidir con la aplicación pública URL."
     },
     "root_only": "Estas configuraciones son visibles solo para root."
   },

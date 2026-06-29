@@ -40,7 +40,11 @@
     "submit": "Identifikohu",
     "error": "Identifikimi dështoi",
     "totp": "Kodi 2FA",
-    "totp_hint": "Kodi nga aplikacioni juaj i vërtetuesit ose një kod rezervë"
+    "totp_hint": "Kodi nga aplikacioni juaj i vërtetuesit ose një kod rezervë",
+    "or": "ose",
+    "sso": "Hyni me SSO",
+    "sso_error": "Identifikimi në SSO dështoi",
+    "sso_progress": "Po identifikohet…"
   },
   "dashboard": {
     "title": "Paneli",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Çaktivizo automatikisht kanalet",
       "AutomaticEnableChannelEnabled": "Aktivizo automatikisht kanalet",
       "ChannelDisableThreshold": "Aktivizo automatikisht pragun",
-      "RetryTimes": "Riprovon"
+      "RetryTimes": "Riprovon",
+      "OidcEnabled": "Identifikimi në OIDC është aktivizuar",
+      "ServerAddress": "Adresa e serverit (URL publike)",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Pika përfundimtare e autorizimit",
+      "OidcTokenEndpoint": "Pika përfundimtare Token",
+      "OidcUserinfoEndpoint": "Pika përfundimtare Userinfo"
     },
     "sec": {
       "system": "Sistemi",
       "pricing": "Çmimi model",
       "smtp": "Email (SMTP)",
-      "reliability": "Besueshmëria e kanalit"
+      "reliability": "Besueshmëria e kanalit",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Cilësimet e përgjithshme të sistemit.",
       "pricing": "Si konvertohen argumentet në kosto.",
       "smtp": "Dërgimi i emailit për verifikim dhe rivendosje të fjalëkalimit.",
-      "reliability": "Automatizimi për ofruesit e dështuar."
+      "reliability": "Automatizimi për ofruesit e dështuar.",
+      "sso": "Identifikohu nëpërmjet ofruesit të identitetit të kompanisë (Entra ID, Okta, One Identity). Adresa e serverit duhet të përputhet me këtë aplikacion publik URL."
     },
     "root_only": "Këto cilësime janë të dukshme vetëm për root."
   },

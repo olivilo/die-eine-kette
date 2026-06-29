@@ -40,7 +40,11 @@
     "submit": "Se connecter",
     "error": "Échec de la connexion",
     "totp": "Code 2FA",
-    "totp_hint": "Code de votre application d'authentification ou un code de secours"
+    "totp_hint": "Code de votre application d'authentification ou un code de secours",
+    "or": "ou",
+    "sso": "Connectez-vous avec SSO",
+    "sso_error": "Échec de la connexion à SSO",
+    "sso_progress": "Connexion…"
   },
   "dashboard": {
     "title": "Tableau de bord",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Chaînes à désactivation automatique",
       "AutomaticEnableChannelEnabled": "Activer automatiquement les chaînes",
       "ChannelDisableThreshold": "Seuil de désactivation automatique",
-      "RetryTimes": "Nouvelles tentatives"
+      "RetryTimes": "Nouvelles tentatives",
+      "OidcEnabled": "Connexion OIDC activée",
+      "ServerAddress": "Adresse du serveur (publique URL)",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Point de terminaison d’autorisation",
+      "OidcTokenEndpoint": "Point de terminaison Token",
+      "OidcUserinfoEndpoint": "Point de terminaison Userinfo"
     },
     "sec": {
       "system": "Système",
       "pricing": "Tarification du modèle",
       "smtp": "Courriel (SMTP)",
-      "reliability": "Fiabilité des canaux"
+      "reliability": "Fiabilité des canaux",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Paramètres généraux du système.",
       "pricing": "Comment les jetons sont convertis en coût.",
       "smtp": "Envoi d'e-mail pour vérification et réinitialisation du mot de passe.",
-      "reliability": "Automatisation pour les fournisseurs défaillants."
+      "reliability": "Automatisation pour les fournisseurs défaillants.",
+      "sso": "Connectez-vous via le fournisseur d'identité de votre entreprise (Entra ID, Okta, One Identity). L'adresse du serveur doit correspondre à cette application publique URL."
     },
     "root_only": "Ces paramètres sont visibles uniquement par root."
   },

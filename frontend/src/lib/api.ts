@@ -127,6 +127,15 @@ export type SelfHostedProfile = {
 
 export const api = {
   status: () => request<Record<string, unknown>>("/status"),
+  statusInfo: () =>
+    request<{
+      oidc?: boolean;
+      oidc_client_id?: string;
+      oidc_authorization_endpoint?: string;
+    }>("/status"),
+  oauthState: () => request<string>("/oauth/state"),
+  oidcCallback: (code: string, state: string) =>
+    request<User>(`/oauth/oidc?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`),
   self: () => request<User>("/user/self"),
   login: (username: string, password: string, totpCode?: string) =>
     request<User & { totp_required?: boolean }>("/user/login", {

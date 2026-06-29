@@ -40,7 +40,11 @@
     "submit": "登录",
     "error": "登录失败",
     "totp": "二步验证码",
-    "totp_hint": "来自身份验证器应用的验证码或备用码"
+    "totp_hint": "来自身份验证器应用的验证码或备用码",
+    "or": "或者",
+    "sso": "使用 SSO 登录",
+    "sso_error": "SSO 登录失败",
+    "sso_progress": "正在登录..."
   },
   "dashboard": {
     "title": "概览",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "自动禁用频道",
       "AutomaticEnableChannelEnabled": "自动启用通道",
       "ChannelDisableThreshold": "自动禁用阈值",
-      "RetryTimes": "重试"
+      "RetryTimes": "重试",
+      "OidcEnabled": "OIDC登录已启用",
+      "ServerAddress": "服务器地址（公共URL）",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "授权端点",
+      "OidcTokenEndpoint": "Token端点",
+      "OidcUserinfoEndpoint": "Userinfo端点"
     },
     "sec": {
       "system": "系统",
       "pricing": "型号定价",
       "smtp": "电子邮件 (SMTP)",
-      "reliability": "渠道可靠性"
+      "reliability": "渠道可靠性",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "常规系统设置。",
       "pricing": "代币如何转化为成本。",
       "smtp": "发送电子邮件以进行验证和密码重置。",
-      "reliability": "失败供应商的自动化。"
+      "reliability": "失败供应商的自动化。",
+      "sso": "通过您的公司身份提供商（Entra ID、Okta、One Identity）登录。服务器地址必须与此应用程序公共 URL 匹配。"
     },
     "root_only": "这些设置仅对 root 可见。"
   },

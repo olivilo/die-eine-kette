@@ -40,7 +40,11 @@
     "submit": "Accedi",
     "error": "Accesso non riuscito",
     "totp": "Codice 2FA",
-    "totp_hint": "Codice dalla tua app di autenticazione o un codice di backup"
+    "totp_hint": "Codice dalla tua app di autenticazione o un codice di backup",
+    "or": "O",
+    "sso": "Accedi con SSO",
+    "sso_error": "Accesso a SSO non riuscito",
+    "sso_progress": "Accesso…"
   },
   "dashboard": {
     "title": "Cruscotto",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Canali disattivati ​​automaticamente",
       "AutomaticEnableChannelEnabled": "Abilita automaticamente i canali",
       "ChannelDisableThreshold": "Soglia di disattivazione automatica",
-      "RetryTimes": "Nuovi tentativi"
+      "RetryTimes": "Nuovi tentativi",
+      "OidcEnabled": "Accesso OIDC abilitato",
+      "ServerAddress": "Indirizzo del server (pubblico URL)",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Endpoint di autorizzazione",
+      "OidcTokenEndpoint": "Punto finale Token",
+      "OidcUserinfoEndpoint": "Punto finale Userinfo"
     },
     "sec": {
       "system": "Sistema",
       "pricing": "Prezzi del modello",
       "smtp": "E-mail (SMTP)",
-      "reliability": "Affidabilità del canale"
+      "reliability": "Affidabilità del canale",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Impostazioni generali del sistema.",
       "pricing": "Come i token si convertono in costi.",
       "smtp": "Invio email per verifica e reimpostazione password.",
-      "reliability": "Automazione per i fornitori in fallimento."
+      "reliability": "Automazione per i fornitori in fallimento.",
+      "sso": "Accedi tramite il provider di identità della tua azienda (Entra ID, Okta, One Identity). L'indirizzo del server deve corrispondere a questa app pubblica URL."
     },
     "root_only": "Queste impostazioni sono visibili solo a root."
   },

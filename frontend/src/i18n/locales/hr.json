@@ -40,7 +40,11 @@
     "submit": "Prijavi se",
     "error": "Prijava nije uspela",
     "totp": "2FA kod",
-    "totp_hint": "Kod iz aplikacije za autentifikaciju ili rezervni kod"
+    "totp_hint": "Kod iz aplikacije za autentifikaciju ili rezervni kod",
+    "or": "ili",
+    "sso": "Prijavite se sa SSO",
+    "sso_error": "SSO prijava nije uspjela",
+    "sso_progress": "Prijava..."
   },
   "dashboard": {
     "title": "Pregled",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Automatsko onemogućavanje kanala",
       "AutomaticEnableChannelEnabled": "Automatski omogući kanale",
       "ChannelDisableThreshold": "Prag automatskog onemogućavanja",
-      "RetryTimes": "Ponovni pokušaji"
+      "RetryTimes": "Ponovni pokušaji",
+      "OidcEnabled": "OIDC prijava omogućena",
+      "ServerAddress": "Adresa poslužitelja (javna URL)",
+      "OidcClientId": "Client ID",
+      "OidcClientSecret": "Client secret",
+      "OidcWellKnown": "Discovery URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Krajnja točka autorizacije",
+      "OidcTokenEndpoint": "Krajnja točka Token",
+      "OidcUserinfoEndpoint": "Krajnja točka Userinfo"
     },
     "sec": {
       "system": "sustav",
       "pricing": "Cijene modela",
       "smtp": "E-pošta (SMTP)",
-      "reliability": "Pouzdanost kanala"
+      "reliability": "Pouzdanost kanala",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Opće postavke sustava.",
       "pricing": "Kako se tokeni pretvaraju u trošak.",
       "smtp": "Slanje e-pošte za provjeru i poništavanje lozinke.",
-      "reliability": "Automatizacija za neispravne pružatelje."
+      "reliability": "Automatizacija za neispravne pružatelje.",
+      "sso": "Prijavite se putem pružatelja identiteta vaše tvrtke (Entra ID, Okta, One Identity). Adresa poslužitelja mora odgovarati ovoj javnoj aplikaciji URL."
     },
     "root_only": "Ove su postavke vidljive samo rootu."
   },

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/components/AuthProvider";
+import { api } from "@/lib/api";
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -16,6 +17,29 @@ export default function LoginPage() {
   const [totpRequired, setTotpRequired] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [oidc, setOidc] = useState<{ clientId: string; authEndpoint: string } | null>(null);
+
+  useEffect(() => {
+    api.statusInfo().then((res) => {
+      const d = res.data;
+      if (d?.oidc && d.oidc_client_id && d.oidc_authorization_endpoint) {
+        setOidc({ clientId: d.oidc_client_id, authEndpoint: d.oidc_authorization_endpoint });
+      }
+    });
+  }, []);
+
+  async function startSso() {
+    if (!oidc) return;
+    setBusy(true);
+    const res = await api.oauthState();
+    if (!res.success || !res.data) { setBusy(false); setError(t("login.sso_error")); return; }
+    const redirect = `${window.location.origin}/oauth/oidc`;
+    const url =
+      `${oidc.authEndpoint}?client_id=${encodeURIComponent(oidc.clientId)}` +
+      `&redirect_uri=${encodeURIComponent(redirect)}&response_type=code` +
+      `&scope=${encodeURIComponent("openid profile email")}&state=${encodeURIComponent(res.data)}`;
+    window.location.href = url;
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -84,6 +108,22 @@ export default function LoginPage() {
         >
           {busy ? "…" : t("login.submit")}
         </button>
+
+        {oidc && (
+          <>
+            <div className="flex items-center gap-3 text-xs text-zinc-600">
+              <span className="h-px flex-1 bg-zinc-800" />{t("login.or")}<span className="h-px flex-1 bg-zinc-800" />
+            </div>
+            <button
+              type="button"
+              onClick={startSso}
+              disabled={busy}
+              className="rounded-md border border-zinc-700 px-4 py-2 font-semibold text-zinc-200 transition hover:border-gold hover:text-gold disabled:opacity-60"
+            >
+              {t("login.sso")}
+            </button>
+          </>
+        )}
       </form>
     </section>
   );

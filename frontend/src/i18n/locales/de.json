@@ -40,7 +40,11 @@
     "submit": "Anmelden",
     "error": "Anmeldung fehlgeschlagen",
     "totp": "2FA-Code",
-    "totp_hint": "Code aus deiner Authenticator-App oder ein Backup-Code"
+    "totp_hint": "Code aus deiner Authenticator-App oder ein Backup-Code",
+    "or": "oder",
+    "sso": "Mit SSO anmelden",
+    "sso_error": "SSO-Anmeldung fehlgeschlagen",
+    "sso_progress": "Anmeldung läuft…"
   },
   "dashboard": {
     "title": "Übersicht",
@@ -130,19 +134,29 @@
       "AutomaticDisableChannelEnabled": "Channels auto-deaktivieren",
       "AutomaticEnableChannelEnabled": "Channels auto-reaktivieren",
       "ChannelDisableThreshold": "Auto-Deaktiv-Schwelle",
-      "RetryTimes": "Wiederholungen"
+      "RetryTimes": "Wiederholungen",
+      "OidcEnabled": "OIDC-Login aktiv",
+      "ServerAddress": "Server-Adresse (öffentliche URL)",
+      "OidcClientId": "Client-ID",
+      "OidcClientSecret": "Client-Secret",
+      "OidcWellKnown": "Discovery-URL (.well-known)",
+      "OidcAuthorizationEndpoint": "Authorization-Endpunkt",
+      "OidcTokenEndpoint": "Token-Endpunkt",
+      "OidcUserinfoEndpoint": "Userinfo-Endpunkt"
     },
     "sec": {
       "system": "System",
       "pricing": "Modell-Preise",
       "smtp": "E-Mail (SMTP)",
-      "reliability": "Channel-Zuverlässigkeit"
+      "reliability": "Channel-Zuverlässigkeit",
+      "sso": "SSO (OIDC)"
     },
     "secdesc": {
       "system": "Allgemeine System-Einstellungen.",
       "pricing": "Wie Tokens in Kosten umgerechnet werden.",
       "smtp": "E-Mail-Versand für Verifizierung und Passwort-Reset.",
-      "reliability": "Automatik für ausfallende Anbieter."
+      "reliability": "Automatik für ausfallende Anbieter.",
+      "sso": "Anmeldung über den Identity-Provider deines Unternehmens (Entra ID, Okta, One Identity). Die Server-Adresse muss der öffentlichen URL dieser App entsprechen."
     },
     "root_only": "Diese Einstellungen sind nur für Root sichtbar."
   },
