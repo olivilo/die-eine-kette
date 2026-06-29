@@ -113,8 +113,38 @@
       "RegisterEnabled": "Registracija omogočena",
       "PasswordLoginEnabled": "Prijava z geslom",
       "PasswordRegisterEnabled": "Registracija gesla",
-      "EmailVerificationEnabled": "Preverjanje e-pošte"
-    }
+      "EmailVerificationEnabled": "Preverjanje e-pošte",
+      "QuotaPerUnit": "Kvota na 1 USD",
+      "QuotaForNewUser": "Nova uporabniška kvota",
+      "DisplayInCurrencyEnabled": "Prikaži zneske v valuti",
+      "ModelRatio": "Razmerja modela (JSON)",
+      "CompletionRatio": "Razmerja dokončanja (JSON)",
+      "GroupRatio": "Skupinska razmerja (JSON)",
+      "SMTPServer": "strežnik SMTP",
+      "SMTPPort": "vrata SMTP",
+      "SMTPAccount": "račun SMTP",
+      "SMTPFrom": "From naslov",
+      "SMTPToken": "geslo SMTP",
+      "EmailDomainRestrictionEnabled": "Omejite e-poštne domene",
+      "EmailDomainWhitelist": "Dovoljene e-poštne domene",
+      "AutomaticDisableChannelEnabled": "Samodejno onemogoči kanale",
+      "AutomaticEnableChannelEnabled": "Samodejno omogoči kanale",
+      "ChannelDisableThreshold": "Samodejni onemogoči prag",
+      "RetryTimes": "Ponovni poskusi"
+    },
+    "sec": {
+      "system": "Sistem",
+      "pricing": "Cene modela",
+      "smtp": "E-pošta (SMTP)",
+      "reliability": "Zanesljivost kanala"
+    },
+    "secdesc": {
+      "system": "Splošne sistemske nastavitve.",
+      "pricing": "Kako se žetoni pretvorijo v stroške.",
+      "smtp": "Pošiljanje e-pošte za preverjanje in ponastavitev gesla.",
+      "reliability": "Avtomatizacija za neuspešne ponudnike."
+    },
+    "root_only": "Te nastavitve so vidne samo root-u."
   },
   "twofa": {
     "title": "Dvostopenjska avtentikacija (2FA)",

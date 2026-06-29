@@ -113,8 +113,38 @@
       "RegisterEnabled": "Registrazione abilitata",
       "PasswordLoginEnabled": "Login con password",
       "PasswordRegisterEnabled": "Registrazione con password",
-      "EmailVerificationEnabled": "Verifica e-mail"
-    }
+      "EmailVerificationEnabled": "Verifica e-mail",
+      "QuotaPerUnit": "Quota per 1 USD",
+      "QuotaForNewUser": "Nuova quota utente",
+      "DisplayInCurrencyEnabled": "Mostra gli importi in valuta",
+      "ModelRatio": "Rapporti del modello (JSON)",
+      "CompletionRatio": "Rapporti di completamento (JSON)",
+      "GroupRatio": "Rapporti di gruppo (JSON)",
+      "SMTPServer": "Server SMTP",
+      "SMTPPort": "Porta SMTP",
+      "SMTPAccount": "Conto SMTP",
+      "SMTPFrom": "Indirizzo From",
+      "SMTPToken": "Parola d'ordine SMTP",
+      "EmailDomainRestrictionEnabled": "Limita i domini di posta elettronica",
+      "EmailDomainWhitelist": "Domini di posta elettronica consentiti",
+      "AutomaticDisableChannelEnabled": "Canali disattivati ​​automaticamente",
+      "AutomaticEnableChannelEnabled": "Abilita automaticamente i canali",
+      "ChannelDisableThreshold": "Soglia di disattivazione automatica",
+      "RetryTimes": "Nuovi tentativi"
+    },
+    "sec": {
+      "system": "Sistema",
+      "pricing": "Prezzi del modello",
+      "smtp": "E-mail (SMTP)",
+      "reliability": "Affidabilità del canale"
+    },
+    "secdesc": {
+      "system": "Impostazioni generali del sistema.",
+      "pricing": "Come i token si convertono in costi.",
+      "smtp": "Invio email per verifica e reimpostazione password.",
+      "reliability": "Automazione per i fornitori in fallimento."
+    },
+    "root_only": "Queste impostazioni sono visibili solo a root."
   },
   "twofa": {
     "title": "Autenticazione a due fattori (2FA)",

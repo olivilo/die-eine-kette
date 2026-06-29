@@ -113,8 +113,38 @@
       "RegisterEnabled": "Inscription activée",
       "PasswordLoginEnabled": "Connexion par mot de passe",
       "PasswordRegisterEnabled": "Inscription par mot de passe",
-      "EmailVerificationEnabled": "Vérification e-mail"
-    }
+      "EmailVerificationEnabled": "Vérification e-mail",
+      "QuotaPerUnit": "Quota par 1 USD",
+      "QuotaForNewUser": "Quota de nouveaux utilisateurs",
+      "DisplayInCurrencyEnabled": "Afficher les montants en devise",
+      "ModelRatio": "Rapports de modèle (JSON)",
+      "CompletionRatio": "Taux d’achèvement (JSON)",
+      "GroupRatio": "Ratios de groupe (JSON)",
+      "SMTPServer": "Serveur SMTP",
+      "SMTPPort": "Port SMTP",
+      "SMTPAccount": "Compte SMTP",
+      "SMTPFrom": "Adresse From",
+      "SMTPToken": "Mot de passe SMTP",
+      "EmailDomainRestrictionEnabled": "Restreindre les domaines de messagerie",
+      "EmailDomainWhitelist": "Domaines de messagerie autorisés",
+      "AutomaticDisableChannelEnabled": "Chaînes à désactivation automatique",
+      "AutomaticEnableChannelEnabled": "Activer automatiquement les chaînes",
+      "ChannelDisableThreshold": "Seuil de désactivation automatique",
+      "RetryTimes": "Nouvelles tentatives"
+    },
+    "sec": {
+      "system": "Système",
+      "pricing": "Tarification du modèle",
+      "smtp": "Courriel (SMTP)",
+      "reliability": "Fiabilité des canaux"
+    },
+    "secdesc": {
+      "system": "Paramètres généraux du système.",
+      "pricing": "Comment les jetons sont convertis en coût.",
+      "smtp": "Envoi d'e-mail pour vérification et réinitialisation du mot de passe.",
+      "reliability": "Automatisation pour les fournisseurs défaillants."
+    },
+    "root_only": "Ces paramètres sont visibles uniquement par root."
   },
   "twofa": {
     "title": "Authentification à deux facteurs (2FA)",

@@ -113,8 +113,38 @@
       "RegisterEnabled": "Регистрацијата е овозможена",
       "PasswordLoginEnabled": "Најава со лозинка",
       "PasswordRegisterEnabled": "Регистрација на лозинка",
-      "EmailVerificationEnabled": "Потврда на е-пошта"
-    }
+      "EmailVerificationEnabled": "Потврда на е-пошта",
+      "QuotaPerUnit": "Квота за 1 USD",
+      "QuotaForNewUser": "Нова корисничка квота",
+      "DisplayInCurrencyEnabled": "Прикажи износи во валута",
+      "ModelRatio": "Коефициенти на модели (JSON)",
+      "CompletionRatio": "Коефициенти на завршување (JSON)",
+      "GroupRatio": "Групни стапки (JSON)",
+      "SMTPServer": "Сервер SMTP",
+      "SMTPPort": "порта SMTP",
+      "SMTPAccount": "ЗК0З сметка",
+      "SMTPFrom": "From адреса",
+      "SMTPToken": "Лозинка SMTP",
+      "EmailDomainRestrictionEnabled": "Ограничете ги домени за е-пошта",
+      "EmailDomainWhitelist": "Дозволени домени за е-пошта",
+      "AutomaticDisableChannelEnabled": "Автоматски оневозможи канали",
+      "AutomaticEnableChannelEnabled": "Автоматско овозможување на канали",
+      "ChannelDisableThreshold": "Автоматско оневозможување на прагот",
+      "RetryTimes": "Се обидува повторно"
+    },
+    "sec": {
+      "system": "Систем",
+      "pricing": "Моделни цени",
+      "smtp": "Е-пошта (SMTP)",
+      "reliability": "Доверливост на каналот"
+    },
+    "secdesc": {
+      "system": "Општи системски поставки.",
+      "pricing": "Како токените се претвораат во цена.",
+      "smtp": "Испраќање е-пошта за потврда и ресетирање на лозинка.",
+      "reliability": "Автоматизација за неуспешни провајдери."
+    },
+    "root_only": "Овие поставки се видливи само за root."
   },
   "twofa": {
     "title": "Двофакторна автентикација (2FA)",

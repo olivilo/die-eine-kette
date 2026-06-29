@@ -113,8 +113,38 @@
       "RegisterEnabled": "Regjistrimi u aktivizua",
       "PasswordLoginEnabled": "Hyrja me fjalëkalim",
       "PasswordRegisterEnabled": "Regjistrimi me fjalëkalim",
-      "EmailVerificationEnabled": "Verifikimi me email"
-    }
+      "EmailVerificationEnabled": "Verifikimi me email",
+      "QuotaPerUnit": "Kuota për 1 USD",
+      "QuotaForNewUser": "Kuota e përdoruesve të rinj",
+      "DisplayInCurrencyEnabled": "Shfaq shumat në monedhë",
+      "ModelRatio": "Raportet e modelit (JSON)",
+      "CompletionRatio": "Raportet e përfundimit (JSON)",
+      "GroupRatio": "Raportet e grupit (JSON)",
+      "SMTPServer": "Serveri SMTP",
+      "SMTPPort": "Porta SMTP",
+      "SMTPAccount": "Llogaria SMTP",
+      "SMTPFrom": "Adresa From",
+      "SMTPToken": "Fjalëkalimi SMTP",
+      "EmailDomainRestrictionEnabled": "Kufizoni domenet e postës elektronike",
+      "EmailDomainWhitelist": "Domenet e lejuara të emailit",
+      "AutomaticDisableChannelEnabled": "Çaktivizo automatikisht kanalet",
+      "AutomaticEnableChannelEnabled": "Aktivizo automatikisht kanalet",
+      "ChannelDisableThreshold": "Aktivizo automatikisht pragun",
+      "RetryTimes": "Riprovon"
+    },
+    "sec": {
+      "system": "Sistemi",
+      "pricing": "Çmimi model",
+      "smtp": "Email (SMTP)",
+      "reliability": "Besueshmëria e kanalit"
+    },
+    "secdesc": {
+      "system": "Cilësimet e përgjithshme të sistemit.",
+      "pricing": "Si konvertohen argumentet në kosto.",
+      "smtp": "Dërgimi i emailit për verifikim dhe rivendosje të fjalëkalimit.",
+      "reliability": "Automatizimi për ofruesit e dështuar."
+    },
+    "root_only": "Këto cilësime janë të dukshme vetëm për root."
   },
   "twofa": {
     "title": "Autentifikimi me dy faktorë (2FA)",

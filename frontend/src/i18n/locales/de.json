@@ -113,8 +113,38 @@
       "RegisterEnabled": "Registrierung erlaubt",
       "PasswordLoginEnabled": "Passwort-Login",
       "PasswordRegisterEnabled": "Registrierung mit Passwort",
-      "EmailVerificationEnabled": "E-Mail-Verifizierung"
-    }
+      "EmailVerificationEnabled": "E-Mail-Verifizierung",
+      "QuotaPerUnit": "Quota pro 1 USD",
+      "QuotaForNewUser": "Startguthaben (neue Nutzer)",
+      "DisplayInCurrencyEnabled": "Beträge in Währung anzeigen",
+      "ModelRatio": "Modell-Ratios (JSON)",
+      "CompletionRatio": "Completion-Ratios (JSON)",
+      "GroupRatio": "Gruppen-Ratios (JSON)",
+      "SMTPServer": "SMTP-Server",
+      "SMTPPort": "SMTP-Port",
+      "SMTPAccount": "SMTP-Konto",
+      "SMTPFrom": "Absender (From)",
+      "SMTPToken": "SMTP-Passwort",
+      "EmailDomainRestrictionEnabled": "E-Mail-Domain beschränken",
+      "EmailDomainWhitelist": "Erlaubte E-Mail-Domains",
+      "AutomaticDisableChannelEnabled": "Channels auto-deaktivieren",
+      "AutomaticEnableChannelEnabled": "Channels auto-reaktivieren",
+      "ChannelDisableThreshold": "Auto-Deaktiv-Schwelle",
+      "RetryTimes": "Wiederholungen"
+    },
+    "sec": {
+      "system": "System",
+      "pricing": "Modell-Preise",
+      "smtp": "E-Mail (SMTP)",
+      "reliability": "Channel-Zuverlässigkeit"
+    },
+    "secdesc": {
+      "system": "Allgemeine System-Einstellungen.",
+      "pricing": "Wie Tokens in Kosten umgerechnet werden.",
+      "smtp": "E-Mail-Versand für Verifizierung und Passwort-Reset.",
+      "reliability": "Automatik für ausfallende Anbieter."
+    },
+    "root_only": "Diese Einstellungen sind nur für Root sichtbar."
   },
   "twofa": {
     "title": "Zwei-Faktor-Authentifizierung (2FA)",

@@ -113,8 +113,38 @@
       "RegisterEnabled": "允许注册",
       "PasswordLoginEnabled": "密码登录",
       "PasswordRegisterEnabled": "密码注册",
-      "EmailVerificationEnabled": "邮箱验证"
-    }
+      "EmailVerificationEnabled": "邮箱验证",
+      "QuotaPerUnit": "每1 USD 配额",
+      "QuotaForNewUser": "新用户配额",
+      "DisplayInCurrencyEnabled": "显示货币金额",
+      "ModelRatio": "型号比率 (JSON)",
+      "CompletionRatio": "完成率 (JSON)",
+      "GroupRatio": "组比 (JSON)",
+      "SMTPServer": "SMTP服务器",
+      "SMTPPort": "SMTP端口",
+      "SMTPAccount": "SMTP账户",
+      "SMTPFrom": "From地址",
+      "SMTPToken": "SMTP密码",
+      "EmailDomainRestrictionEnabled": "限制电子邮件域",
+      "EmailDomainWhitelist": "允许的电子邮件域",
+      "AutomaticDisableChannelEnabled": "自动禁用频道",
+      "AutomaticEnableChannelEnabled": "自动启用通道",
+      "ChannelDisableThreshold": "自动禁用阈值",
+      "RetryTimes": "重试"
+    },
+    "sec": {
+      "system": "系统",
+      "pricing": "型号定价",
+      "smtp": "电子邮件 (SMTP)",
+      "reliability": "渠道可靠性"
+    },
+    "secdesc": {
+      "system": "常规系统设置。",
+      "pricing": "代币如何转化为成本。",
+      "smtp": "发送电子邮件以进行验证和密码重置。",
+      "reliability": "失败供应商的自动化。"
+    },
+    "root_only": "这些设置仅对 root 可见。"
   },
   "twofa": {
     "title": "两步验证（2FA）",

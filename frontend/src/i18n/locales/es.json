@@ -113,8 +113,38 @@
       "RegisterEnabled": "Registro habilitado",
       "PasswordLoginEnabled": "Inicio con contraseña",
       "PasswordRegisterEnabled": "Registro con contraseña",
-      "EmailVerificationEnabled": "Verificación de correo"
-    }
+      "EmailVerificationEnabled": "Verificación de correo",
+      "QuotaPerUnit": "Cuota por 1 USD",
+      "QuotaForNewUser": "Nueva cuota de usuarios",
+      "DisplayInCurrencyEnabled": "Mostrar importes en moneda",
+      "ModelRatio": "Relaciones del modelo (JSON)",
+      "CompletionRatio": "Ratios de finalización (JSON)",
+      "GroupRatio": "Relaciones de grupo (JSON)",
+      "SMTPServer": "servidor SMTP",
+      "SMTPPort": "Puerto SMTP",
+      "SMTPAccount": "cuenta SMTP",
+      "SMTPFrom": "dirección From",
+      "SMTPToken": "contraseña SMTP",
+      "EmailDomainRestrictionEnabled": "Restringir dominios de correo electrónico",
+      "EmailDomainWhitelist": "Dominios de correo electrónico permitidos",
+      "AutomaticDisableChannelEnabled": "Canales deshabilitados automáticamente",
+      "AutomaticEnableChannelEnabled": "Activar canales automáticamente",
+      "ChannelDisableThreshold": "Umbral de desactivación automática",
+      "RetryTimes": "Reintentos"
+    },
+    "sec": {
+      "system": "Sistema",
+      "pricing": "Precios del modelo",
+      "smtp": "Correo electrónico (SMTP)",
+      "reliability": "Fiabilidad del canal"
+    },
+    "secdesc": {
+      "system": "Configuraciones generales del sistema.",
+      "pricing": "Cómo los tokens se convierten en costos.",
+      "smtp": "Envío de correo electrónico para verificación y restablecimiento de contraseña.",
+      "reliability": "Automatización para proveedores fallidos."
+    },
+    "root_only": "Estas configuraciones son visibles solo para root."
   },
   "twofa": {
     "title": "Autenticación de dos factores (2FA)",

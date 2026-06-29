@@ -113,8 +113,38 @@
       "RegisterEnabled": "Registration enabled",
       "PasswordLoginEnabled": "Password login",
       "PasswordRegisterEnabled": "Password registration",
-      "EmailVerificationEnabled": "Email verification"
-    }
+      "EmailVerificationEnabled": "Email verification",
+      "QuotaPerUnit": "Quota per 1 USD",
+      "QuotaForNewUser": "New user quota",
+      "DisplayInCurrencyEnabled": "Show amounts in currency",
+      "ModelRatio": "Model ratios (JSON)",
+      "CompletionRatio": "Completion ratios (JSON)",
+      "GroupRatio": "Group ratios (JSON)",
+      "SMTPServer": "SMTP server",
+      "SMTPPort": "SMTP port",
+      "SMTPAccount": "SMTP account",
+      "SMTPFrom": "From address",
+      "SMTPToken": "SMTP password",
+      "EmailDomainRestrictionEnabled": "Restrict email domains",
+      "EmailDomainWhitelist": "Allowed email domains",
+      "AutomaticDisableChannelEnabled": "Auto-disable channels",
+      "AutomaticEnableChannelEnabled": "Auto-enable channels",
+      "ChannelDisableThreshold": "Auto-disable threshold",
+      "RetryTimes": "Retries"
+    },
+    "sec": {
+      "system": "System",
+      "pricing": "Model pricing",
+      "smtp": "Email (SMTP)",
+      "reliability": "Channel reliability"
+    },
+    "secdesc": {
+      "system": "General system settings.",
+      "pricing": "How tokens convert into cost.",
+      "smtp": "Email sending for verification and password reset.",
+      "reliability": "Automation for failing providers."
+    },
+    "root_only": "These settings are visible to root only."
   },
   "twofa": {
     "title": "Two-factor authentication (2FA)",

@@ -113,8 +113,38 @@
       "RegisterEnabled": "Регистрација омогућена",
       "PasswordLoginEnabled": "Пријава лозинком",
       "PasswordRegisterEnabled": "Регистрација лозинком",
-      "EmailVerificationEnabled": "Потврда е-поште"
-    }
+      "EmailVerificationEnabled": "Потврда е-поште",
+      "QuotaPerUnit": "Квота по 1 ЗК0З",
+      "QuotaForNewUser": "Нова корисничка квота",
+      "DisplayInCurrencyEnabled": "Прикажи износе у валути",
+      "ModelRatio": "Односи модела (ЗК0З)",
+      "CompletionRatio": "Омјери завршетка (ЗК0З)",
+      "GroupRatio": "Групни односи (ЗК0З)",
+      "SMTPServer": "ЗК0З сервер",
+      "SMTPPort": "ЗК0З порт",
+      "SMTPAccount": "ЗК0З налог",
+      "SMTPFrom": "ЗК0З адреса",
+      "SMTPToken": "ЗК0З лозинка",
+      "EmailDomainRestrictionEnabled": "Ограничите домене е-поште",
+      "EmailDomainWhitelist": "Дозвољени домени е-поште",
+      "AutomaticDisableChannelEnabled": "Аутоматско онемогућавање канала",
+      "AutomaticEnableChannelEnabled": "Аутоматско омогућавање канала",
+      "ChannelDisableThreshold": "Праг аутоматског онемогућавања",
+      "RetryTimes": "Поновни покушаји"
+    },
+    "sec": {
+      "system": "Систем",
+      "pricing": "Модел цена",
+      "smtp": "Е-пошта (ЗК0З)",
+      "reliability": "Поузданост канала"
+    },
+    "secdesc": {
+      "system": "Општа подешавања система.",
+      "pricing": "Како се токени претварају у цену.",
+      "smtp": "Слање е-поште ради верификације и ресетовања лозинке.",
+      "reliability": "Аутоматизација за неисправне провајдере."
+    },
+    "root_only": "Ова подешавања су видљива само роот-у."
   },
   "twofa": {
     "title": "Двофакторска аутентификација (2FA)",
