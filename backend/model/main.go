@@ -172,6 +172,13 @@ func migrateDB() error {
 	if err = DB.AutoMigrate(&CostEntry{}); err != nil {
 		return err
 	}
+	// Die Eine Kette — Agenten/MCP (Sicherheits-Fundament)
+	if err = DB.AutoMigrate(&Agent{}); err != nil {
+		return err
+	}
+	if err = DB.AutoMigrate(&AgentAudit{}); err != nil {
+		return err
+	}
 	return nil
 }
 

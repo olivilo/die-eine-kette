@@ -15,7 +15,8 @@
     "organizations": "Organizzazioni",
     "budgets": "Budget",
     "costs": "Costi",
-    "faq": "Aiuto"
+    "faq": "Aiuto",
+    "agents": "Agenti"
   },
   "hero": {
     "title": "Un gateway. Tutti i modelli di IA.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agenti e MCP (accesso sicuro per automazioni)",
+    "name": "Nome",
+    "status": "Stato",
+    "tools": "Strumenti consentiti",
+    "tools_hint": "Separati da virgole. Vuoto = niente (deny-by-default).",
+    "models": "Modelli ammessi",
+    "rate": "Limite di tariffa",
+    "last_used": "Ultimo usato",
+    "active": "Attivo",
+    "disabled": "Disabilitato",
+    "kill": "Disabilita",
+    "enable": "Abilitare",
+    "new": "Nuovo agente",
+    "empty": "Nessun agente ancora.",
+    "key_once": "Chiave agente: mostrata solo una volta. Conservalo ora.",
+    "security_note": "Sicurezza: gli agenti ricevono una chiave con ambito, solo gli strumenti consentiti (deny-by-default), un limite di velocità, guardrail a inserimento rapido, un kill switch e una traccia di controllo completa. Un agente non eccede mai i diritti del suo proprietario."
   }
 }

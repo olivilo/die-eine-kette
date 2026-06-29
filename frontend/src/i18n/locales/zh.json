@@ -15,7 +15,8 @@
     "organizations": "组织",
     "budgets": "预算",
     "costs": "成本",
-    "faq": "帮助"
+    "faq": "帮助",
+    "agents": "代理商"
   },
   "hero": {
     "title": "一个网关，所有 AI 模型。",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "代理和 MCP（自动化的安全访问）",
+    "name": "姓名",
+    "status": "地位",
+    "tools": "允许使用的工具",
+    "tools_hint": "以逗号分隔。空=什么都没有（deny-by-default）。",
+    "models": "允许的型号",
+    "rate": "速率限制",
+    "last_used": "上次使用",
+    "active": "积极的",
+    "disabled": "残疾人",
+    "kill": "禁用",
+    "enable": "使能够",
+    "new": "新代理",
+    "empty": "还没有代理。",
+    "key_once": "代理密钥 — 仅显示一次。现在就储存起来。",
+    "security_note": "安全性：代理获得范围密钥、仅允许使用的工具（deny-by-default）、速率限制、提示注入护栏、终止开关和完整的审计跟踪。代理人永远不会超越其所有者的权利。"
   }
 }

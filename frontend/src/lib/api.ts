@@ -74,6 +74,19 @@ export type Redemption = {
   created_time: number;
 };
 
+export type Agent = {
+  id: number;
+  name: string;
+  org_id: number;
+  owner_user_id: number;
+  status: number;
+  allowed_tools: string;
+  allowed_models: string;
+  rate_limit_per_min: number;
+  created_time: number;
+  last_used_time: number;
+};
+
 export type Budget = {
   id: number;
   name: string;
@@ -155,6 +168,12 @@ export const api = {
   assignUserToOrg: (username: string, org_id: number) =>
     request("/organization/assign", { method: "POST", body: JSON.stringify({ username, org_id }) }),
   costSummary: (days = 30) => request<CostSummary>(`/cost/summary?days=${days}`),
+  agents: () => request<Agent[]>("/agent?p=0"),
+  createAgent: (body: { name: string; allowed_tools: string; allowed_models: string; rate_limit_per_min: number }) =>
+    request<{ id: number; key: string }>("/agent", { method: "POST", body: JSON.stringify(body) }),
+  updateAgent: (body: Partial<Agent> & { id: number }) =>
+    request("/agent", { method: "PUT", body: JSON.stringify(body) }),
+  deleteAgent: (id: number) => request(`/agent/${id}`, { method: "DELETE" }),
   budgets: () => request<Budget[]>("/budget?p=0"),
   createBudget: (body: { name: string; scope: string; ref: string; amount_micro_eur: number; period: string; on_exhaust: string }) =>
     request("/budget", { method: "POST", body: JSON.stringify(body) }),

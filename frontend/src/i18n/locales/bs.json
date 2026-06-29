@@ -15,7 +15,8 @@
     "organizations": "Organizacije",
     "budgets": "Budžeti",
     "costs": "Troškovi",
-    "faq": "Pomoć"
+    "faq": "Pomoć",
+    "agents": "Agenti"
   },
   "hero": {
     "title": "Jedna kapija. Svi AI modeli.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agenti & MCP (siguran pristup za automatizaciju)",
+    "name": "Ime",
+    "status": "Status",
+    "tools": "Dozvoljeni alati",
+    "tools_hint": "Razdvojeno zarezima. Prazno = ništa (deny-by-default).",
+    "models": "Dozvoljeni modeli",
+    "rate": "Ograničenje stope",
+    "last_used": "Posljednje korišteno",
+    "active": "Aktivan",
+    "disabled": "Onemogućeno",
+    "kill": "Onemogući",
+    "enable": "Omogući",
+    "new": "Novi agent",
+    "empty": "Još nema agenata.",
+    "key_once": "Ključ agenta — prikazuje se samo jednom. Spremite ga sada.",
+    "security_note": "Sigurnost: agenti dobijaju ključ sa opsegom, samo njihove dozvoljene alate (deny-by-default), ograničenje brzine, zaštitne ograde za brzo ubrizgavanje, prekidač za zaustavljanje i potpuni nadzorni trag. Agent nikada ne prekoračuje vlasnička prava."
   }
 }

@@ -15,7 +15,8 @@
     "organizations": "Organisations",
     "budgets": "Budgets",
     "costs": "Coûts",
-    "faq": "Aide"
+    "faq": "Aide",
+    "agents": "Agents"
   },
   "hero": {
     "title": "Une passerelle. Tous les modèles d'IA.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agents & MCP (accès sécurisé pour les automatismes)",
+    "name": "Nom",
+    "status": "Statut",
+    "tools": "Outils autorisés",
+    "tools_hint": "Séparés par des virgules. Vide = rien (deny-by-default).",
+    "models": "Modèles autorisés",
+    "rate": "Limite de taux",
+    "last_used": "Dernière utilisation",
+    "active": "Actif",
+    "disabled": "Désactivé",
+    "kill": "Désactiver",
+    "enable": "Activer",
+    "new": "Nouvel agent",
+    "empty": "Aucun agent pour l'instant.",
+    "key_once": "Clé d'agent : affichée une seule fois. Rangez-le maintenant.",
+    "security_note": "Sécurité : les agents obtiennent une clé étendue, uniquement leurs outils autorisés (deny-by-default), une limite de débit, des garde-fous d'injection rapide, un kill switch et une piste d'audit complète. Un agent n'excède jamais les droits de son propriétaire."
   }
 }

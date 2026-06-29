@@ -15,7 +15,8 @@
     "organizations": "Organizatat",
     "budgets": "Buxhetet",
     "costs": "Kostot",
-    "faq": "Ndihmë"
+    "faq": "Ndihmë",
+    "agents": "Agjentët"
   },
   "hero": {
     "title": "Një portë. Çdo model i AI.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agjentët dhe MCP (qasje e sigurt për automatizimet)",
+    "name": "Emri",
+    "status": "Statusi",
+    "tools": "Mjetet e lejuara",
+    "tools_hint": "I ndarë me presje. Bosh = asgjë (deny-by-default).",
+    "models": "Modelet e lejuara",
+    "rate": "Kufiri i tarifës",
+    "last_used": "Përdorur për herë të fundit",
+    "active": "Aktiv",
+    "disabled": "I paaftë",
+    "kill": "Çaktivizo",
+    "enable": "Aktivizo",
+    "new": "Agjent i ri",
+    "empty": "Nuk ka ende agjentë.",
+    "key_once": "Çelësi i agjentit - shfaqet vetëm një herë. Ruajeni tani.",
+    "security_note": "Siguria: agjentët marrin një çelës me shtrirje, vetëm mjetet e tyre të lejuara (deny-by-default), një kufi tarife, parmakë me injeksion të shpejtë, një çelës vrasësi dhe një gjurmë të plotë auditimi. Një agjent nuk i tejkalon kurrë të drejtat e pronarit të tij."
   }
 }

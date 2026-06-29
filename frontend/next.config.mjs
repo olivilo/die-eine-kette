@@ -21,6 +21,7 @@ const nextConfig = {
       { source: "/api/option", destination: `${BACKEND_URL}/api/option/` },
       { source: "/api/organization", destination: `${BACKEND_URL}/api/organization/` },
       { source: "/api/budget", destination: `${BACKEND_URL}/api/budget/` },
+      { source: "/api/agent", destination: `${BACKEND_URL}/api/agent/` },
       { source: "/api/:path*", destination: `${BACKEND_URL}/api/:path*` },
     ];
   },

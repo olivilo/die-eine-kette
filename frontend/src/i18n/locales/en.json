@@ -15,7 +15,8 @@
     "organizations": "Organizations",
     "budgets": "Budgets",
     "costs": "Costs",
-    "faq": "Help"
+    "faq": "Help",
+    "agents": "Agents"
   },
   "hero": {
     "title": "One gateway. Every AI model.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agents & MCP (secure access for automations)",
+    "name": "Name",
+    "status": "Status",
+    "tools": "Allowed tools",
+    "tools_hint": "Comma-separated. Empty = nothing (deny-by-default).",
+    "models": "Allowed models",
+    "rate": "Rate limit",
+    "last_used": "Last used",
+    "active": "Active",
+    "disabled": "Disabled",
+    "kill": "Disable",
+    "enable": "Enable",
+    "new": "New agent",
+    "empty": "No agents yet.",
+    "key_once": "Agent key — shown only once. Store it now.",
+    "security_note": "Security: agents get a scoped key, only their allowed tools (deny-by-default), a rate limit, prompt-injection guardrails, a kill switch and a full audit trail. An agent never exceeds its owner's rights."
   }
 }

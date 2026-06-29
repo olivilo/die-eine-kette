@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import {
   LayoutDashboard, Server, KeyRound, Activity, Euro, Building2, Wallet,
-  Users, ScrollText, Ticket, Settings, HelpCircle, LogOut, PanelLeftClose, PanelLeftOpen, X,
+  Users, ScrollText, Ticket, Settings, HelpCircle, Bot, LogOut, PanelLeftClose, PanelLeftOpen, X,
   type LucideIcon,
 } from "lucide-react";
 import { useAuth } from "./AuthProvider";
@@ -26,6 +26,7 @@ const GROUPS: Group[] = [
   { key: "tenants", items: [
     { k: "organizations", Icon: Building2, min: 100 },
     { k: "budgets", Icon: Wallet, min: 100 },
+    { k: "agents", Icon: Bot, min: 100 },
   ] },
   { key: "admin", items: [
     { k: "users", Icon: Users, min: 10 },

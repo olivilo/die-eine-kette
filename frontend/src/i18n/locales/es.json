@@ -15,7 +15,8 @@
     "organizations": "Organizaciones",
     "budgets": "Presupuestos",
     "costs": "Costes",
-    "faq": "Ayuda"
+    "faq": "Ayuda",
+    "agents": "Agentes"
   },
   "hero": {
     "title": "Una pasarela. Todos los modelos de IA.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agentes & MCP (acceso seguro para automatizaciones)",
+    "name": "Nombre",
+    "status": "Estado",
+    "tools": "Herramientas permitidas",
+    "tools_hint": "Separados por comas. Vacío = nada (deny-by-default).",
+    "models": "Modelos permitidos",
+    "rate": "Límite de tarifa",
+    "last_used": "último usado",
+    "active": "Activo",
+    "disabled": "Desactivado",
+    "kill": "Desactivar",
+    "enable": "Permitir",
+    "new": "Nuevo agente",
+    "empty": "Aún no hay agentes.",
+    "key_once": "Clave de agente: se muestra solo una vez. Guárdalo ahora.",
+    "security_note": "Seguridad: los agentes obtienen una clave con alcance, solo sus herramientas permitidas (deny-by-default), un límite de velocidad, barreras de inyección rápida, un interruptor de apagado y un seguimiento de auditoría completo. Un agente nunca excede los derechos de su propietario."
   }
 }

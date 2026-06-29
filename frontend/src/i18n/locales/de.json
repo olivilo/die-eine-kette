@@ -15,7 +15,8 @@
     "organizations": "Organisationen",
     "budgets": "Budgets",
     "costs": "Kosten",
-    "faq": "Hilfe"
+    "faq": "Hilfe",
+    "agents": "Agenten"
   },
   "hero": {
     "title": "Ein Gateway. Alle KI-Modelle.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agenten & MCP (sicherer Zugang für Automatismen)",
+    "name": "Name",
+    "status": "Status",
+    "tools": "Erlaubte Tools",
+    "tools_hint": "Komma-getrennt. Leer = nichts (deny-by-default).",
+    "models": "Erlaubte Modelle",
+    "rate": "Rate-Limit",
+    "last_used": "Zuletzt aktiv",
+    "active": "Aktiv",
+    "disabled": "Gesperrt",
+    "kill": "Sperren",
+    "enable": "Aktivieren",
+    "new": "Neuer Agent",
+    "empty": "Noch keine Agenten.",
+    "key_once": "Agent-Key — nur EINMAL sichtbar. Jetzt sicher speichern.",
+    "security_note": "Sicherheit: Agenten erhalten einen gescopten Key, nur ihre erlaubten Tools (deny-by-default), ein Rate-Limit, Prompt-Injection-Guardrails, einen Kill-Switch und ein lückenloses Audit. Ein Agent hat nie mehr Rechte als sein Besitzer."
   }
 }

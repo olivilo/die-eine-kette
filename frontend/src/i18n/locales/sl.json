@@ -15,7 +15,8 @@
     "organizations": "Organizacije",
     "budgets": "Proračuni",
     "costs": "Stroški",
-    "faq": "Pomoč"
+    "faq": "Pomoč",
+    "agents": "Agenti"
   },
   "hero": {
     "title": "En prehod. Vsak model AI.",
@@ -352,5 +353,23 @@
     "p_google": "Google",
     "p_keycloak": "Keycloak",
     "p_onelogin": "One Identity (OneLogin)"
+  },
+  "agents": {
+    "subtitle": "Agenti & MCP (varen dostop za avtomatizacije)",
+    "name": "Ime",
+    "status": "Stanje",
+    "tools": "Dovoljena orodja",
+    "tools_hint": "Ločeno z vejicami. Prazno = nič (deny-by-default).",
+    "models": "Dovoljeni modeli",
+    "rate": "Omejitev stopnje",
+    "last_used": "Nazadnje uporabljeno",
+    "active": "Aktiven",
+    "disabled": "Onemogočen",
+    "kill": "Onemogoči",
+    "enable": "Omogoči",
+    "new": "Nov agent",
+    "empty": "Zastopnikov še ni.",
+    "key_once": "Ključ agenta — prikazan samo enkrat. Shranite ga zdaj.",
+    "security_note": "Varnost: agenti dobijo ključ z omejenim obsegom, samo njihova dovoljena orodja (deny-by-default), omejitev hitrosti, zaščitne ograje za hitro vstavljanje, stikalo za izklop in celotno revizijsko sled. Zastopnik nikoli ne prekorači pravic svojega lastnika."
   }
 }

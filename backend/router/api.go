@@ -126,6 +126,23 @@ func SetApiRouter(router *gin.Engine) {
 			costRoute.GET("/summary", controller.GetCostSummary)
 			costRoute.GET("/export", controller.ExportCostCsv)
 		}
+		// Die Eine Kette — Agenten/MCP (Sicherheits-Fundament).
+		// Verwaltung: Root. MCP-Aufrufe: agent-key-authentifiziert (keine Session).
+		agentRoute := apiRouter.Group("/agent")
+		agentRoute.Use(middleware.RootAuth())
+		{
+			agentRoute.GET("/", controller.GetAllAgents)
+			agentRoute.POST("/", controller.AddAgent)
+			agentRoute.PUT("/", controller.UpdateAgent)
+			agentRoute.GET("/audit", controller.GetAgentAuditList)
+			agentRoute.DELETE("/:id", controller.DeleteAgent)
+		}
+		mcpRoute := apiRouter.Group("/mcp")
+		mcpRoute.Use(middleware.CriticalRateLimit())
+		{
+			mcpRoute.POST("/tools", controller.McpTools)
+			mcpRoute.POST("/call", controller.McpCall)
+		}
 		// Die Eine Kette — Budgets (Phase 4). Plattform-Ebene (Root).
 		budgetRoute := apiRouter.Group("/budget")
 		budgetRoute.Use(middleware.RootAuth())
