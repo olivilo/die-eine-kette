@@ -71,7 +71,6 @@ docker compose up -d       # app :3000, PostgreSQL, Redis
 - **No AI / third-party authorship** anywhere in code, docs, comments, commit trailers
   or metadata. Providers (Anthropic, OpenAI, Gemini …) appear only as supported LLM
   providers, never as authors. The sole author is *Die Eine Kette*.
-- **License fingerprint** considered from day one (details kept in the private part).
 
 ---
 

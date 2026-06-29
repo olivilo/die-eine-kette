@@ -14,6 +14,6 @@
 
 ## Checklist
 - [ ] No secrets / keys / `.env` included — `tools/security/check-no-private.sh` passes
-- [ ] Only touches the **public** part (nothing from `die-eine-kette-private/`)
+- [ ] Only touches the **public** part (no internal/commercial material)
 - [ ] Builds / runs locally (`docker compose up`)
 - [ ] Docs / i18n strings updated if needed

@@ -58,7 +58,7 @@ modernes UI, volle i18n, B2B-Mandanten und das doppelte Kostenmodell.
 - **Login-Optionen:** E-Mail/Passwort & OAuth — plus **2FA per Authenticator-App
   (TOTP, RFC 6238)** als aktivierbare Option für jeden Nutzer (QR-Setup im UI +
   Backup-Codes). *Free verfügbar — Sicherheit für alle.*
-- **Enterprise:** SSO/SAML & erweiterte Sicherheit über den Ring **Truesilver**.
+- **Enterprise:** SSO/SAML & erweiterte Sicherheit (über die kommerzielle Lizenz).
 
 ## Warum nicht „alles neu in anderem Stack"?
 

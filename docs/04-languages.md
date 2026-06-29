@@ -6,7 +6,7 @@
 `en/translation.json`. Alle anderen Sprachen werden daraus generiert/gepflegt.
 Kein hartkodierter Text in Navs, Buttons, Tabellen oder Dialogen — Regel im Code-Review.
 
-## Schon vorhanden (aus deinem i18n-Branch übernehmbar)
+## Schon vorhanden
 
 `de` · `en` · `sr` · `zh`
 
@@ -38,8 +38,8 @@ Tier 3 (Balkan) lohnt sich früh, weil die Übersetzung aus `sr` lokal kaum Aufw
 
 ### Empfohlene lokale Modelle (LM Studio)
 
-Hardware-Grenze: **Mac mini, 16 GB RAM → Modelle bis ~9 GB**. Das geladene
-`google/gemma-4-12b` ist dafür **zu groß**.
+Faustregel: lokales Übersetzungsmodell passend zum verfügbaren RAM wählen
+(z. B. ~16 GB RAM → Modelle bis ~9 GB).
 
 | Modell (LM-Studio-ID) | RAM (ca.) | Stärke |
 |---|---|---|
@@ -48,7 +48,7 @@ Hardware-Grenze: **Mac mini, 16 GB RAM → Modelle bis ~9 GB**. Das geladene
 | `mlx-community/gemma-4-e4b-it` | ~4 GB | leichtgewichtig, solide EU-Sprachen |
 | `qwen/qwen3-8b` | ~6 GB | guter Allrounder |
 
-**Standard:** `aya-expanse-8b-mlx` (in `.env` gesetzt). Cohere Aya Expanse ist auf
+**Empfehlung:** `aya-expanse-8b-mlx` (per `LMSTUDIO_MODEL` in `.env` wählbar). Cohere Aya Expanse ist auf
 Übersetzung über 23 Sprachen trainiert (inkl. de, fr, es, it) und liefert für
 Balkansprachen (hr/bs/sl/mk/sq) aus `sr` die saubersten Ergebnisse. Kurze Stichprobe
 je Sprache von Muttersprachlern prüfen lassen.

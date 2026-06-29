@@ -73,22 +73,16 @@ docker compose up -d       # App :3000, PostgreSQL, Redis
 |---|---|
 | [docs/01-architecture.md](./docs/01-architecture.md) | Tech-Stack, Schichten, Deployment (Überblick) |
 | [docs/04-languages.md](./docs/04-languages.md) | Zielsprachen, i18n-Strategie, LM-Studio-Übersetzung |
-| [docs/05-roadmap.md](./docs/05-roadmap.md) | Umsetzungs-Reihenfolge in Phasen |
-| [docs/internal-notes.md](./docs/internal-notes.md) | Codex: Dienste als Ringe der Kette (Free/Enterprise) |
+| [docs/05-roadmap.md](./docs/05-roadmap.md) | Roadmap — Module & Status |
 | [docs/licensing.md](./docs/licensing.md) | Lizenzmodell & Preise (öffentliche Fassung) |
 
-> 🔒 **Detaillierte interne Doku** — Architektur-Internals, Mandanten-Schema,
-> Kostenformeln, Lizenz-Durchsetzung, Provenienz/Fingerabdruck — liegt **nur im
-> privaten lokalen Teil** (`../die-eine-kette-private/`), **nicht** in diesem
-> öffentlichen Repo.
+> ℹ️ Kommerzielle/Enterprise-Interna sind nicht Teil dieses öffentlichen Repos.
 
 ## 📐 Projekt-Konventionen
 
 - **Keine KI-/Fremdautor-Nennung** in Code, Doku, Kommentaren, Commit-Trailern oder
   Metadaten. Anbieter (Anthropic, OpenAI, Gemini …) erscheinen nur als unterstützte
   LLM-Provider, nie als Urheber. Urheber ist allein *Die Eine Kette*.
-- **Lizenz-Fingerabdruck** ab Tag 1 mitgedacht — Details im privaten Teil
-  (`../die-eine-kette-private/`).
 
 ## 🛠️ Tools
 
@@ -111,4 +105,3 @@ Lizenz es verlangt.
 **frei für private, studentische, akademische und nicht-kommerzielle Nutzung** —
 **kommerzielle Nutzung erfordert eine kostenpflichtige Lizenz**.
 Lizenzmodell & Preise (öffentlich): [docs/licensing.md](./docs/licensing.md).
-Die technische Durchsetzung (Internals) liegt im privaten Teil.
