@@ -17,7 +17,7 @@ export default function AgentsPage() {
   const [showForm, setShowForm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [newKey, setNewKey] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", allowed_tools: "", allowed_models: "", confirm_tools: "", rate_limit_per_min: 60 });
+  const [form, setForm] = useState({ name: "", owner_user_id: 0, allowed_tools: "", allowed_models: "", confirm_tools: "", rate_limit_per_min: 60 });
   const [pending, setPending] = useState<PendingAction[]>([]);
   const isRoot = (user?.role ?? 0) >= 100;
 
@@ -37,10 +37,10 @@ export default function AgentsPage() {
   async function create() {
     if (!form.name.trim()) return;
     setBusy(true);
-    const res = await api.createAgent({ ...form, name: form.name.trim() });
+    const res = await api.createAgent({ ...form, name: form.name.trim(), owner_user_id: form.owner_user_id || undefined });
     setBusy(false);
     if (res.success && res.data) setNewKey(res.data.key);
-    setForm({ name: "", allowed_tools: "", allowed_models: "", confirm_tools: "", rate_limit_per_min: 60 });
+    setForm({ name: "", owner_user_id: 0, allowed_tools: "", allowed_models: "", confirm_tools: "", rate_limit_per_min: 60 });
     setShowForm(false);
     load();
   }
@@ -107,6 +107,9 @@ export default function AgentsPage() {
         <Card className="mt-4 grid gap-3 sm:grid-cols-2">
           <label className="flex flex-col gap-1 text-sm text-zinc-300">{t("common.name")}
             <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className={input} /></label>
+          <label className="flex flex-col gap-1 text-sm text-zinc-300">{t("agents.owner")}
+            <input type="number" value={form.owner_user_id || ""} onChange={(e) => setForm({ ...form, owner_user_id: Number(e.target.value) })} placeholder={t("agents.owner_placeholder")} className={input} />
+            <span className="text-xs text-zinc-500">{t("agents.owner_hint")}</span></label>
           <label className="flex flex-col gap-1 text-sm text-zinc-300">{t("agents.rate")}
             <input type="number" value={form.rate_limit_per_min} onChange={(e) => setForm({ ...form, rate_limit_per_min: Number(e.target.value) })} className={input} /></label>
           <label className="flex flex-col gap-1 text-sm text-zinc-300">{t("agents.tools")}

@@ -370,12 +370,15 @@
     "new": "Novi agent",
     "empty": "Još nema agenata.",
     "key_once": "Ključ agenta — prikazuje se samo jednom. Spremite ga sada.",
-    "security_note": "Sigurnost: agenti dobijaju ključ sa opsegom, samo njihove dozvoljene alate (deny-by-default), ograničenje brzine, zaštitne ograde za brzo ubrizgavanje, prekidač za zaustavljanje i potpuni nadzorni trag. Agent nikada ne prekoračuje vlasnička prava.",
+    "security_note": "Sigurnost: agenti dobivaju ograničen ključ, samo svoje dopuštene alate (deny-by-default), ograničenje brzine, zaštitu od prompt-injectiona, prekidač i potpunu reviziju. Agent nikada ne nasljeđuje više prava od svog vlasnika — modeli su ograničeni na prava vlasnika, a blokiranje vlasnika odmah opoziva delegaciju.",
     "confirm_tools": "Alati koji zahtijevaju odobrenje",
     "confirm_tools_hint": "Odvojeno zarezima. Ovi alati čekaju ljudsko odobrenje (human-in-the-loop).",
     "pending_title": "Odobrenja na čekanju",
     "pending_hint": "Rizični pozivi alata čekaju vašu odluku prije izvršavanja.",
     "approve": "Odobri",
-    "deny": "Odbij"
+    "deny": "Odbij",
+    "owner": "Vlasnik (ID korisnika)",
+    "owner_placeholder": "prazno = ti sam",
+    "owner_hint": "Agent nikada ne nasljeđuje više od ovog korisnika. Ako je vlasnik blokiran ili mu je kvota iscrpljena, agent odmah gubi svaki pristup."
   }
 }

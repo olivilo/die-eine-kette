@@ -370,12 +370,15 @@
     "new": "New agent",
     "empty": "No agents yet.",
     "key_once": "Agent key — shown only once. Store it now.",
-    "security_note": "Security: agents get a scoped key, only their allowed tools (deny-by-default), a rate limit, prompt-injection guardrails, a kill switch and a full audit trail. An agent never exceeds its owner's rights.",
+    "security_note": "Security: agents get a scoped key, only their allowed tools (deny-by-default), a rate limit, prompt-injection guardrails, a kill switch and a complete audit trail. An agent never inherits more rights than its owner — models are capped to the owner's entitlement, and disabling the owner revokes the delegation immediately.",
     "confirm_tools": "Approval-required tools",
     "confirm_tools_hint": "Comma-separated. These tools wait for human approval (human-in-the-loop).",
     "pending_title": "Pending approvals",
     "pending_hint": "Risky tool calls wait for your decision before they run.",
     "approve": "Approve",
-    "deny": "Deny"
+    "deny": "Deny",
+    "owner": "Owner (user ID)",
+    "owner_placeholder": "empty = yourself",
+    "owner_hint": "The agent never inherits more than this user. If the owner is disabled or their quota is exhausted, the agent loses all access immediately."
   }
 }

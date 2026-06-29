@@ -370,12 +370,15 @@
     "new": "Agjent i ri",
     "empty": "Nuk ka ende agjentë.",
     "key_once": "Çelësi i agjentit - shfaqet vetëm një herë. Ruajeni tani.",
-    "security_note": "Siguria: agjentët marrin një çelës me shtrirje, vetëm mjetet e tyre të lejuara (deny-by-default), një kufi tarife, parmakë me injeksion të shpejtë, një çelës vrasësi dhe një gjurmë të plotë auditimi. Një agjent nuk i tejkalon kurrë të drejtat e pronarit të tij.",
+    "security_note": "Siguria: agjentët marrin një çelës të kufizuar, vetëm mjetet e lejuara (deny-by-default), një kufi shpejtësie, mbrojtje ndaj prompt-injection, një ndërprerës dhe një auditim të plotë. Një agjent nuk trashëgon kurrë më shumë të drejta se pronari i tij — modelet kufizohen sipas të drejtave të pronarit, dhe çaktivizimi i pronarit e revokon menjëherë delegimin.",
     "confirm_tools": "Mjete që kërkojnë miratim",
     "confirm_tools_hint": "Të ndara me presje. Këto mjete presin miratimin njerëzor (human-in-the-loop).",
     "pending_title": "Miratime në pritje",
     "pending_hint": "Thirrjet e rrezikshme të mjeteve presin vendimin tuaj para se të ekzekutohen.",
     "approve": "Mirato",
-    "deny": "Refuzo"
+    "deny": "Refuzo",
+    "owner": "Pronari (ID-ja e përdoruesit)",
+    "owner_placeholder": "bosh = ti vetë",
+    "owner_hint": "Agjenti nuk trashëgon kurrë më shumë se ky përdorues. Nëse pronari çaktivizohet ose i mbaron kuota, agjenti humbet menjëherë çdo qasje."
   }
 }

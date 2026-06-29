@@ -370,12 +370,15 @@
     "new": "Nouvel agent",
     "empty": "Aucun agent pour l'instant.",
     "key_once": "Clé d'agent : affichée une seule fois. Rangez-le maintenant.",
-    "security_note": "Sécurité : les agents obtiennent une clé étendue, uniquement leurs outils autorisés (deny-by-default), une limite de débit, des garde-fous d'injection rapide, un kill switch et une piste d'audit complète. Un agent n'excède jamais les droits de son propriétaire.",
+    "security_note": "Sécurité : les agents reçoivent une clé limitée, uniquement leurs outils autorisés (deny-by-default), une limite de débit, des garde-fous contre l’injection de prompt, un coupe-circuit et un audit complet. Un agent n’hérite jamais de plus de droits que son propriétaire — les modèles sont plafonnés selon les droits du propriétaire, et désactiver le propriétaire révoque immédiatement la délégation.",
     "confirm_tools": "Outils soumis à approbation",
     "confirm_tools_hint": "Séparés par des virgules. Ces outils attendent une approbation humaine (human-in-the-loop).",
     "pending_title": "Approbations en attente",
     "pending_hint": "Les appels d’outils à risque attendent votre décision avant de s’exécuter.",
     "approve": "Approuver",
-    "deny": "Refuser"
+    "deny": "Refuser",
+    "owner": "Propriétaire (ID utilisateur)",
+    "owner_placeholder": "vide = vous-même",
+    "owner_hint": "L’agent n’hérite jamais de plus que cet utilisateur. Si le propriétaire est désactivé ou son quota épuisé, l’agent perd immédiatement tout accès."
   }
 }

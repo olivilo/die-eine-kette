@@ -370,12 +370,15 @@
     "new": "Nuovo agente",
     "empty": "Nessun agente ancora.",
     "key_once": "Chiave agente: mostrata solo una volta. Conservalo ora.",
-    "security_note": "Sicurezza: gli agenti ricevono una chiave con ambito, solo gli strumenti consentiti (deny-by-default), un limite di velocità, guardrail a inserimento rapido, un kill switch e una traccia di controllo completa. Un agente non eccede mai i diritti del suo proprietario.",
+    "security_note": "Sicurezza: gli agenti ricevono una chiave limitata, solo i loro strumenti consentiti (deny-by-default), un limite di frequenza, protezioni contro il prompt injection, un kill switch e un audit completo. Un agente non eredita mai più diritti del suo proprietario — i modelli sono limitati ai permessi del proprietario e disabilitare il proprietario revoca subito la delega.",
     "confirm_tools": "Strumenti che richiedono approvazione",
     "confirm_tools_hint": "Separati da virgole. Questi strumenti attendono l’approvazione umana (human-in-the-loop).",
     "pending_title": "Approvazioni in sospeso",
     "pending_hint": "Le chiamate a strumenti rischiosi attendono la tua decisione prima di essere eseguite.",
     "approve": "Approva",
-    "deny": "Rifiuta"
+    "deny": "Rifiuta",
+    "owner": "Proprietario (ID utente)",
+    "owner_placeholder": "vuoto = te stesso",
+    "owner_hint": "L’agente non eredita mai più di questo utente. Se il proprietario viene disabilitato o la sua quota si esaurisce, l’agente perde subito ogni accesso."
   }
 }

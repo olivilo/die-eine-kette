@@ -370,12 +370,15 @@
     "new": "Neuer Agent",
     "empty": "Noch keine Agenten.",
     "key_once": "Agent-Key — nur EINMAL sichtbar. Jetzt sicher speichern.",
-    "security_note": "Sicherheit: Agenten erhalten einen gescopten Key, nur ihre erlaubten Tools (deny-by-default), ein Rate-Limit, Prompt-Injection-Guardrails, einen Kill-Switch und ein lückenloses Audit. Ein Agent hat nie mehr Rechte als sein Besitzer.",
+    "security_note": "Sicherheit: Agenten erhalten einen gescopten Key, nur ihre erlaubten Tools (deny-by-default), ein Rate-Limit, Prompt-Injection-Guardrails, einen Kill-Switch und ein lückenloses Audit. Ein Agent erbt nie mehr Rechte als sein Besitzer — Modelle werden auf dessen Berechtigung gecappt, und die Sperrung des Besitzers widerruft die Delegation sofort.",
     "confirm_tools": "Freigabe-pflichtige Tools",
     "confirm_tools_hint": "Komma-getrennt. Diese Tools warten auf menschliche Freigabe (Human-in-the-Loop).",
     "pending_title": "Offene Freigaben",
     "pending_hint": "Riskante Tool-Aufrufe warten auf deine Entscheidung, bevor sie ausgeführt werden.",
     "approve": "Freigeben",
-    "deny": "Ablehnen"
+    "deny": "Ablehnen",
+    "owner": "Besitzer (Nutzer-ID)",
+    "owner_placeholder": "leer = du selbst",
+    "owner_hint": "Der Agent erbt nie mehr als dieser Nutzer. Wird der Besitzer gesperrt oder seine Quota erschöpft, verliert der Agent sofort jeden Zugriff."
   }
 }

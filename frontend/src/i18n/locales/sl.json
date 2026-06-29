@@ -370,12 +370,15 @@
     "new": "Nov agent",
     "empty": "Zastopnikov še ni.",
     "key_once": "Ključ agenta — prikazan samo enkrat. Shranite ga zdaj.",
-    "security_note": "Varnost: agenti dobijo ključ z omejenim obsegom, samo njihova dovoljena orodja (deny-by-default), omejitev hitrosti, zaščitne ograje za hitro vstavljanje, stikalo za izklop in celotno revizijsko sled. Zastopnik nikoli ne prekorači pravic svojega lastnika.",
+    "security_note": "Varnost: agenti dobijo omejen ključ, samo svoja dovoljena orodja (deny-by-default), omejitev hitrosti, zaščito pred prompt-injection, izklopno stikalo in popolno revizijo. Agent nikoli ne podeduje več pravic kot njegov lastnik — modeli so omejeni na pravice lastnika, onemogočenje lastnika pa takoj prekliče pooblastilo.",
     "confirm_tools": "Orodja, ki zahtevajo odobritev",
     "confirm_tools_hint": "Ločeno z vejicami. Ta orodja čakajo na človeško odobritev (human-in-the-loop).",
     "pending_title": "Čakajoče odobritve",
     "pending_hint": "Tvegani klici orodij čakajo na vašo odločitev, preden se izvedejo.",
     "approve": "Odobri",
-    "deny": "Zavrni"
+    "deny": "Zavrni",
+    "owner": "Lastnik (ID uporabnika)",
+    "owner_placeholder": "prazno = ti sam",
+    "owner_hint": "Agent nikoli ne podeduje več kot ta uporabnik. Če je lastnik onemogočen ali mu poteče kvota, agent takoj izgubi ves dostop."
   }
 }

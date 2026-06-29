@@ -370,12 +370,15 @@
     "new": "Nuevo agente",
     "empty": "Aún no hay agentes.",
     "key_once": "Clave de agente: se muestra solo una vez. Guárdalo ahora.",
-    "security_note": "Seguridad: los agentes obtienen una clave con alcance, solo sus herramientas permitidas (deny-by-default), un límite de velocidad, barreras de inyección rápida, un interruptor de apagado y un seguimiento de auditoría completo. Un agente nunca excede los derechos de su propietario.",
+    "security_note": "Seguridad: los agentes reciben una clave acotada, solo sus herramientas permitidas (deny-by-default), un límite de tasa, protecciones contra inyección de prompts, un interruptor de emergencia y una auditoría completa. Un agente nunca hereda más derechos que su propietario — los modelos se limitan a los permisos del propietario, y desactivar al propietario revoca la delegación de inmediato.",
     "confirm_tools": "Herramientas que requieren aprobación",
     "confirm_tools_hint": "Separadas por comas. Estas herramientas esperan aprobación humana (human-in-the-loop).",
     "pending_title": "Aprobaciones pendientes",
     "pending_hint": "Las llamadas a herramientas de riesgo esperan tu decisión antes de ejecutarse.",
     "approve": "Aprobar",
-    "deny": "Rechazar"
+    "deny": "Rechazar",
+    "owner": "Propietario (ID de usuario)",
+    "owner_placeholder": "vacío = tú mismo",
+    "owner_hint": "El agente nunca hereda más que este usuario. Si el propietario se desactiva o se agota su cuota, el agente pierde todo acceso de inmediato."
   }
 }

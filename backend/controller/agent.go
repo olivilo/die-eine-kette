@@ -70,6 +70,12 @@ func authAgent(c *gin.Context) (*model.Agent, bool) {
 		c.JSON(http.StatusUnauthorized, gin.H{"success": false, "message": err.Error()})
 		return nil, false
 	}
+	// Lebende Vertrauenskette: Agent erbt nie mehr als der (aktive) Besitzer.
+	if err := a.CheckDelegation(); err != nil {
+		model.RecordAgentAudit(a.Id, a.OrgId, "auth", "", false, err.Error())
+		c.JSON(http.StatusForbidden, gin.H{"success": false, "message": err.Error()})
+		return nil, false
+	}
 	return a, true
 }
 
@@ -100,9 +106,17 @@ func McpCall(c *gin.Context) {
 	var req struct {
 		Tool  string `json:"tool"`
 		Input string `json:"input"`
+		Model string `json:"model"`
 	}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_parameter"})
+		return
+	}
+
+	// 0) Modell-Capping (optional): nur Modelle, die der Besitzer auch darf.
+	if req.Model != "" && !a.ModelAllowed(c.Request.Context(), req.Model) {
+		model.RecordAgentAudit(a.Id, a.OrgId, "tools.call", req.Tool, false, "model_not_allowed")
+		c.JSON(http.StatusForbidden, gin.H{"success": false, "message": "Modell nicht freigegeben (gecappt auf Besitzer-Rechte)."})
 		return
 	}
 
@@ -225,6 +239,15 @@ func AddAgent(c *gin.Context) {
 	a.KeyHash = hash
 	if a.RateLimitPerMin <= 0 {
 		a.RateLimitPerMin = 60
+	}
+	// Sicherer Default: ohne expliziten Besitzer erbt der Agent vom Ersteller.
+	// Garantiert eine lebende Vertrauenskette (CheckDelegation) — kein verwaister Key.
+	if a.OwnerUserId == 0 {
+		a.OwnerUserId = c.GetInt(ctxkey.Id)
+	}
+	// Mandanten-Konsistenz: Org des Agenten an die des Besitzers binden.
+	if owner, err := model.GetUserById(a.OwnerUserId, false); err == nil && owner != nil {
+		a.OrgId = owner.OrgId
 	}
 	if err := a.Insert(); err != nil {
 		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})

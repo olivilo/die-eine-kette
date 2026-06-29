@@ -182,7 +182,7 @@ export const api = {
     request("/organization/assign", { method: "POST", body: JSON.stringify({ username, org_id }) }),
   costSummary: (days = 30) => request<CostSummary>(`/cost/summary?days=${days}`),
   agents: () => request<Agent[]>("/agent?p=0"),
-  createAgent: (body: { name: string; allowed_tools: string; allowed_models: string; confirm_tools: string; rate_limit_per_min: number }) =>
+  createAgent: (body: { name: string; owner_user_id?: number; allowed_tools: string; allowed_models: string; confirm_tools: string; rate_limit_per_min: number }) =>
     request<{ id: number; key: string }>("/agent", { method: "POST", body: JSON.stringify(body) }),
   updateAgent: (body: Partial<Agent> & { id: number }) =>
     request("/agent", { method: "PUT", body: JSON.stringify(body) }),

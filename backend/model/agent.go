@@ -6,6 +6,7 @@ package model
 // gegen Automatismus-Missbrauch und unbekannte 0-Days.
 
 import (
+	"context"
 	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
@@ -168,6 +169,75 @@ func (a *Agent) ToolAllowed(tool string) bool {
 	}
 	for _, t := range strings.Split(a.AllowedTools, ",") {
 		if strings.TrimSpace(t) == tool {
+			return true
+		}
+	}
+	return false
+}
+
+// ── Entitlement-Capping: ein Agent erbt NIE mehr als der delegierende Nutzer ──
+// Delegation ist widerrufbar: ist der Besitzer gesperrt/gelöscht oder ohne Quota,
+// verliert der Agent sofort jeden Zugriff (auch wenn sein Key gültig bleibt).
+
+// CheckDelegation prüft die lebende Vertrauenskette Agent→Besitzer.
+func (a *Agent) CheckDelegation() error {
+	if a.OwnerUserId == 0 {
+		return errors.New("Agent hat keinen Besitzer (Delegation ungültig)")
+	}
+	owner, err := GetUserById(a.OwnerUserId, false)
+	if err != nil || owner == nil {
+		return errors.New("Besitzer existiert nicht mehr (Delegation widerrufen)")
+	}
+	if owner.Status != UserStatusEnabled {
+		return errors.New("Besitzer ist gesperrt (Delegation widerrufen)")
+	}
+	if owner.Quota <= 0 {
+		return errors.New("Quota des Besitzers erschöpft")
+	}
+	// Mandanten-Konsistenz: Agent darf nicht außerhalb der Org des Besitzers wirken.
+	if a.OrgId != owner.OrgId {
+		return errors.New("Agent-Org weicht von Besitzer-Org ab")
+	}
+	return nil
+}
+
+// EffectiveModels = Schnittmenge(Allow-List des Agenten, Modelle der Besitzer-Gruppe).
+// Leere Agent-Allow-List = nichts (deny-by-default), nicht „alles".
+func (a *Agent) EffectiveModels(ctx context.Context) ([]string, error) {
+	owner, err := GetUserById(a.OwnerUserId, false)
+	if err != nil || owner == nil {
+		return nil, errors.New("Besitzer existiert nicht mehr")
+	}
+	ownerModels, err := CacheGetGroupModels(ctx, owner.Group)
+	if err != nil {
+		return nil, err
+	}
+	ownerSet := map[string]bool{}
+	for _, m := range ownerModels {
+		ownerSet[m] = true
+	}
+	var out []string
+	for _, t := range strings.Split(a.AllowedModels, ",") {
+		m := strings.TrimSpace(t)
+		if m != "" && ownerSet[m] {
+			out = append(out, m)
+		}
+	}
+	return out, nil
+}
+
+// ModelAllowed: deny-by-default + gecappt auf die Rechte des Besitzers.
+func (a *Agent) ModelAllowed(ctx context.Context, model string) bool {
+	model = strings.TrimSpace(model)
+	if model == "" {
+		return false
+	}
+	eff, err := a.EffectiveModels(ctx)
+	if err != nil {
+		return false
+	}
+	for _, m := range eff {
+		if m == model {
 			return true
 		}
 	}
