@@ -370,6 +370,12 @@
     "new": "New agent",
     "empty": "No agents yet.",
     "key_once": "Agent key — shown only once. Store it now.",
-    "security_note": "Security: agents get a scoped key, only their allowed tools (deny-by-default), a rate limit, prompt-injection guardrails, a kill switch and a full audit trail. An agent never exceeds its owner's rights."
+    "security_note": "Security: agents get a scoped key, only their allowed tools (deny-by-default), a rate limit, prompt-injection guardrails, a kill switch and a full audit trail. An agent never exceeds its owner's rights.",
+    "confirm_tools": "Approval-required tools",
+    "confirm_tools_hint": "Comma-separated. These tools wait for human approval (human-in-the-loop).",
+    "pending_title": "Pending approvals",
+    "pending_hint": "Risky tool calls wait for your decision before they run.",
+    "approve": "Approve",
+    "deny": "Deny"
   }
 }

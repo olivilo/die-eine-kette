@@ -179,6 +179,9 @@ func migrateDB() error {
 	if err = DB.AutoMigrate(&AgentAudit{}); err != nil {
 		return err
 	}
+	if err = DB.AutoMigrate(&PendingAction{}); err != nil {
+		return err
+	}
 	return nil
 }
 

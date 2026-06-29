@@ -82,9 +82,22 @@ export type Agent = {
   status: number;
   allowed_tools: string;
   allowed_models: string;
+  confirm_tools: string;
   rate_limit_per_min: number;
   created_time: number;
   last_used_time: number;
+};
+
+export type PendingAction = {
+  id: number;
+  agent_id: number;
+  org_id: number;
+  tool: string;
+  input: string;
+  status: string;
+  created_at: number;
+  decided_at: number;
+  decided_by: number;
 };
 
 export type Budget = {
@@ -169,11 +182,14 @@ export const api = {
     request("/organization/assign", { method: "POST", body: JSON.stringify({ username, org_id }) }),
   costSummary: (days = 30) => request<CostSummary>(`/cost/summary?days=${days}`),
   agents: () => request<Agent[]>("/agent?p=0"),
-  createAgent: (body: { name: string; allowed_tools: string; allowed_models: string; rate_limit_per_min: number }) =>
+  createAgent: (body: { name: string; allowed_tools: string; allowed_models: string; confirm_tools: string; rate_limit_per_min: number }) =>
     request<{ id: number; key: string }>("/agent", { method: "POST", body: JSON.stringify(body) }),
   updateAgent: (body: Partial<Agent> & { id: number }) =>
     request("/agent", { method: "PUT", body: JSON.stringify(body) }),
   deleteAgent: (id: number) => request(`/agent/${id}`, { method: "DELETE" }),
+  pendingAgentActions: () => request<PendingAction[]>("/agent/pending?p=0"),
+  approveAgentAction: (action_id: number, approve: boolean) =>
+    request("/agent/approve", { method: "POST", body: JSON.stringify({ action_id, approve }) }),
   budgets: () => request<Budget[]>("/budget?p=0"),
   createBudget: (body: { name: string; scope: string; ref: string; amount_micro_eur: number; period: string; on_exhaust: string }) =>
     request("/budget", { method: "POST", body: JSON.stringify(body) }),

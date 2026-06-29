@@ -370,6 +370,12 @@
     "new": "Nuevo agente",
     "empty": "Aún no hay agentes.",
     "key_once": "Clave de agente: se muestra solo una vez. Guárdalo ahora.",
-    "security_note": "Seguridad: los agentes obtienen una clave con alcance, solo sus herramientas permitidas (deny-by-default), un límite de velocidad, barreras de inyección rápida, un interruptor de apagado y un seguimiento de auditoría completo. Un agente nunca excede los derechos de su propietario."
+    "security_note": "Seguridad: los agentes obtienen una clave con alcance, solo sus herramientas permitidas (deny-by-default), un límite de velocidad, barreras de inyección rápida, un interruptor de apagado y un seguimiento de auditoría completo. Un agente nunca excede los derechos de su propietario.",
+    "confirm_tools": "Herramientas que requieren aprobación",
+    "confirm_tools_hint": "Separadas por comas. Estas herramientas esperan aprobación humana (human-in-the-loop).",
+    "pending_title": "Aprobaciones pendientes",
+    "pending_hint": "Las llamadas a herramientas de riesgo esperan tu decisión antes de ejecutarse.",
+    "approve": "Aprobar",
+    "deny": "Rechazar"
   }
 }

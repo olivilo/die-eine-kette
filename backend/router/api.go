@@ -135,6 +135,8 @@ func SetApiRouter(router *gin.Engine) {
 			agentRoute.POST("/", controller.AddAgent)
 			agentRoute.PUT("/", controller.UpdateAgent)
 			agentRoute.GET("/audit", controller.GetAgentAuditList)
+			agentRoute.GET("/pending", controller.GetPendingAgentActions)
+			agentRoute.POST("/approve", controller.ApproveAgentAction)
 			agentRoute.DELETE("/:id", controller.DeleteAgent)
 		}
 		mcpRoute := apiRouter.Group("/mcp")
@@ -142,6 +144,7 @@ func SetApiRouter(router *gin.Engine) {
 		{
 			mcpRoute.POST("/tools", controller.McpTools)
 			mcpRoute.POST("/call", controller.McpCall)
+			mcpRoute.POST("/guard", controller.McpGuard)
 		}
 		// Die Eine Kette — Budgets (Phase 4). Plattform-Ebene (Root).
 		budgetRoute := apiRouter.Group("/budget")

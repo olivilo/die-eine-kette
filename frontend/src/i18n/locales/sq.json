@@ -370,6 +370,12 @@
     "new": "Agjent i ri",
     "empty": "Nuk ka ende agjentë.",
     "key_once": "Çelësi i agjentit - shfaqet vetëm një herë. Ruajeni tani.",
-    "security_note": "Siguria: agjentët marrin një çelës me shtrirje, vetëm mjetet e tyre të lejuara (deny-by-default), një kufi tarife, parmakë me injeksion të shpejtë, një çelës vrasësi dhe një gjurmë të plotë auditimi. Një agjent nuk i tejkalon kurrë të drejtat e pronarit të tij."
+    "security_note": "Siguria: agjentët marrin një çelës me shtrirje, vetëm mjetet e tyre të lejuara (deny-by-default), një kufi tarife, parmakë me injeksion të shpejtë, një çelës vrasësi dhe një gjurmë të plotë auditimi. Një agjent nuk i tejkalon kurrë të drejtat e pronarit të tij.",
+    "confirm_tools": "Mjete që kërkojnë miratim",
+    "confirm_tools_hint": "Të ndara me presje. Këto mjete presin miratimin njerëzor (human-in-the-loop).",
+    "pending_title": "Miratime në pritje",
+    "pending_hint": "Thirrjet e rrezikshme të mjeteve presin vendimin tuaj para se të ekzekutohen.",
+    "approve": "Mirato",
+    "deny": "Refuzo"
   }
 }

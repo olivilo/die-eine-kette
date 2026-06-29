@@ -370,6 +370,12 @@
     "new": "Neuer Agent",
     "empty": "Noch keine Agenten.",
     "key_once": "Agent-Key — nur EINMAL sichtbar. Jetzt sicher speichern.",
-    "security_note": "Sicherheit: Agenten erhalten einen gescopten Key, nur ihre erlaubten Tools (deny-by-default), ein Rate-Limit, Prompt-Injection-Guardrails, einen Kill-Switch und ein lückenloses Audit. Ein Agent hat nie mehr Rechte als sein Besitzer."
+    "security_note": "Sicherheit: Agenten erhalten einen gescopten Key, nur ihre erlaubten Tools (deny-by-default), ein Rate-Limit, Prompt-Injection-Guardrails, einen Kill-Switch und ein lückenloses Audit. Ein Agent hat nie mehr Rechte als sein Besitzer.",
+    "confirm_tools": "Freigabe-pflichtige Tools",
+    "confirm_tools_hint": "Komma-getrennt. Diese Tools warten auf menschliche Freigabe (Human-in-the-Loop).",
+    "pending_title": "Offene Freigaben",
+    "pending_hint": "Riskante Tool-Aufrufe warten auf deine Entscheidung, bevor sie ausgeführt werden.",
+    "approve": "Freigeben",
+    "deny": "Ablehnen"
   }
 }

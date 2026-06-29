@@ -5,14 +5,38 @@ package controller
 
 import (
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/songquanpeng/one-api/common/config"
+	"github.com/songquanpeng/one-api/common/ctxkey"
 	"github.com/songquanpeng/one-api/model"
 )
+
+// ── Output-Guardrail: PII/Secret-Redaction (Tool-Ergebnisse sind untrusted) ──
+var redactors = []struct {
+	re   *regexp.Regexp
+	with string
+}{
+	{regexp.MustCompile(`[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}`), "[redacted-email]"},
+	{regexp.MustCompile(`agt-[a-f0-9]{16,}`), "[redacted-key]"},
+	{regexp.MustCompile(`sk-[A-Za-z0-9_\-]{16,}`), "[redacted-key]"},
+	{regexp.MustCompile(`AKIA[0-9A-Z]{16}`), "[redacted-aws-key]"},
+	{regexp.MustCompile(`(?i)bearer\s+[A-Za-z0-9._\-]{16,}`), "[redacted-token]"},
+	{regexp.MustCompile(`-----BEGIN [A-Z ]*PRIVATE KEY-----`), "[redacted-private-key]"},
+	{regexp.MustCompile(`\b\d{13,16}\b`), "[redacted-number]"},
+}
+
+func redactSecrets(s string) (string, int) {
+	n := 0
+	for _, r := range redactors {
+		s = r.re.ReplaceAllStringFunc(s, func(m string) string { n++; return r.with })
+	}
+	return s, n
+}
 
 // ── Guardrail: heuristischer Prompt-Injection-Scanner (EINE Schicht der Defense-in-Depth) ──
 var injectionPatterns = []string{
@@ -101,9 +125,78 @@ func McpCall(c *gin.Context) {
 		return
 	}
 
-	// 4) (Stub) Tool-Ausführung — hier würde der Aufruf gegen das gescopte Tool laufen.
+	// 4) Human-in-the-Loop: riskante Tools warten auf menschliche Freigabe.
+	if a.ConfirmRequired(req.Tool) {
+		p := &model.PendingAction{AgentId: a.Id, OrgId: a.OrgId, Tool: req.Tool, Input: req.Input}
+		_ = p.Insert()
+		model.RecordAgentAudit(a.Id, a.OrgId, "tools.call", req.Tool, false, "needs_confirmation")
+		c.JSON(http.StatusAccepted, gin.H{"success": false, "message": "Freigabe erforderlich (Human-in-the-Loop).",
+			"data": gin.H{"needs_confirmation": true, "action_id": p.Id}})
+		return
+	}
+
+	// 5) (Stub) Tool-Ausführung — hier würde der Aufruf gegen das gescopte Tool laufen.
 	model.RecordAgentAudit(a.Id, a.OrgId, "tools.call", req.Tool, true, "")
 	c.JSON(http.StatusOK, gin.H{"success": true, "data": gin.H{"tool": req.Tool, "status": "accepted"}})
+}
+
+// McpGuard: prüft untrusted content (Tool-Ergebnis / Retrieval) — DER Hauptvektor
+// indirekter Prompt-Injection. Blockt Injection-Muster, redactet PII/Secrets.
+func McpGuard(c *gin.Context) {
+	a, ok := authAgent(c)
+	if !ok {
+		return
+	}
+	var req struct {
+		Content string `json:"content"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_parameter"})
+		return
+	}
+	if blocked, reason := scanForInjection(req.Content); blocked {
+		model.RecordAgentAudit(a.Id, a.OrgId, "guard", "", false, reason)
+		c.JSON(http.StatusOK, gin.H{"success": true, "data": gin.H{"blocked": true, "reason": reason}})
+		return
+	}
+	redacted, n := redactSecrets(req.Content)
+	model.RecordAgentAudit(a.Id, a.OrgId, "guard", "", true, "redacted:"+strconv.Itoa(n))
+	c.JSON(http.StatusOK, gin.H{"success": true, "data": gin.H{"blocked": false, "redacted": redacted, "redactions": n}})
+}
+
+// GetPendingAgentActions: offene Freigaben (Human-in-the-Loop) — Admin.
+func GetPendingAgentActions(c *gin.Context) {
+	p, _ := strconv.Atoi(c.Query("p"))
+	if p < 0 {
+		p = 0
+	}
+	rows, err := model.GetPendingActions(0, p*config.ItemsPerPage, config.ItemsPerPage)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"success": true, "data": rows})
+}
+
+// ApproveAgentAction: menschliche Freigabe/Ablehnung — Admin.
+func ApproveAgentAction(c *gin.Context) {
+	var req struct {
+		ActionId int64 `json:"action_id"`
+		Approve  bool  `json:"approve"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": "invalid_parameter"})
+		return
+	}
+	status := "denied"
+	if req.Approve {
+		status = "approved"
+	}
+	if err := model.DecidePendingAction(req.ActionId, status, c.GetInt(ctxkey.Id)); err != nil {
+		c.JSON(http.StatusOK, gin.H{"success": false, "message": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"success": true, "message": ""})
 }
 
 // ── Verwaltung (root/admin) ──────────────────────────────────────────────────

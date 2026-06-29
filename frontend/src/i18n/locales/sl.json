@@ -370,6 +370,12 @@
     "new": "Nov agent",
     "empty": "Zastopnikov še ni.",
     "key_once": "Ključ agenta — prikazan samo enkrat. Shranite ga zdaj.",
-    "security_note": "Varnost: agenti dobijo ključ z omejenim obsegom, samo njihova dovoljena orodja (deny-by-default), omejitev hitrosti, zaščitne ograje za hitro vstavljanje, stikalo za izklop in celotno revizijsko sled. Zastopnik nikoli ne prekorači pravic svojega lastnika."
+    "security_note": "Varnost: agenti dobijo ključ z omejenim obsegom, samo njihova dovoljena orodja (deny-by-default), omejitev hitrosti, zaščitne ograje za hitro vstavljanje, stikalo za izklop in celotno revizijsko sled. Zastopnik nikoli ne prekorači pravic svojega lastnika.",
+    "confirm_tools": "Orodja, ki zahtevajo odobritev",
+    "confirm_tools_hint": "Ločeno z vejicami. Ta orodja čakajo na človeško odobritev (human-in-the-loop).",
+    "pending_title": "Čakajoče odobritve",
+    "pending_hint": "Tvegani klici orodij čakajo na vašo odločitev, preden se izvedejo.",
+    "approve": "Odobri",
+    "deny": "Zavrni"
   }
 }

@@ -370,6 +370,12 @@
     "new": "新代理",
     "empty": "还没有代理。",
     "key_once": "代理密钥 — 仅显示一次。现在就储存起来。",
-    "security_note": "安全性：代理获得范围密钥、仅允许使用的工具（deny-by-default）、速率限制、提示注入护栏、终止开关和完整的审计跟踪。代理人永远不会超越其所有者的权利。"
+    "security_note": "安全性：代理获得范围密钥、仅允许使用的工具（deny-by-default）、速率限制、提示注入护栏、终止开关和完整的审计跟踪。代理人永远不会超越其所有者的权利。",
+    "confirm_tools": "需审批的工具",
+    "confirm_tools_hint": "以逗号分隔。这些工具需等待人工审批（human-in-the-loop）。",
+    "pending_title": "待审批",
+    "pending_hint": "高风险工具调用需等待您的决定后才会执行。",
+    "approve": "批准",
+    "deny": "拒绝"
   }
 }

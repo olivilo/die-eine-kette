@@ -28,9 +28,23 @@ type Agent struct {
 	Status          int    `json:"status" gorm:"type:int;default:1"`
 	AllowedTools    string `json:"allowed_tools" gorm:"type:text"`  // komma-Liste, leer = nichts (deny-by-default)
 	AllowedModels   string `json:"allowed_models" gorm:"type:text"` // komma-Liste, leer = nichts
+	ConfirmTools    string `json:"confirm_tools" gorm:"type:text"`   // Tools, die menschliche Freigabe brauchen (Human-in-the-Loop)
 	RateLimitPerMin int    `json:"rate_limit_per_min" gorm:"type:int;default:60"`
 	CreatedTime     int64  `json:"created_time" gorm:"bigint"`
 	LastUsedTime    int64  `json:"last_used_time" gorm:"bigint"`
+}
+
+// PendingAction — Human-in-the-Loop: riskanter Tool-Aufruf wartet auf Freigabe.
+type PendingAction struct {
+	Id        int64  `json:"id"`
+	AgentId   int    `json:"agent_id" gorm:"index"`
+	OrgId     int    `json:"org_id" gorm:"index"`
+	Tool      string `json:"tool"`
+	Input     string `json:"input" gorm:"type:text"`
+	Status    string `json:"status" gorm:"type:varchar(16);default:'pending';index"` // pending|approved|denied
+	CreatedAt int64  `json:"created_at" gorm:"bigint;index"`
+	DecidedAt int64  `json:"decided_at" gorm:"bigint"`
+	DecidedBy int    `json:"decided_by"`
 }
 
 // AgentAudit — jede Agenten-Aktion (erlaubt/blockiert) wird protokolliert.
@@ -97,8 +111,46 @@ func (a *Agent) Insert() error {
 
 func (a *Agent) Update() error {
 	return DB.Model(a).Where("id = ?", a.Id).
-		Select("name", "status", "allowed_tools", "allowed_models", "rate_limit_per_min", "owner_user_id", "org_id").
+		Select("name", "status", "allowed_tools", "allowed_models", "confirm_tools", "rate_limit_per_min", "owner_user_id", "org_id").
 		Updates(a).Error
+}
+
+// ConfirmRequired: braucht der Tool-Aufruf eine menschliche Freigabe?
+func (a *Agent) ConfirmRequired(tool string) bool {
+	tool = strings.TrimSpace(tool)
+	if tool == "" || a.ConfirmTools == "" {
+		return false
+	}
+	for _, t := range strings.Split(a.ConfirmTools, ",") {
+		if strings.TrimSpace(t) == tool {
+			return true
+		}
+	}
+	return false
+}
+
+func (p *PendingAction) Insert() error {
+	p.Status = "pending"
+	p.CreatedAt = time.Now().Unix()
+	return DB.Create(p).Error
+}
+
+func GetPendingActions(orgId, startIdx, num int) ([]*PendingAction, error) {
+	var rows []*PendingAction
+	q := DB.Order("id desc").Limit(num).Offset(startIdx)
+	if orgId > 0 {
+		q = q.Where("org_id = ?", orgId)
+	}
+	err := q.Find(&rows).Error
+	return rows, err
+}
+
+func DecidePendingAction(id int64, status string, by int) error {
+	if status != "approved" && status != "denied" {
+		return errors.New("ungültiger Status")
+	}
+	return DB.Model(&PendingAction{}).Where("id = ? AND status = ?", id, "pending").
+		Updates(map[string]interface{}{"status": status, "decided_at": time.Now().Unix(), "decided_by": by}).Error
 }
 
 func DeleteAgentById(id int) error {

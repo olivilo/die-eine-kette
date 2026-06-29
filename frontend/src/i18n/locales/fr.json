@@ -370,6 +370,12 @@
     "new": "Nouvel agent",
     "empty": "Aucun agent pour l'instant.",
     "key_once": "Clé d'agent : affichée une seule fois. Rangez-le maintenant.",
-    "security_note": "Sécurité : les agents obtiennent une clé étendue, uniquement leurs outils autorisés (deny-by-default), une limite de débit, des garde-fous d'injection rapide, un kill switch et une piste d'audit complète. Un agent n'excède jamais les droits de son propriétaire."
+    "security_note": "Sécurité : les agents obtiennent une clé étendue, uniquement leurs outils autorisés (deny-by-default), une limite de débit, des garde-fous d'injection rapide, un kill switch et une piste d'audit complète. Un agent n'excède jamais les droits de son propriétaire.",
+    "confirm_tools": "Outils soumis à approbation",
+    "confirm_tools_hint": "Séparés par des virgules. Ces outils attendent une approbation humaine (human-in-the-loop).",
+    "pending_title": "Approbations en attente",
+    "pending_hint": "Les appels d’outils à risque attendent votre décision avant de s’exécuter.",
+    "approve": "Approuver",
+    "deny": "Refuser"
   }
 }
