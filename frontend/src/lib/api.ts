@@ -29,12 +29,22 @@ export type Organization = {
   user_count?: number;
 };
 
+// 401-Handler: wird vom AuthProvider registriert. Greift nur bei aktiver Session
+// (sonst würde die öffentliche Landing, deren self()-Check 401 liefert, fälschlich ausloggen).
+let onUnauthorized: (() => void) | null = null;
+export function setUnauthorizedHandler(fn: (() => void) | null) {
+  onUnauthorized = fn;
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<ApiResponse<T>> {
   const res = await fetch(`/api${path}`, {
     credentials: "include",
     headers: { "Content-Type": "application/json", ...(init?.headers || {}) },
     ...init,
   });
+  if (res.status === 401) {
+    onUnauthorized?.();
+  }
   try {
     return (await res.json()) as ApiResponse<T>;
   } catch {

@@ -17,6 +17,8 @@ ist, gibt es noch keine festen Versionen — alles unter „Unveröffentlicht".
   - **Budget-Sperre** bei erschöpftem Budget mit `on_exhaust=block` (HTTP 403 `budget_exhausted`).
 - **Nutzer-Deaktivierung** macht alle Tokens des Nutzers sofort wirkungslos (über die Blacklist,
   ohne Cache-Verzögerung). Verifiziert.
+- **401-Auto-Logout:** Läuft die Session ab, wird der Nutzer automatisch ausgeloggt und auf
+  `/login` geleitet (nur bei aktiver Session — die öffentliche Landing bleibt unberührt).
 
 ### Hinzugefügt
 - **Tokens:** Anlegen mit **Limit (Quota)**, **Ablaufdatum** und „Unbegrenzt"; Zwei-Schritt-

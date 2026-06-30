@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { api, type User } from "@/lib/api";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { api, setUnauthorizedHandler, type User } from "@/lib/api";
 
 type AuthState = {
   user: User | null;
@@ -20,6 +20,10 @@ const AuthContext = createContext<AuthState | null>(null);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const userRef = useRef<User | null>(null);
+  useEffect(() => {
+    userRef.current = user;
+  }, [user]);
 
   const refresh = useCallback(async () => {
     const res = await api.self();
@@ -30,6 +34,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     void refresh();
   }, [refresh]);
+
+  // 401-Auto-Logout: nur wenn eine Session bestand → ausloggen + zur Login-Seite.
+  useEffect(() => {
+    setUnauthorizedHandler(() => {
+      if (userRef.current) {
+        userRef.current = null;
+        setUser(null);
+        if (typeof window !== "undefined" && !window.location.pathname.startsWith("/login")) {
+          window.location.href = "/login";
+        }
+      }
+    });
+    return () => setUnauthorizedHandler(null);
+  }, []);
 
   const login = useCallback(
     async (username: string, password: string, totpCode?: string) => {
