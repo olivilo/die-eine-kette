@@ -229,6 +229,7 @@ export const api = {
       body: JSON.stringify({ ...body, groups: ["default"], group: "default" }),
     }),
   deleteChannel: (id: number) => request(`/channel/${id}`, { method: "DELETE" }),
+  securityStatus: () => request<{ root_password_is_default: boolean }>("/security_status", { cache: "no-store" }),
   license: () =>
     request<{
       tier: string;

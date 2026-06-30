@@ -66,18 +66,26 @@ export default function BudgetsPage() {
   const input = "rounded-md border border-zinc-700 bg-ink px-3 py-2 text-zinc-100 outline-none focus:border-gold";
   const columns = [t("budgets.name"), t("budgets.scope"), t("budgets.ref"), t("budgets.limit"), t("budgets.used"), t("budgets.period"), t("budgets.on_exhaust"), t("budgets.reset_at"), ""];
   const rows = items.map((b) => [
-    <span key="n" className="font-medium text-zinc-100">{b.name}</span>,
+    <span key="n" className="flex items-center gap-2 font-medium text-zinc-100">
+      {b.name}
+      {b.status === 2 && (
+        <span className="rounded-full border border-red-700 px-2 py-0.5 text-xs font-semibold text-red-300">
+          {t("budgets.autostopped", "Auto-Stop")}
+        </span>
+      )}
+    </span>,
     t(`budgets.scope_${b.scope}`, { defaultValue: b.scope }),
     <span key="r" className="text-zinc-400">{b.ref || "—"}</span>,
     euro(b.amount_micro_eur),
     (() => {
       const pct = b.amount_micro_eur > 0 ? Math.min(100, (b.used_micro_eur / b.amount_micro_eur) * 100) : 0;
       const over = b.amount_micro_eur > 0 && b.used_micro_eur >= b.amount_micro_eur;
+      const pctClass = over ? "text-red-400" : pct >= 90 ? "text-amber-400" : "text-zinc-500";
       return (
         <div key="u" className="min-w-28">
-          <div className="text-zinc-200">{euro(b.used_micro_eur)} <span className="text-xs text-zinc-500">({pct.toFixed(0)}%)</span></div>
-          <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
-            <div className={`h-full ${over ? "bg-red-500" : pct > 80 ? "bg-amber-500" : "bg-gold"}`} style={{ width: `${pct}%` }} />
+          <div className="text-zinc-200">{euro(b.used_micro_eur)} <span className={`text-xs ${pctClass}`}>({pct.toFixed(0)}%)</span></div>
+          <div className="relative mt-1 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+            <div className={`h-full ${over ? "bg-red-500" : pct >= 90 ? "bg-amber-500" : pct >= 75 ? "bg-amber-400/70" : "bg-gold"}`} style={{ width: `${pct}%` }} />
           </div>
         </div>
       );

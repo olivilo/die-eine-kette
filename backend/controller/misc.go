@@ -15,6 +15,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// GetSecurityStatus liefert sicherheitsrelevante Hinweise — nur Admin/Root, NICHT
+// öffentlich (würde sonst preisgeben, dass das Default-Passwort noch gilt).
+func GetSecurityStatus(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"data": gin.H{
+			"root_password_is_default": config.RootPasswordIsDefault,
+		},
+	})
+}
+
 func GetStatus(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,

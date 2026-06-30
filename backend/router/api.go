@@ -16,6 +16,7 @@ func SetApiRouter(router *gin.Engine) {
 	{
 		apiRouter.GET("/status", controller.GetStatus)
 		apiRouter.GET("/license", middleware.AdminAuth(), controller.GetLicense) // Die Eine Kette (Kundendaten nur Admin)
+		apiRouter.GET("/security_status", middleware.AdminAuth(), controller.GetSecurityStatus) // Die Eine Kette — Sicherheits-Hinweise (nur Admin)
 		apiRouter.GET("/oidc/discovery", middleware.RootAuth(), controller.OidcDiscovery) // Die Eine Kette — OIDC-Auto-Setup
 		apiRouter.GET("/models", middleware.UserAuth(), controller.DashboardListModels)
 		apiRouter.GET("/notice", controller.GetNotice)
