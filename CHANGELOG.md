@@ -21,6 +21,9 @@ ist, gibt es noch keine festen Versionen — alles unter „Unveröffentlicht".
   ohne Cache-Verzögerung). Verifiziert.
 - **401-Auto-Logout:** Läuft die Session ab, wird der Nutzer automatisch ausgeloggt und auf
   `/login` geleitet (nur bei aktiver Session — die öffentliche Landing bleibt unberührt).
+- **Token-Key „show once":** Der volle Token-Key wird nur **einmal bei der Erstellung** angezeigt
+  (kopierbar). Listen-/Detail-Abrufe liefern ihn nur noch **maskiert** (`abcd…wxyz`) — der
+  Klartext-Key ist nach Erstellung nicht mehr über die API abgreifbar. Token-Keys werden nicht geloggt.
 
 ### Hinzugefügt
 - **Tokens:** Anlegen mit **Limit (Quota)**, **Ablaufdatum** und „Unbegrenzt"; Zwei-Schritt-

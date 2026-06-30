@@ -212,7 +212,7 @@ export const api = {
     request("/user/totp/disable", { method: "POST", body: JSON.stringify({ code }) }),
   tokens: () => request<Token[]>("/token?p=0"),
   createToken: (opts: { name: string; remain_quota?: number; expired_time?: number; unlimited_quota?: boolean }) =>
-    request("/token", {
+    request<{ key: string }>("/token", {
       method: "POST",
       body: JSON.stringify({
         name: opts.name,

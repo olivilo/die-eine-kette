@@ -19,6 +19,8 @@ export default function TokensPage() {
   const [expiry, setExpiry] = useState(""); // leer = nie
   const [busy, setBusy] = useState(false);
   const [confirmId, setConfirmId] = useState<number | null>(null);
+  const [newKey, setNewKey] = useState<string | null>(null); // einmalige Key-Anzeige
+  const [copied, setCopied] = useState(false);
 
   const load = useCallback(() => {
     api.tokens().then((res) => {
@@ -36,7 +38,7 @@ export default function TokensPage() {
   async function create() {
     if (!name.trim()) return;
     setBusy(true);
-    await api.createToken({
+    const res = await api.createToken({
       name: name.trim(),
       unlimited_quota: unlimited,
       remain_quota: unlimited ? 0 : Math.max(0, Number(limit) || 0),
@@ -44,6 +46,10 @@ export default function TokensPage() {
       expired_time: expiry ? Math.floor(new Date(`${expiry}T23:59:59`).getTime() / 1000) : -1,
     });
     setBusy(false);
+    if (res.data?.key) {
+      setNewKey(res.data.key); // einmalig anzeigen — danach nur noch maskiert
+      setCopied(false);
+    }
     setName("");
     setLimit("500000");
     setUnlimited(false);
@@ -85,6 +91,24 @@ export default function TokensPage() {
   return (
     <section className="py-8">
       <PageHeader title={t("nav.tokens")} subtitle={t("tokens.subtitle")} action={action} />
+      {newKey && (
+        <Card className="mt-4 border-gold/50 bg-gold/5">
+          <div className="text-sm font-semibold text-gold">{t("tokens.key_once_title", "Token-Key — jetzt kopieren")}</div>
+          <p className="mt-1 text-xs text-zinc-400">{t("tokens.key_once_hint", "Dieser Key wird nur EINMAL angezeigt. Danach ist er nur noch maskiert sichtbar.")}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <code className="select-all break-all rounded-md border border-zinc-700 bg-ink px-3 py-2 font-mono text-sm text-zinc-100">{newKey}</code>
+            <button
+              onClick={() => { navigator.clipboard?.writeText(newKey); setCopied(true); }}
+              className="rounded-md bg-gold px-3 py-2 text-sm font-semibold text-ink hover:bg-gold-light"
+            >
+              {copied ? t("common.copied", "Kopiert ✓") : t("common.copy", "Kopieren")}
+            </button>
+            <button onClick={() => setNewKey(null)} className="rounded-md border border-zinc-700 px-3 py-2 text-sm text-zinc-200 hover:border-gold">
+              {t("common.done", "Fertig")}
+            </button>
+          </div>
+        </Card>
+      )}
       {showForm && (
         <Card className="mt-4 flex flex-wrap items-end gap-3">
           <label className="flex flex-1 flex-col gap-1 text-sm text-zinc-300">

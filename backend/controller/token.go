@@ -13,6 +13,16 @@ import (
 	"strconv"
 )
 
+// maskKey — Die Eine Kette: Token-Keys in Listen/Detail-Abrufen maskieren. Der volle Key
+// wird nur einmal bei der Erstellung zurückgegeben („show once"). Verhindert, dass der
+// Klartext-Key nach Erstellung erneut über die API abgreifbar ist.
+func maskKey(key string) string {
+	if len(key) <= 10 {
+		return "••••"
+	}
+	return key[:4] + "…" + key[len(key)-4:]
+}
+
 func GetAllTokens(c *gin.Context) {
 	userId := c.GetInt(ctxkey.Id)
 	p, _ := strconv.Atoi(c.Query("p"))
@@ -29,6 +39,9 @@ func GetAllTokens(c *gin.Context) {
 			"message": err.Error(),
 		})
 		return
+	}
+	for i := range tokens {
+		tokens[i].Key = maskKey(tokens[i].Key)
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
@@ -48,6 +61,9 @@ func SearchTokens(c *gin.Context) {
 			"message": err.Error(),
 		})
 		return
+	}
+	for i := range tokens {
+		tokens[i].Key = maskKey(tokens[i].Key)
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
@@ -75,6 +91,7 @@ func GetToken(c *gin.Context) {
 		})
 		return
 	}
+	token.Key = maskKey(token.Key)
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": "",
