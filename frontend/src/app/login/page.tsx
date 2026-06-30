@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/components/AuthProvider";
 import { api } from "@/lib/api";
+import { apiError } from "@/lib/apiError";
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -53,7 +54,7 @@ export default function LoginPage() {
       setTotpRequired(true);
       setError(null);
     } else {
-      setError(res.message || t("login.error"));
+      setError(apiError(res.message, t));
     }
   }
 

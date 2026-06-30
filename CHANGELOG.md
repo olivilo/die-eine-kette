@@ -33,6 +33,13 @@ ist, gibt es noch keine festen Versionen — alles unter „Unveröffentlicht".
   Alpha-Hinweis; **grafische Roadmap** (Module & Status, ohne Datumsangaben); `SECURITY.md`,
   Issue-/PR-Templates.
 
+### Behoben
+- **Chinesische Backend-Fehlermeldungen** im UI: bekannte One-API-Fehler (Login, gesperrtes
+  Konto, Token-Limit, kein Anbieter, fehlende Berechtigung …) werden jetzt über die Frontend-i18n
+  lokalisiert angezeigt (de/en gepflegt, übrige Sprachen fallen auf Englisch zurück).
+  *Hinweis:* externe API-Consumer erhalten weiterhin die Backend-Originalmeldung — Backend-i18n-
+  Ausbau ist ein separater Schritt.
+
 ### Geändert
 - `LICENSE-DieEineKette.md` → `LICENSE.md` (GitHub-Lizenzerkennung).
 

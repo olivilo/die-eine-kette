@@ -1,4 +1,16 @@
 {
+  "errors": {
+    "generic": "Es ist ein Fehler aufgetreten.",
+    "bad_credentials": "Benutzername oder Passwort falsch — oder das Konto ist gesperrt.",
+    "user_banned": "Dieses Konto ist deaktiviert.",
+    "token_quota": "Token-Limit erreicht.",
+    "no_channel": "Für dieses Modell ist kein Anbieter verfügbar.",
+    "unauthorized": "Nicht angemeldet oder keine Berechtigung.",
+    "password_login_disabled": "Passwort-Anmeldung ist deaktiviert.",
+    "budget_exhausted": "Budget erschöpft.",
+    "cannot_disable_root": "Der Super-Admin kann nicht deaktiviert werden.",
+    "invalid_input": "Ungültige Eingabe."
+  },
   "brand": {
     "name": "Die Eine Kette",
     "tagline": "Ein Tor, sie alle zu verbinden."

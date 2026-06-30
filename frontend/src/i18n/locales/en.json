@@ -1,4 +1,16 @@
 {
+  "errors": {
+    "generic": "Something went wrong.",
+    "bad_credentials": "Wrong username or password — or the account is disabled.",
+    "user_banned": "This account is disabled.",
+    "token_quota": "Token limit reached.",
+    "no_channel": "No provider available for this model.",
+    "unauthorized": "Not signed in or not authorized.",
+    "password_login_disabled": "Password sign-in is disabled.",
+    "budget_exhausted": "Budget exhausted.",
+    "cannot_disable_root": "The super admin cannot be disabled.",
+    "invalid_input": "Invalid input."
+  },
   "brand": {
     "name": "Die Eine Kette",
     "tagline": "One gateway to connect them all."
