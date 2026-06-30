@@ -1,16 +1,19 @@
 package model
 
 import (
+	"fmt"
 	"testing"
+	"time"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
-// setupBudgetTestDB hängt DB an eine frische In-Memory-SQLite mit Budget-Tabelle.
+// setupBudgetTestDB hängt DB an eine frische, je Test isolierte In-Memory-SQLite.
 func setupBudgetTestDB(t *testing.T) {
 	t.Helper()
-	db, err := gorm.Open(sqlite.Open("file::memory:?cache=shared"), &gorm.Config{})
+	dsn := fmt.Sprintf("file:%s?mode=memory&cache=shared", t.Name())
+	db, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{})
 	if err != nil {
 		t.Fatalf("open sqlite: %v", err)
 	}
@@ -70,6 +73,34 @@ func TestBudgetBurndown_WarnKeepsActive(t *testing.T) {
 	DB.First(&got, b.Id)
 	if got.Status != BudgetStatusEnabled {
 		t.Fatalf("warn sollte aktiv lassen, status = %d", got.Status)
+	}
+}
+
+// ResetDueBudgets setzt nur fällige periodische Budgets zurück (nicht 'none', nicht zukünftige).
+func TestResetDueBudgets(t *testing.T) {
+	setupBudgetTestDB(t)
+	now := time.Now().Unix()
+	// fällig: monatlich, reset_at in der Vergangenheit, auto-gestoppt
+	due := seedBudget(t, Budget{Name: "due", Scope: "user", Ref: "a", AmountMicroEur: 100, UsedMicroEur: 100, OnExhaust: "block", Status: BudgetStatusDisabled, Period: "monthly", ResetAt: now - 10})
+	// nicht fällig: reset_at in der Zukunft
+	future := seedBudget(t, Budget{Name: "future", Scope: "user", Ref: "b", AmountMicroEur: 100, UsedMicroEur: 80, OnExhaust: "block", Status: BudgetStatusEnabled, Period: "monthly", ResetAt: now + 10000})
+	// none: nie zurücksetzen
+	none := seedBudget(t, Budget{Name: "none", Scope: "user", Ref: "c", AmountMicroEur: 100, UsedMicroEur: 90, OnExhaust: "block", Status: BudgetStatusEnabled, Period: "none", ResetAt: 0})
+
+	ResetDueBudgets()
+
+	var gd, gf, gn Budget
+	DB.First(&gd, due.Id)
+	DB.First(&gf, future.Id)
+	DB.First(&gn, none.Id)
+	if gd.UsedMicroEur != 0 || gd.Status != BudgetStatusEnabled || gd.ResetAt <= now {
+		t.Fatalf("fälliges Budget nicht korrekt zurückgesetzt: used=%d status=%d reset_at=%d", gd.UsedMicroEur, gd.Status, gd.ResetAt)
+	}
+	if gf.UsedMicroEur != 80 {
+		t.Fatalf("zukünftiges Budget angefasst: used=%d", gf.UsedMicroEur)
+	}
+	if gn.UsedMicroEur != 90 {
+		t.Fatalf("none-Budget angefasst: used=%d", gn.UsedMicroEur)
 	}
 }
 

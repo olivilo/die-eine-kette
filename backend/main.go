@@ -58,6 +58,11 @@ func main() {
 	}
 	// Die Eine Kette — laut warnen, falls root noch das Default-Passwort hat.
 	model.WarnIfRootPasswordIsDefault()
+
+	// Die Eine Kette — periodische Budget-Wartung (Resets + harte Timer), nur Master-Node.
+	if config.IsMasterNode {
+		go model.BudgetMaintenanceLoop(60)
+	}
 	defer func() {
 		err := model.CloseDB()
 		if err != nil {

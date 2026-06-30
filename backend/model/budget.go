@@ -163,6 +163,38 @@ func IsScopeBudgetExhausted(userId int) (bool, string) {
 	return false, ""
 }
 
+// ResetDueBudgets setzt periodische Budgets zurück, deren reset_at fällig ist:
+// nullt den Verbrauch, reaktiviert auto-gestoppte Budgets und plant den nächsten Reset.
+func ResetDueBudgets() {
+	now := time.Now().Unix()
+	var due []Budget
+	if err := DB.Where("period <> ? AND reset_at > 0 AND reset_at <= ?", "none", now).Find(&due).Error; err != nil {
+		return
+	}
+	for i := range due {
+		b := &due[i]
+		if err := b.Reset(); err != nil {
+			logger.SysError(fmt.Sprintf("Budget-Reset fehlgeschlagen (%s): %v", b.Name, err))
+		} else {
+			logger.SysLog(fmt.Sprintf("Budget '%s' periodisch zurückgesetzt (Periode %s).", b.Name, b.Period))
+		}
+	}
+}
+
+// BudgetMaintenanceLoop läuft periodisch (Master-Node): fällige Resets ausführen und
+// harte Timer (valid_until) durchsetzen. Blockiert — als Goroutine starten.
+func BudgetMaintenanceLoop(intervalSeconds int) {
+	if intervalSeconds <= 0 {
+		intervalSeconds = 60
+	}
+	ticker := time.NewTicker(time.Duration(intervalSeconds) * time.Second)
+	defer ticker.Stop()
+	for range ticker.C {
+		DisableExpiredBudgets()
+		ResetDueBudgets()
+	}
+}
+
 // DisableExpiredBudgets deaktiviert Budgets, deren harter Timer (valid_until) abgelaufen ist.
 func DisableExpiredBudgets() {
 	now := time.Now().Unix()
