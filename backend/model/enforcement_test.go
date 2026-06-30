@@ -65,3 +65,25 @@ func TestIsScopeBudgetExhausted(t *testing.T) {
 		t.Fatalf("erschöpftes block-Budget sollte sperren: blocked=%v name=%q", blocked, name)
 	}
 }
+
+// Org-Limit-Vererbung: ein erschöpftes ORG-Budget blockt jeden Nutzer der Organisation —
+// auch wenn dessen eigenes Nutzer-Budget noch Luft hätte (Deckel auf den Gesamt-Org-Verbrauch).
+func TestIsScopeBudgetExhausted_OrgInheritance(t *testing.T) {
+	setupEnforceDB(t, &Budget{}, &User{}, &Organization{})
+	org := Organization{Name: "OrgA", Status: 1}
+	if err := DB.Create(&org).Error; err != nil {
+		t.Fatalf("seed org: %v", err)
+	}
+	u := User{Username: "member1", OrgId: org.Id, Status: UserStatusEnabled}
+	DB.Create(&u)
+
+	// Nutzer-Budget des Mitglieds hat noch Luft …
+	DB.Create(&Budget{Name: "user-b", Scope: "user", Ref: "member1", AmountMicroEur: 100, UsedMicroEur: 10, OnExhaust: "block", Status: BudgetStatusEnabled})
+	// … aber das ORG-Budget ist erschöpft.
+	DB.Create(&Budget{Name: "org-b", Scope: "organization", Ref: "OrgA", AmountMicroEur: 100, UsedMicroEur: 100, OnExhaust: "block", Status: BudgetStatusEnabled})
+
+	blocked, name := IsScopeBudgetExhausted(u.Id)
+	if !blocked || name != "org-b" {
+		t.Fatalf("erschöpftes Org-Budget sollte das Mitglied sperren: blocked=%v name=%q", blocked, name)
+	}
+}

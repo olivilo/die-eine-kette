@@ -15,6 +15,8 @@ ist, gibt es noch keine festen Versionen — alles unter „Unveröffentlicht".
 - **Harte Limit-Durchsetzung im Relay (vor dem Provider-Call):**
   - **Token-Limit** wird unabhängig von der User-Quota geprüft (HTTP 403 `insufficient_token_quota`).
   - **Budget-Sperre** bei erschöpftem Budget mit `on_exhaust=block` (HTTP 403 `budget_exhausted`).
+  - **Org-Vererbung:** Ein erschöpftes **Organisations-Budget** sperrt alle Mitglieder der Org —
+    Deckel auf den Gesamt-Org-Verbrauch, auch wenn das eigene Nutzer-Budget noch Luft hätte.
 - **Nutzer-Deaktivierung** macht alle Tokens des Nutzers sofort wirkungslos (über die Blacklist,
   ohne Cache-Verzögerung). Verifiziert.
 - **401-Auto-Logout:** Läuft die Session ab, wird der Nutzer automatisch ausgeloggt und auf
