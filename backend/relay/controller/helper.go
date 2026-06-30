@@ -68,6 +68,19 @@ func getPreConsumedQuota(textRequest *relaymodel.GeneralOpenAIRequest, promptTok
 func preConsumeQuota(ctx context.Context, textRequest *relaymodel.GeneralOpenAIRequest, promptTokens int, ratio float64, meta *meta.Meta) (int64, *relaymodel.ErrorWithStatusCode) {
 	preConsumedQuota := getPreConsumedQuota(textRequest, promptTokens, ratio)
 
+	// Die Eine Kette — harter Token-Cap: das Token-Limit immer prüfen, unabhängig von der
+	// User-Quota. Sonst überspringt die Optimierung weiter unten den Token-Pre-Check und ein
+	// Token könnte sein Limit innerhalb eines Requests überschreiten.
+	if err := model.CheckTokenQuotaSufficient(meta.TokenId, preConsumedQuota); err != nil {
+		return preConsumedQuota, openai.ErrorWrapper(err, "insufficient_token_quota", http.StatusForbidden)
+	}
+
+	// Die Eine Kette — harte Budget-Sperre: ist ein Budget (on_exhaust=block) für Nutzer/Org
+	// erschöpft, den Request VOR dem Provider abweisen.
+	if blocked, name := model.IsScopeBudgetExhausted(meta.UserId); blocked {
+		return preConsumedQuota, openai.ErrorWrapper(errors.New("Budget erschöpft: "+name), "budget_exhausted", http.StatusForbidden)
+	}
+
 	userQuota, err := model.CacheGetUserQuota(ctx, meta.UserId)
 	if err != nil {
 		return preConsumedQuota, openai.ErrorWrapper(err, "get_user_quota_failed", http.StatusInternalServerError)

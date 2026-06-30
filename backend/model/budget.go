@@ -140,6 +140,29 @@ func applyBudgetUsage(scope, ref string, costMicroEur int64) {
 	}
 }
 
+// IsScopeBudgetExhausted prüft, ob für den Nutzer (oder seine Organisation) ein Budget mit
+// on_exhaust=block erschöpft ist (used >= amount). Für die harte Sperre VOR dem Request.
+func IsScopeBudgetExhausted(userId int) (bool, string) {
+	user, err := GetUserById(userId, false)
+	if err != nil {
+		return false, ""
+	}
+	const cond = "on_exhaust = ? AND amount_micro_eur > 0 AND used_micro_eur >= amount_micro_eur AND scope = ? AND ref = ?"
+	var b Budget
+	if err := DB.Where(cond, "block", "user", user.Username).First(&b).Error; err == nil {
+		return true, b.Name
+	}
+	if user.OrgId != 0 {
+		var org Organization
+		if err := DB.Select("name").First(&org, "id = ?", user.OrgId).Error; err == nil && org.Name != "" {
+			if err := DB.Where(cond, "block", "organization", org.Name).First(&b).Error; err == nil {
+				return true, b.Name
+			}
+		}
+	}
+	return false, ""
+}
+
 // DisableExpiredBudgets deaktiviert Budgets, deren harter Timer (valid_until) abgelaufen ist.
 func DisableExpiredBudgets() {
 	now := time.Now().Unix()

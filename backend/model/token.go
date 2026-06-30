@@ -214,6 +214,24 @@ func decreaseTokenQuota(id int, quota int64) (err error) {
 	return err
 }
 
+// CheckTokenQuotaSufficient prüft NUR (ohne zu buchen), ob das Token genug Restquota
+// für quota hat. Dient als harter Token-Cap, der unabhängig von der User-Quota greift —
+// die Pre-Consume-Optimierung (User hat genug → kein Token-Pre-Check) darf das Token-Limit
+// sonst überspringen. Read-only, damit die Refund-/Abrechnungslogik unberührt bleibt.
+func CheckTokenQuotaSufficient(tokenId int, quota int64) error {
+	if quota <= 0 || tokenId == 0 {
+		return nil
+	}
+	token, err := GetTokenById(tokenId)
+	if err != nil {
+		return err
+	}
+	if !token.UnlimitedQuota && token.RemainQuota < quota {
+		return errors.New("令牌额度不足")
+	}
+	return nil
+}
+
 func PreConsumeTokenQuota(tokenId int, quota int64) (err error) {
 	if quota < 0 {
 		return errors.New("quota 不能为负数！")
