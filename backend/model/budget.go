@@ -7,8 +7,10 @@ package model
 
 import (
 	"errors"
+	"fmt"
 	"time"
 
+	"github.com/songquanpeng/one-api/common/logger"
 	"gorm.io/gorm"
 )
 
@@ -76,6 +78,9 @@ func DeleteBudgetById(id int) error {
 	return DB.Delete(&Budget{Id: id}).Error
 }
 
+// budgetWarnThresholds — Prozentschwellen, ab denen beim Burndown gewarnt wird.
+var budgetWarnThresholds = []int64{75, 90}
+
 // AddBudgetUsage bucht Kosten (Micro-Euro) auf passende aktive Budgets (Burndown).
 // Aktuell: Scope user (ref=Username) und organization (ref=Org-Name). Best-effort.
 func AddBudgetUsage(costMicroEur int64, orgId int, username string) {
@@ -83,16 +88,54 @@ func AddBudgetUsage(costMicroEur int64, orgId int, username string) {
 		return
 	}
 	if username != "" {
-		DB.Model(&Budget{}).
-			Where("status = ? AND scope = ? AND ref = ?", BudgetStatusEnabled, "user", username).
-			UpdateColumn("used_micro_eur", gorm.Expr("used_micro_eur + ?", costMicroEur))
+		applyBudgetUsage("user", username, costMicroEur)
 	}
 	if orgId != 0 {
 		var org Organization
 		if err := DB.Select("name").First(&org, "id = ?", orgId).Error; err == nil && org.Name != "" {
-			DB.Model(&Budget{}).
-				Where("status = ? AND scope = ? AND ref = ?", BudgetStatusEnabled, "organization", org.Name).
-				UpdateColumn("used_micro_eur", gorm.Expr("used_micro_eur + ?", costMicroEur))
+			applyBudgetUsage("organization", org.Name, costMicroEur)
+		}
+	}
+}
+
+// applyBudgetUsage bucht Kosten auf alle passenden aktiven Budgets, warnt beim
+// erstmaligen Überschreiten der Schwellen (75/90 %) und stoppt bei Erschöpfung
+// automatisch (on_exhaust=block → Budget deaktivieren = Auto-Stop).
+func applyBudgetUsage(scope, ref string, costMicroEur int64) {
+	var budgets []Budget
+	if err := DB.Where("status = ? AND scope = ? AND ref = ?", BudgetStatusEnabled, scope, ref).Find(&budgets).Error; err != nil {
+		return
+	}
+	for i := range budgets {
+		b := &budgets[i]
+		before := b.UsedMicroEur
+		after := before + costMicroEur
+		DB.Model(b).UpdateColumn("used_micro_eur", gorm.Expr("used_micro_eur + ?", costMicroEur))
+
+		if b.AmountMicroEur <= 0 {
+			continue // kein Limit gesetzt: nur mitzählen, keine Schwelle/Stop
+		}
+
+		// Schwellen-Warnungen (nur beim erstmaligen Überschreiten je Schwelle).
+		for _, th := range budgetWarnThresholds {
+			mark := b.AmountMicroEur * th / 100
+			if before < mark && after >= mark {
+				logger.SysError(fmt.Sprintf("Budget '%s' (%s:%s) hat %d%% erreicht (%.2f/%.2f €).",
+					b.Name, scope, ref, th, float64(after)/1e6, float64(b.AmountMicroEur)/1e6))
+			}
+		}
+
+		// Auto-Stop bei Erschöpfung (erstmaliges Überschreiten von 100 %).
+		if before < b.AmountMicroEur && after >= b.AmountMicroEur {
+			switch b.OnExhaust {
+			case "warn":
+				logger.SysError(fmt.Sprintf("Budget '%s' (%s:%s) erschöpft (on_exhaust=warn — bleibt offen).", b.Name, scope, ref))
+			case "downgrade":
+				logger.SysError(fmt.Sprintf("Budget '%s' (%s:%s) erschöpft → Downgrade (Durchsetzung im Relay).", b.Name, scope, ref))
+			default: // "block"
+				DB.Model(b).Update("status", BudgetStatusDisabled)
+				logger.SysError(fmt.Sprintf("Budget '%s' (%s:%s) erschöpft → AUTO-STOP (deaktiviert).", b.Name, scope, ref))
+			}
 		}
 	}
 }
@@ -105,10 +148,12 @@ func DisableExpiredBudgets() {
 		Update("status", BudgetStatusDisabled)
 }
 
-// Reset setzt den Verbrauch auf 0 und plant den nächsten Reset (für Periode).
+// Reset setzt den Verbrauch auf 0, reaktiviert ein evtl. per Auto-Stop deaktiviertes
+// Budget und plant den nächsten Reset (für Periode).
 func (b *Budget) Reset() error {
 	b.UsedMicroEur = 0
+	b.Status = BudgetStatusEnabled
 	b.ResetAt = nextResetFrom(time.Now(), b.Period)
 	return DB.Model(b).Where("id = ?", b.Id).
-		Updates(map[string]interface{}{"used_micro_eur": 0, "reset_at": b.ResetAt}).Error
+		Updates(map[string]interface{}{"used_micro_eur": 0, "status": BudgetStatusEnabled, "reset_at": b.ResetAt}).Error
 }
