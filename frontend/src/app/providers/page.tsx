@@ -94,10 +94,11 @@ export default function ProvidersPage() {
 
   const selectedPreset = providerPresets.find((x) => x.id === presetId);
   const input = "rounded-md border border-zinc-700 bg-ink px-3 py-2 text-zinc-100 outline-none focus:border-gold";
-  const columns = [t("providers.name"), t("providers.type"), t("providers.cost_source"), t("providers.status"), t("providers.models"), ""];
+  const columns = [t("providers.name"), t("providers.type"), t("providers.endpoint", "Endpunkt"), t("providers.cost_source"), t("providers.status"), t("providers.models"), ""];
   const rows = channels.map((c) => [
     <span key="n" className="font-medium text-zinc-100">{c.name || "—"}</span>,
     <span key="t" className="text-zinc-300">{channelTypeLabel(c.type)}</span>,
+    <span key="ep" className="font-mono text-xs text-zinc-500">{c.base_url || "—"}</span>,
     <Badge key="cs" tone={c.cost_source === "self_hosted" ? "neutral" : "off"}>
       {t(`providers.cs_${c.cost_source || "external"}`, { defaultValue: c.cost_source || "external" })}
     </Badge>,

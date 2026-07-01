@@ -161,6 +161,7 @@ export type Channel = {
   models: string;
   response_time: number;
   cost_source?: string;
+  base_url?: string;
 };
 
 export type SelfHostedProfile = {

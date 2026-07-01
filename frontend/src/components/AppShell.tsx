@@ -85,7 +85,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </header>
 
       <main className={`px-4 transition-all duration-200 ${collapsed ? "md:ml-16" : "md:ml-64"}`}>
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           {rootPwWarn && (
             <div className="mt-4 rounded-md border border-red-700 bg-red-950/40 px-4 py-3 text-sm text-red-200">
               ⚠️ <b>{t("security.rootpw_title", "Sicherheitswarnung")}:</b>{" "}
