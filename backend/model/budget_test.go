@@ -118,3 +118,26 @@ func TestBudgetReset_Reactivates(t *testing.T) {
 		t.Fatalf("Reset unvollständig: status=%d used=%d", got.Status, got.UsedMicroEur)
 	}
 }
+
+// GetOrgBudgets liefert NUR organisationsbezogene Budgets der angefragten Org —
+// keine anderen Orgs, keine anderen Scopes (Grundlage der org-scoped Verwaltung).
+func TestGetOrgBudgets_FiltersByOrgAndScope(t *testing.T) {
+	setupBudgetTestDB(t)
+	seedBudget(t, Budget{Name: "acme-org", Scope: "organization", Ref: "Acme", AmountMicroEur: 1000, Status: BudgetStatusEnabled})
+	seedBudget(t, Budget{Name: "acme-org-2", Scope: "organization", Ref: "Acme", AmountMicroEur: 2000, Status: BudgetStatusEnabled})
+	seedBudget(t, Budget{Name: "other-org", Scope: "organization", Ref: "Globex", AmountMicroEur: 3000, Status: BudgetStatusEnabled})
+	seedBudget(t, Budget{Name: "acme-user", Scope: "user", Ref: "Acme", AmountMicroEur: 500, Status: BudgetStatusEnabled})
+
+	got, err := GetOrgBudgets("Acme", 0, 100)
+	if err != nil {
+		t.Fatalf("GetOrgBudgets: %v", err)
+	}
+	if len(got) != 2 {
+		t.Fatalf("erwartet 2 Acme-Org-Budgets, bekam %d", len(got))
+	}
+	for _, b := range got {
+		if b.Scope != "organization" || b.Ref != "Acme" {
+			t.Fatalf("fremdes Budget durchgerutscht: scope=%s ref=%s", b.Scope, b.Ref)
+		}
+	}
+}

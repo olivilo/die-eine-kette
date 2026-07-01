@@ -149,7 +149,7 @@ func SetApiRouter(router *gin.Engine) {
 		}
 		// Die Eine Kette — Budgets (Phase 4). Plattform-Ebene (Root).
 		budgetRoute := apiRouter.Group("/budget")
-		budgetRoute.Use(middleware.RootAuth())
+		budgetRoute.Use(middleware.AdminAuth()) // Root: alle Budgets; Org-Admins: nur eigene Org (Controller)
 		{
 			budgetRoute.GET("/", controller.GetAllBudgets)
 			budgetRoute.POST("/", controller.AddBudget)

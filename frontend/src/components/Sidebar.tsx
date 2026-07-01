@@ -25,7 +25,7 @@ const GROUPS: Group[] = [
   ] },
   { key: "tenants", items: [
     { k: "organizations", Icon: Building2, min: 100 },
-    { k: "budgets", Icon: Wallet, min: 100 },
+    { k: "budgets", Icon: Wallet, min: 10 },
     { k: "agents", Icon: Bot, min: 100 },
   ] },
   { key: "admin", items: [

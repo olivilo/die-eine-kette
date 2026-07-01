@@ -79,7 +79,19 @@ func GetUserLogs(c *gin.Context) {
 
 func SearchAllLogs(c *gin.Context) {
 	keyword := c.Query("keyword")
-	logs, err := model.SearchAllLogs(keyword)
+	// Mandanten-Isolation: Root durchsucht alle Logs; ein Org-Admin nur die eigene Org.
+	var logs []*model.Log
+	var err error
+	if c.GetInt(ctxkey.Role) >= model.RoleRootUser {
+		logs, err = model.SearchAllLogs(keyword)
+	} else {
+		me, e := model.GetUserById(c.GetInt(ctxkey.Id), false)
+		if e != nil {
+			c.JSON(http.StatusOK, gin.H{"success": false, "message": e.Error()})
+			return
+		}
+		logs, err = model.SearchOrgLogs(me.OrgId, keyword)
+	}
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
@@ -122,7 +134,18 @@ func GetLogsStat(c *gin.Context) {
 	username := c.Query("username")
 	modelName := c.Query("model_name")
 	channel, _ := strconv.Atoi(c.Query("channel"))
-	quotaNum := model.SumUsedQuota(logType, startTimestamp, endTimestamp, modelName, username, tokenName, channel)
+	// Mandanten-Isolation: Root summiert global; ein Org-Admin nur die eigene Org.
+	var quotaNum int64
+	if c.GetInt(ctxkey.Role) >= model.RoleRootUser {
+		quotaNum = model.SumUsedQuota(logType, startTimestamp, endTimestamp, modelName, username, tokenName, channel)
+	} else {
+		me, e := model.GetUserById(c.GetInt(ctxkey.Id), false)
+		if e != nil {
+			c.JSON(http.StatusOK, gin.H{"success": false, "message": e.Error()})
+			return
+		}
+		quotaNum = model.SumUsedQuotaByOrg(me.OrgId, logType, startTimestamp, endTimestamp, modelName, username, tokenName, channel)
+	}
 	//tokenNum := model.SumUsedToken(logType, startTimestamp, endTimestamp, modelName, username, "")
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
@@ -157,6 +180,11 @@ func GetLogsSelfStat(c *gin.Context) {
 }
 
 func DeleteHistoryLogs(c *gin.Context) {
+	// Destruktiv und global (löscht per Zeitstempel über alle Mandanten) → nur Root.
+	if c.GetInt(ctxkey.Role) < model.RoleRootUser {
+		c.JSON(http.StatusForbidden, gin.H{"success": false, "message": "Nur Root darf den globalen Log-Verlauf löschen."})
+		return
+	}
 	targetTimestamp, _ := strconv.ParseInt(c.Query("target_timestamp"), 10, 64)
 	if targetTimestamp == 0 {
 		c.JSON(http.StatusOK, gin.H{

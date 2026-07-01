@@ -54,6 +54,15 @@ func GetAllBudgets(startIdx int, num int) ([]*Budget, error) {
 	return budgets, err
 }
 
+// GetOrgBudgets liefert nur die Budgets EINER Organisation (Scope "organization",
+// Ref = Org-Name) — für die org-scoped Verwaltung durch Org-Admins.
+func GetOrgBudgets(orgName string, startIdx int, num int) ([]*Budget, error) {
+	var budgets []*Budget
+	err := DB.Where("scope = ? AND ref = ?", "organization", orgName).
+		Order("id desc").Limit(num).Offset(startIdx).Find(&budgets).Error
+	return budgets, err
+}
+
 func GetBudgetById(id int) (*Budget, error) {
 	if id == 0 {
 		return nil, errors.New("id ist leer")

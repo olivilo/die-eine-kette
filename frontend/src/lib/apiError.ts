@@ -4,7 +4,7 @@ import type { TFunction } from "i18next";
 // Meldung über die Frontend-i18n. Substring-Matching, da manche Strings dynamische
 // Teile enthalten (z. B. Modellname). Unbekannte Meldungen werden unverändert gezeigt.
 const MAP: { test: (m: string) => boolean; key: string; def: string }[] = [
-  { test: (m) => m.includes("用户名或密码错误"), key: "errors.bad_credentials", def: "Benutzername oder Passwort falsch — oder das Konto ist gesperrt." },
+  { test: (m) => m.includes("用户名或密码错误") || m.includes("Wrong username or password"), key: "errors.bad_credentials", def: "Benutzername oder Passwort falsch — oder das Konto ist gesperrt." },
   { test: (m) => m.includes("用户已被封禁") || m.includes("User has been banned"), key: "errors.user_banned", def: "Dieses Konto ist deaktiviert." },
   { test: (m) => m.includes("额度已用尽") || m.includes("令牌额度不足") || m.includes("insufficient_token_quota") || m.includes("quota has been exhausted") || m.includes("quota is not enough"), key: "errors.token_quota", def: "Token-Limit erreicht." },
   { test: (m) => m.includes("无可用渠道") || m.includes("no available channel"), key: "errors.no_channel", def: "Für dieses Modell ist kein Anbieter verfügbar." },

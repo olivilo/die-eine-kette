@@ -21,7 +21,9 @@ export default function BudgetsPage() {
   const [showForm, setShowForm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [form, setForm] = useState({ name: "", scope: "organization", ref: "", amount: 0, period: "monthly", on_exhaust: "block" });
-  const isRoot = (user?.role ?? 0) >= 100;
+  // Root verwaltet alle Budgets, Org-Admins (Rolle >= 10, mit Org) nur die eigene Org.
+  // Die eigentliche Scope-Prüfung erzwingt das Backend (budgetScope).
+  const canManageBudgets = (user?.role ?? 0) >= 10;
 
   const euro = useCallback(
     (micro: number) => new Intl.NumberFormat(lng, { style: "currency", currency: "EUR" }).format((micro || 0) / 1_000_000),
@@ -30,8 +32,8 @@ export default function BudgetsPage() {
 
   useEffect(() => {
     if (!authLoading && !user) router.replace("/login");
-    else if (!authLoading && user && !isRoot) router.replace("/dashboard");
-  }, [authLoading, user, isRoot, router]);
+    else if (!authLoading && user && !canManageBudgets) router.replace("/dashboard");
+  }, [authLoading, user, canManageBudgets, router]);
 
   const load = useCallback(() => {
     api.budgets().then((res) => {
@@ -41,10 +43,10 @@ export default function BudgetsPage() {
   }, []);
 
   useEffect(() => {
-    if (user && isRoot) load();
-  }, [user, isRoot, load]);
+    if (user && canManageBudgets) load();
+  }, [user, canManageBudgets, load]);
 
-  if (authLoading || !user || !isRoot) return <p className="py-20 text-center text-zinc-400">…</p>;
+  if (authLoading || !user || !canManageBudgets) return <p className="py-20 text-center text-zinc-400">…</p>;
 
   async function create() {
     if (!form.name.trim()) return;

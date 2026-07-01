@@ -5,8 +5,21 @@ package model
 
 import (
 	"errors"
+	"fmt"
 	"time"
+
+	"github.com/songquanpeng/one-api/common"
+	"github.com/songquanpeng/one-api/common/config"
 )
+
+// orgUsernames liefert die Usernamen aller Nutzer eines Mandanten als Slice.
+// Über diesen Slice werden Logs/Statistiken auf die eigene Org eingegrenzt (Mandanten-
+// Isolation), ohne über DB-Verbindungsgrenzen (DB vs. LOG_DB) hinweg zu joinen.
+func orgUsernames(orgId int) []string {
+	var usernames []string
+	DB.Model(&User{}).Where("org_id = ?", orgId).Pluck("username", &usernames)
+	return usernames
+}
 
 type Organization struct {
 	Id          int    `json:"id"`
@@ -106,6 +119,53 @@ func GetOrgLogs(orgId int, logType int, startTimestamp int64, endTimestamp int64
 	var logs []*Log
 	err := tx.Order("id desc").Limit(num).Offset(startIdx).Find(&logs).Error
 	return logs, err
+}
+
+// SearchOrgLogs durchsucht nur die Logs der eigenen Organisation (Mandanten-Isolation
+// der Admin-Suche). Spiegelt SearchAllLogs, aber eingegrenzt auf die Org-Nutzer.
+func SearchOrgLogs(orgId int, keyword string) ([]*Log, error) {
+	usernames := orgUsernames(orgId)
+	if len(usernames) == 0 {
+		return []*Log{}, nil
+	}
+	var logs []*Log
+	err := LOG_DB.Where("username IN ?", usernames).
+		Where("type = ? or content LIKE ?", keyword, keyword+"%").
+		Order("id desc").Limit(config.MaxRecentItems).Find(&logs).Error
+	return logs, err
+}
+
+// SumUsedQuotaByOrg summiert den Verbrauch nur für die eigene Organisation.
+func SumUsedQuotaByOrg(orgId int, logType int, startTimestamp int64, endTimestamp int64, modelName string, username string, tokenName string, channel int) (quota int64) {
+	usernames := orgUsernames(orgId)
+	if len(usernames) == 0 {
+		return 0
+	}
+	ifnull := "ifnull"
+	if common.UsingPostgreSQL {
+		ifnull = "COALESCE"
+	}
+	tx := LOG_DB.Table("logs").Select(fmt.Sprintf("%s(sum(quota),0)", ifnull)).Where("username IN ?", usernames)
+	if username != "" {
+		tx = tx.Where("username = ?", username)
+	}
+	if tokenName != "" {
+		tx = tx.Where("token_name = ?", tokenName)
+	}
+	if startTimestamp != 0 {
+		tx = tx.Where("created_at >= ?", startTimestamp)
+	}
+	if endTimestamp != 0 {
+		tx = tx.Where("created_at <= ?", endTimestamp)
+	}
+	if modelName != "" {
+		tx = tx.Where("model_name = ?", modelName)
+	}
+	if channel != 0 {
+		tx = tx.Where("channel_id = ?", channel)
+	}
+	tx.Where("type = ?", LogTypeConsume).Scan(&quota)
+	return quota
 }
 
 // AssignUserToOrg ordnet einen Nutzer (per Username) einer Organisation zu (0 = keine).
