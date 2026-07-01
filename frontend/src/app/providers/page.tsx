@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useRequireAuth } from "@/lib/useRequireAuth";
 import { PageHeader, DataTable, Badge, Card } from "@/components/ui";
 import { api, type Channel } from "@/lib/api";
-import { providerPresets } from "@/lib/presets";
+import { providerPresets, channelTypeLabel } from "@/lib/presets";
 
 function statusBadge(status: number, t: (k: string) => string) {
   if (status === 1) return <Badge tone="ok">{t("providers.enabled")}</Badge>;
@@ -54,7 +54,8 @@ export default function ProvidersPage() {
     setPresetId(id);
     setBaseUrl(p.base_url);
     setModels(p.models);
-    setCostSource(id === "ollama" ? "self_hosted" : "external");
+    // Lokale/On-Prem-Anbieter laufen auf eigener Hardware → als self-hosted vorbelegen.
+    setCostSource(p.group.startsWith("Lokal") ? "self_hosted" : "external");
     if (!name) setName(p.label);
   }
 
@@ -91,11 +92,12 @@ export default function ProvidersPage() {
     }
   }
 
+  const selectedPreset = providerPresets.find((x) => x.id === presetId);
   const input = "rounded-md border border-zinc-700 bg-ink px-3 py-2 text-zinc-100 outline-none focus:border-gold";
   const columns = [t("providers.name"), t("providers.type"), t("providers.cost_source"), t("providers.status"), t("providers.models"), ""];
   const rows = channels.map((c) => [
     <span key="n" className="font-medium text-zinc-100">{c.name || "—"}</span>,
-    c.type,
+    <span key="t" className="text-zinc-300">{channelTypeLabel(c.type)}</span>,
     <Badge key="cs" tone={c.cost_source === "self_hosted" ? "neutral" : "off"}>
       {t(`providers.cs_${c.cost_source || "external"}`, { defaultValue: c.cost_source || "external" })}
     </Badge>,
@@ -121,7 +123,13 @@ export default function ProvidersPage() {
           <label className="flex flex-col gap-1 text-sm text-zinc-300">
             {t("providers.preset")}
             <select value={presetId} onChange={(e) => pickPreset(e.target.value)} className={input}>
-              {providerPresets.map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
+              {[...new Set(providerPresets.map((p) => p.group))].map((group) => (
+                <optgroup key={group} label={group}>
+                  {providerPresets.filter((p) => p.group === group).map((p) => (
+                    <option key={p.id} value={p.id}>{p.label}</option>
+                  ))}
+                </optgroup>
+              ))}
             </select>
           </label>
           <label className="flex flex-col gap-1 text-sm text-zinc-300">
@@ -140,6 +148,9 @@ export default function ProvidersPage() {
             {t("providers.models")}
             <input value={models} onChange={(e) => setModels(e.target.value)} className={input} />
           </label>
+          {selectedPreset?.note && (
+            <p className="text-xs text-zinc-500 sm:col-span-2">ℹ️ {selectedPreset.note}</p>
+          )}
           <label className="flex flex-col gap-1 text-sm text-zinc-300">
             {t("providers.cost_source")}
             <select value={costSource} onChange={(e) => setCostSource(e.target.value as "external" | "self_hosted")} className={input}>
