@@ -1,7 +1,7 @@
 # Marke — Die Eine Kette
 
 Ring-Ketten-Motiv: ineinandergreifende Ringe als **eine Kette** — Symbol für „ein Tor,
-sie alle zu verbinden". Jeder Ring steht für einen Dienst (siehe `docs/internal-notes.md`).
+sie alle zu verbinden".
 
 ## Dateien
 
