@@ -23,10 +23,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Sicherheits-Hinweis: warnen, wenn root noch das Default-Passwort nutzt (nur Admin/Root).
+  // Neben dem Mount-Check horchen wir auf "dek:security-refresh", damit der Banner nach
+  // einer Passwortänderung sofort neu geprüft wird (ohne vollen Reload).
   useEffect(() => {
-    if (user && (user.role ?? 0) >= 10) {
+    if (!user || (user.role ?? 0) < 10) return;
+    const check = () =>
       api.securityStatus().then((r) => setRootPwWarn(!!r.data?.root_password_is_default)).catch(() => {});
-    }
+    check();
+    window.addEventListener("dek:security-refresh", check);
+    return () => window.removeEventListener("dek:security-refresh", check);
   }, [user]);
 
   function toggleCollapsed() {

@@ -21,7 +21,9 @@ func GetSecurityStatus(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"data": gin.H{
-			"root_password_is_default": config.RootPasswordIsDefault,
+			// Live gegen die DB prüfen, damit der Banner nach einer Passwortänderung
+			// sofort (beim nächsten Abruf) verschwindet — nicht das Boot-Flag.
+			"root_password_is_default": model.IsRootPasswordDefault(),
 		},
 	})
 }

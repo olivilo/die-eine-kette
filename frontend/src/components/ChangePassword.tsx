@@ -35,6 +35,8 @@ export default function ChangePassword() {
       setDone(true);
       setPw("");
       setConfirm("");
+      // Sicherheits-Banner (Default-Passwort) sofort neu prüfen lassen.
+      window.dispatchEvent(new Event("dek:security-refresh"));
     } else {
       setError(res.message || t("passwd.failed", "Änderung fehlgeschlagen."));
     }

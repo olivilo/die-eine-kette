@@ -64,15 +64,23 @@ func CreateRootAccountIfNeed() error {
 	return nil
 }
 
-// WarnIfRootPasswordIsDefault meldet laut, wenn der root-Account noch das
-// Default-Passwort ("123456") nutzt, und setzt ein Flag, das das Frontend für
-// einen Warnbanner auswerten kann. Pflicht-Check vor jeder Governance-Anbindung.
-func WarnIfRootPasswordIsDefault() {
+// IsRootPasswordDefault prüft LIVE gegen die DB, ob der root-Account noch das
+// Default-Passwort ("123456") nutzt. Muss zur Laufzeit ausgewertet werden (nicht
+// als Boot-Flag gecacht), damit der Warnbanner nach einer Passwortänderung
+// verschwindet.
+func IsRootPasswordDefault() bool {
 	var root User
 	if err := DB.Where("role = ?", RoleRootUser).First(&root).Error; err != nil {
-		return
+		return false
 	}
-	if common.ValidatePasswordAndHash("123456", root.Password) {
+	return common.ValidatePasswordAndHash("123456", root.Password)
+}
+
+// WarnIfRootPasswordIsDefault meldet beim Boot laut, wenn der root-Account noch das
+// Default-Passwort nutzt. Der Frontend-Banner nutzt dagegen den Live-Check
+// (IsRootPasswordDefault), damit er nach der Änderung sofort verschwindet.
+func WarnIfRootPasswordIsDefault() {
+	if IsRootPasswordDefault() {
 		config.RootPasswordIsDefault = true
 		logger.SysError("=================== SICHERHEITSWARNUNG ===================")
 		logger.SysError("Der root-Account nutzt noch das Default-Passwort '123456'.")
