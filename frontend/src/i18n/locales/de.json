@@ -392,5 +392,17 @@
     "owner": "Besitzer (Nutzer-ID)",
     "owner_placeholder": "leer = du selbst",
     "owner_hint": "Der Agent erbt nie mehr als dieser Nutzer. Wird der Besitzer gesperrt oder seine Quota erschöpft, verliert der Agent sofort jeden Zugriff."
+  },
+  "passwd": {
+    "title": "Passwort ändern",
+    "desc": "Lege ein neues Passwort für dein Konto fest (8–20 Zeichen).",
+    "new": "Neues Passwort",
+    "confirm": "Passwort bestätigen",
+    "too_short": "Mindestens 8 Zeichen.",
+    "too_long": "Höchstens 20 Zeichen.",
+    "mismatch": "Die Passwörter stimmen nicht überein.",
+    "save": "Passwort ändern",
+    "done": "Passwort geändert.",
+    "failed": "Änderung fehlgeschlagen."
   }
 }

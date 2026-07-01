@@ -392,5 +392,17 @@
     "owner": "Owner (user ID)",
     "owner_placeholder": "empty = yourself",
     "owner_hint": "The agent never inherits more than this user. If the owner is disabled or their quota is exhausted, the agent loses all access immediately."
+  },
+  "passwd": {
+    "title": "Change password",
+    "desc": "Set a new password for your account (8–20 characters).",
+    "new": "New password",
+    "confirm": "Confirm password",
+    "too_short": "At least 8 characters.",
+    "too_long": "At most 20 characters.",
+    "mismatch": "The passwords do not match.",
+    "save": "Change password",
+    "done": "Password changed.",
+    "failed": "Change failed."
   }
 }

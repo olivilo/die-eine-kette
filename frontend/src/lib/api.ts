@@ -184,6 +184,8 @@ export const api = {
   oidcCallback: (code: string, state: string) =>
     request<User>(`/oauth/oidc?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`),
   self: () => request<User>("/user/self"),
+  updateSelf: (fields: { password?: string; display_name?: string }) =>
+    request("/user/self", { method: "PUT", body: JSON.stringify(fields) }),
   login: (username: string, password: string, totpCode?: string) =>
     request<User & { totp_required?: boolean }>("/user/login", {
       method: "POST",

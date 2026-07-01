@@ -3,6 +3,7 @@
 import { useTranslation } from "react-i18next";
 import { useRequireAuth } from "@/lib/useRequireAuth";
 import { PageHeader } from "@/components/ui";
+import ChangePassword from "@/components/ChangePassword";
 import TwoFactor from "@/components/TwoFactor";
 import SystemSettings from "@/components/SystemSettings";
 import SsoSetup from "@/components/SsoSetup";
@@ -17,6 +18,7 @@ export default function SettingsPage() {
   return (
     <section className="py-8">
       <PageHeader title={t("nav.settings")} subtitle={t("settings.subtitle")} />
+      <ChangePassword />
       <LicenseInfo />
       <TwoFactor />
       <SystemSettings />
