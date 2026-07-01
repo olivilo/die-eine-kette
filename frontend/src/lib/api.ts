@@ -146,11 +146,18 @@ export type CostEntry = {
   cost_micro_eur: number;
 };
 
+export type TokenSums = { prompt: number; completion: number };
 export type CostSummary = {
   external_micro_eur: number;
   self_hosted_micro_eur: number;
   total_micro_eur: number;
   recent: CostEntry[];
+  tokens?: {
+    external: TokenSums;
+    self_hosted: TokenSums;
+    prompt_total: number;
+    completion_total: number;
+  };
 };
 
 export type Channel = {

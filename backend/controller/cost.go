@@ -50,6 +50,10 @@ func GetCostSummary(c *gin.Context) {
 	recent, _ := model.GetCostEntries(maxZero(orgId), 0, 50)
 	external := sums["external"]
 	selfHosted := sums["self_hosted"]
+	// Token-in/out je Quelle (external = beim Anbieter, self_hosted = lokal).
+	tokens, _ := model.SumTokensBySource(maxZero(orgId), since)
+	tExt := tokens["external"]
+	tLocal := tokens["self_hosted"]
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": "",
@@ -58,6 +62,12 @@ func GetCostSummary(c *gin.Context) {
 			"self_hosted_micro_eur": selfHosted,
 			"total_micro_eur":       external + selfHosted,
 			"recent":                recent,
+			"tokens": gin.H{
+				"external":         gin.H{"prompt": tExt.Prompt, "completion": tExt.Completion},
+				"self_hosted":      gin.H{"prompt": tLocal.Prompt, "completion": tLocal.Completion},
+				"prompt_total":     tExt.Prompt + tLocal.Prompt,
+				"completion_total": tExt.Completion + tLocal.Completion,
+			},
 		},
 	})
 }

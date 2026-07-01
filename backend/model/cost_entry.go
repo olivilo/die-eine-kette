@@ -99,6 +99,37 @@ func SumCostBySource(orgId int, since int64) (map[string]int64, error) {
 	return out, err
 }
 
+// TokenSums — Token-in (Prompt) und Token-out (Completion) je Kostenquelle.
+type TokenSums struct {
+	Prompt     int64 `json:"prompt"`
+	Completion int64 `json:"completion"`
+}
+
+// SumTokensBySource summiert Prompt-/Completion-Tokens gruppiert nach Kostenquelle
+// (external = beim Anbieter, self_hosted = lokal) seit dem Zeitpunkt `since`.
+func SumTokensBySource(orgId int, since int64) (map[string]TokenSums, error) {
+	type row struct {
+		CostSource string
+		Prompt     int64
+		Completion int64
+	}
+	var rows []row
+	q := DB.Model(&CostEntry{}).
+		Select("cost_source, COALESCE(SUM(prompt_tokens),0) as prompt, COALESCE(SUM(completion_tokens),0) as completion")
+	if orgId > 0 {
+		q = q.Where("org_id = ?", orgId)
+	}
+	if since > 0 {
+		q = q.Where("created_at >= ?", since)
+	}
+	err := q.Group("cost_source").Scan(&rows).Error
+	out := map[string]TokenSums{"external": {}, "self_hosted": {}}
+	for _, r := range rows {
+		out[r.CostSource] = TokenSums{Prompt: r.Prompt, Completion: r.Completion}
+	}
+	return out, err
+}
+
 // GetCostEntries liefert die jüngsten Ledger-Zeilen (optional Org-gefiltert).
 func GetCostEntries(orgId int, startIdx int, num int) ([]*CostEntry, error) {
 	var entries []*CostEntry
