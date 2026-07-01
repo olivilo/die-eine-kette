@@ -10,16 +10,28 @@ import (
 
 func Language() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		lang := c.GetHeader("Accept-Language")
-		if lang == "" {
-			lang = "en"
-		}
-		if strings.HasPrefix(strings.ToLower(lang), "zh") {
-			lang = "zh-CN"
-		} else {
-			lang = "en"
-		}
-		c.Set(i18n.ContextKey, lang)
+		c.Set(i18n.ContextKey, resolveLang(c.GetHeader("Accept-Language")))
 		c.Next()
 	}
+}
+
+// resolveLang picks a supported locale (en, de, zh-CN) from an Accept-Language
+// header. It scans the comma-separated tags in order and returns the first
+// supported match, ignoring quality values; it falls back to English.
+func resolveLang(header string) string {
+	for _, part := range strings.Split(header, ",") {
+		tag := strings.ToLower(strings.TrimSpace(part))
+		if i := strings.IndexByte(tag, ';'); i >= 0 { // drop q-value
+			tag = tag[:i]
+		}
+		switch {
+		case strings.HasPrefix(tag, "zh"):
+			return "zh-CN"
+		case strings.HasPrefix(tag, "de"):
+			return "de"
+		case strings.HasPrefix(tag, "en"):
+			return "en"
+		}
+	}
+	return "en"
 }

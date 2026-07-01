@@ -61,23 +61,23 @@ func SearchUserTokens(userId int, keyword string) (tokens []*Token, err error) {
 
 func ValidateUserToken(key string) (token *Token, err error) {
 	if key == "" {
-		return nil, errors.New("未提供令牌")
+		return nil, errors.New("No token provided")
 	}
 	token, err = CacheGetTokenByKey(key)
 	if err != nil {
 		logger.SysError("CacheGetTokenByKey failed: " + err.Error())
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, errors.New("无效的令牌")
+			return nil, errors.New("Invalid token")
 		}
-		return nil, errors.New("令牌验证失败")
+		return nil, errors.New("Token validation failed")
 	}
 	if token.Status == TokenStatusExhausted {
-		return nil, fmt.Errorf("令牌 %s（#%d）额度已用尽", token.Name, token.Id)
+		return nil, fmt.Errorf("token %s (#%d) quota has been exhausted", token.Name, token.Id)
 	} else if token.Status == TokenStatusExpired {
-		return nil, errors.New("该令牌已过期")
+		return nil, errors.New("This token has expired")
 	}
 	if token.Status != TokenStatusEnabled {
-		return nil, errors.New("该令牌状态不可用")
+		return nil, errors.New("This token is not available")
 	}
 	if token.ExpiredTime != -1 && token.ExpiredTime < helper.GetTimestamp() {
 		if !common.RedisEnabled {
@@ -87,7 +87,7 @@ func ValidateUserToken(key string) (token *Token, err error) {
 				logger.SysError("failed to update token status" + err.Error())
 			}
 		}
-		return nil, errors.New("该令牌已过期")
+		return nil, errors.New("This token has expired")
 	}
 	if !token.UnlimitedQuota && token.RemainQuota <= 0 {
 		if !common.RedisEnabled {
@@ -98,7 +98,7 @@ func ValidateUserToken(key string) (token *Token, err error) {
 				logger.SysError("failed to update token status" + err.Error())
 			}
 		}
-		return nil, errors.New("该令牌额度已用尽")
+		return nil, errors.New("This token's quota has been exhausted")
 	}
 	return token, nil
 }
@@ -227,7 +227,7 @@ func CheckTokenQuotaSufficient(tokenId int, quota int64) error {
 		return err
 	}
 	if !token.UnlimitedQuota && token.RemainQuota < quota {
-		return errors.New("令牌额度不足")
+		return errors.New("Token quota is not enough")
 	}
 	return nil
 }
@@ -241,14 +241,14 @@ func PreConsumeTokenQuota(tokenId int, quota int64) (err error) {
 		return err
 	}
 	if !token.UnlimitedQuota && token.RemainQuota < quota {
-		return errors.New("令牌额度不足")
+		return errors.New("Token quota is not enough")
 	}
 	userQuota, err := GetUserQuota(token.UserId)
 	if err != nil {
 		return err
 	}
 	if userQuota < quota {
-		return errors.New("用户额度不足")
+		return errors.New("User quota is not enough")
 	}
 	quotaTooLow := userQuota >= config.QuotaRemindThreshold && userQuota-quota < config.QuotaRemindThreshold
 	noMoreQuota := userQuota-quota <= 0

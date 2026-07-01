@@ -5,10 +5,10 @@ import type { TFunction } from "i18next";
 // Teile enthalten (z. B. Modellname). Unbekannte Meldungen werden unverändert gezeigt.
 const MAP: { test: (m: string) => boolean; key: string; def: string }[] = [
   { test: (m) => m.includes("用户名或密码错误"), key: "errors.bad_credentials", def: "Benutzername oder Passwort falsch — oder das Konto ist gesperrt." },
-  { test: (m) => m.includes("用户已被封禁"), key: "errors.user_banned", def: "Dieses Konto ist deaktiviert." },
-  { test: (m) => m.includes("额度已用尽") || m.includes("令牌额度不足") || m.includes("insufficient_token_quota"), key: "errors.token_quota", def: "Token-Limit erreicht." },
-  { test: (m) => m.includes("无可用渠道"), key: "errors.no_channel", def: "Für dieses Modell ist kein Anbieter verfügbar." },
-  { test: (m) => m.includes("无权进行此操作") || m.includes("未登录"), key: "errors.unauthorized", def: "Nicht angemeldet oder keine Berechtigung." },
+  { test: (m) => m.includes("用户已被封禁") || m.includes("User has been banned"), key: "errors.user_banned", def: "Dieses Konto ist deaktiviert." },
+  { test: (m) => m.includes("额度已用尽") || m.includes("令牌额度不足") || m.includes("insufficient_token_quota") || m.includes("quota has been exhausted") || m.includes("quota is not enough"), key: "errors.token_quota", def: "Token-Limit erreicht." },
+  { test: (m) => m.includes("无可用渠道") || m.includes("no available channel"), key: "errors.no_channel", def: "Für dieses Modell ist kein Anbieter verfügbar." },
+  { test: (m) => m.includes("无权进行此操作") || m.includes("未登录") || m.includes("Unauthorized"), key: "errors.unauthorized", def: "Nicht angemeldet oder keine Berechtigung." },
   { test: (m) => m.includes("管理员关闭了密码登录"), key: "errors.password_login_disabled", def: "Passwort-Anmeldung ist deaktiviert." },
   { test: (m) => m.includes("budget_exhausted") || m.includes("Budget erschöpft"), key: "errors.budget_exhausted", def: "Budget erschöpft." },
   { test: (m) => m.includes("无法禁用超级管理员"), key: "errors.cannot_disable_root", def: "Der Super-Admin kann nicht deaktiviert werden." },

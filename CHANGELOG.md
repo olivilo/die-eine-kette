@@ -40,8 +40,12 @@ ist, gibt es noch keine festen Versionen — alles unter „Unveröffentlicht".
 - **Chinesische Backend-Fehlermeldungen** im UI: bekannte One-API-Fehler (Login, gesperrtes
   Konto, Token-Limit, kein Anbieter, fehlende Berechtigung …) werden jetzt über die Frontend-i18n
   lokalisiert angezeigt (de/en gepflegt, übrige Sprachen fallen auf Englisch zurück).
-  *Hinweis:* externe API-Consumer erhalten weiterhin die Backend-Originalmeldung — Backend-i18n-
-  Ausbau ist ein separater Schritt.
+- **Backend-i18n für externe API-Consumer (z. B. SAP):** Die relevanten user-facing
+  Fehlermeldungen im Relay-/Auth-Pfad (Token ungültig/abgelaufen/Kontingent erschöpft, Nutzer
+  gesperrt, Kanal deaktiviert/nicht verfügbar, fehlende Berechtigung …) sind nicht mehr
+  hartkodiert chinesisch, sondern werden serverseitig über `Accept-Language` lokalisiert
+  (**de/en/zh-CN**, sonst Fallback Englisch). Das Frontend sendet die aktuelle UI-Sprache als
+  `Accept-Language`. Live verifiziert in allen drei Sprachen + Fallback.
 
 ### Geändert
 - `LICENSE-DieEineKette.md` → `LICENSE.md` (GitHub-Lizenzerkennung).

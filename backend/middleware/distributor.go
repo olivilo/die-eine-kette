@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/songquanpeng/one-api/common/ctxkey"
+	"github.com/songquanpeng/one-api/common/i18n"
 	"github.com/songquanpeng/one-api/common/logger"
 	"github.com/songquanpeng/one-api/model"
 	"github.com/songquanpeng/one-api/relay/channeltype"
@@ -29,16 +30,16 @@ func Distribute() func(c *gin.Context) {
 		if ok {
 			id, err := strconv.Atoi(channelId.(string))
 			if err != nil {
-				abortWithMessage(c, http.StatusBadRequest, "无效的渠道 Id")
+				abortWithMessage(c, http.StatusBadRequest, "Invalid channel Id")
 				return
 			}
 			channel, err = model.GetChannelById(id, true)
 			if err != nil {
-				abortWithMessage(c, http.StatusBadRequest, "无效的渠道 Id")
+				abortWithMessage(c, http.StatusBadRequest, "Invalid channel Id")
 				return
 			}
 			if channel.Status != model.ChannelStatusEnabled {
-				abortWithMessage(c, http.StatusForbidden, "该渠道已被禁用")
+				abortWithMessage(c, http.StatusForbidden, "This channel has been disabled")
 				return
 			}
 		} else {
@@ -46,10 +47,10 @@ func Distribute() func(c *gin.Context) {
 			var err error
 			channel, err = model.CacheGetRandomSatisfiedChannel(userGroup, requestModel, false)
 			if err != nil {
-				message := fmt.Sprintf("当前分组 %s 下对于模型 %s 无可用渠道", userGroup, requestModel)
+				message := fmt.Sprintf(i18n.Translate(c, "Under group %s there is no available channel for model %s"), userGroup, requestModel)
 				if channel != nil {
-					logger.SysError(fmt.Sprintf("渠道不存在：%d", channel.Id))
-					message = "数据库一致性已被破坏，请联系管理员"
+					logger.SysError(fmt.Sprintf("channel does not exist: %d", channel.Id))
+					message = i18n.Translate(c, "Database consistency has been broken, please contact the administrator")
 				}
 				abortWithMessage(c, http.StatusServiceUnavailable, message)
 				return

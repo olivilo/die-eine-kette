@@ -1,0 +1,28 @@
+{
+  "invalid_input": "Ungültige Eingabe, bitte überprüfen Sie Ihre Eingabe",
+  "send_email_failed": "E-Mail konnte nicht gesendet werden: ",
+  "invalid_parameter": "Ungültiger Parameter",
+
+  "Unauthorized: not logged in and no access token provided": "Nicht autorisiert: nicht angemeldet und kein Access-Token angegeben",
+  "Unauthorized: invalid access token": "Nicht autorisiert: ungültiges Access-Token",
+  "User has been banned": "Der Benutzer wurde gesperrt",
+  "Unauthorized: insufficient permissions": "Nicht autorisiert: unzureichende Berechtigungen",
+  "Regular users cannot specify a channel": "Normale Benutzer können keinen Kanal angeben",
+  "This token may only be used in subnet %s, current ip: %s": "Dieses Token darf nur im Subnetz %s verwendet werden, aktuelle IP: %s",
+  "This token is not authorized to use model: %s": "Dieses Token ist nicht berechtigt, das Modell zu verwenden: %s",
+
+  "Invalid channel Id": "Ungültige Kanal-ID",
+  "This channel has been disabled": "Dieser Kanal wurde deaktiviert",
+  "Under group %s there is no available channel for model %s": "In Gruppe %s ist kein Kanal für das Modell %s verfügbar",
+  "Database consistency has been broken, please contact the administrator": "Die Datenbankkonsistenz wurde verletzt, bitte kontaktieren Sie den Administrator",
+
+  "No token provided": "Kein Token angegeben",
+  "Invalid token": "Ungültiges Token",
+  "Token validation failed": "Token-Validierung fehlgeschlagen",
+  "This token has expired": "Dieses Token ist abgelaufen",
+  "This token is not available": "Dieses Token ist nicht verfügbar",
+  "This token's quota has been exhausted": "Das Kontingent dieses Tokens ist aufgebraucht",
+  "token %s (#%d) quota has been exhausted": "Das Kontingent des Tokens %s (#%d) ist aufgebraucht",
+  "Token quota is not enough": "Das Token-Kontingent ist unzureichend",
+  "User quota is not enough": "Das Benutzer-Kontingent ist unzureichend"
+}

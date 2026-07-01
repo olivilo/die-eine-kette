@@ -1,5 +1,28 @@
 {
   "invalid_input": "无效的输入，请检查您的输入",
   "send_email_failed": "发送邮件失败：",
-  "invalid_parameter": "无效的参数"
+  "invalid_parameter": "无效的参数",
+
+  "Unauthorized: not logged in and no access token provided": "无权进行此操作，未登录且未提供 access token",
+  "Unauthorized: invalid access token": "无权进行此操作，access token 无效",
+  "User has been banned": "用户已被封禁",
+  "Unauthorized: insufficient permissions": "无权进行此操作，权限不足",
+  "Regular users cannot specify a channel": "普通用户不支持指定渠道",
+  "This token may only be used in subnet %s, current ip: %s": "该令牌只能在指定网段使用：%s，当前 ip：%s",
+  "This token is not authorized to use model: %s": "该令牌无权使用模型：%s",
+
+  "Invalid channel Id": "无效的渠道 Id",
+  "This channel has been disabled": "该渠道已被禁用",
+  "Under group %s there is no available channel for model %s": "当前分组 %s 下对于模型 %s 无可用渠道",
+  "Database consistency has been broken, please contact the administrator": "数据库一致性已被破坏，请联系管理员",
+
+  "No token provided": "未提供令牌",
+  "Invalid token": "无效的令牌",
+  "Token validation failed": "令牌验证失败",
+  "This token has expired": "该令牌已过期",
+  "This token is not available": "该令牌状态不可用",
+  "This token's quota has been exhausted": "该令牌额度已用尽",
+  "token %s (#%d) quota has been exhausted": "令牌 %s（#%d）额度已用尽",
+  "Token quota is not enough": "令牌额度不足",
+  "User quota is not enough": "用户额度不足"
 }

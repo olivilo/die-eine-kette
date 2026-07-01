@@ -36,10 +36,21 @@ export function setUnauthorizedHandler(fn: (() => void) | null) {
   onUnauthorized = fn;
 }
 
+// Aktuelle UI-Sprache (localStorage "dek.lng") für Accept-Language, damit das
+// Backend Fehlermeldungen lokalisiert (versteht de/en/zh, sonst Fallback en).
+function currentLang(): string {
+  if (typeof window === "undefined") return "de";
+  return window.localStorage.getItem("dek.lng") || "de";
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<ApiResponse<T>> {
   const res = await fetch(`/api${path}`, {
     credentials: "include",
-    headers: { "Content-Type": "application/json", ...(init?.headers || {}) },
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Language": currentLang(),
+      ...(init?.headers || {}),
+    },
     ...init,
   });
   if (res.status === 401) {
