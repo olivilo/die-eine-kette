@@ -404,5 +404,20 @@
     "save": "Passwort ändern",
     "done": "Passwort geändert.",
     "failed": "Änderung fehlgeschlagen."
+  },
+  "dash": {
+    "quick": "Schnellzugriff",
+    "start_title": "Erste Schritte",
+    "step1": "Anbieter anbinden",
+    "step2": "API-Token erstellen",
+    "step3": "Budget festlegen",
+    "q_providers": "KI-Anbieter (Cloud & lokal) anbinden und testen.",
+    "q_tokens": "API-Tokens mit Limit und Ablauf erstellen.",
+    "q_usage": "Verbrauch und Anfragen im Blick behalten.",
+    "q_costs": "Kosten extern vs. self-hosted, mit CSV-Export.",
+    "q_budgets": "Ausgaben deckeln, Auto-Stop und Reset.",
+    "q_users": "Nutzer, Rollen und Mandanten verwalten.",
+    "q_orgs": "B2B-Mandanten anlegen und zuordnen.",
+    "q_logs": "Alle Anfragen und Ereignisse nachvollziehen."
   }
 }

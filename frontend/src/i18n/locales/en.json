@@ -404,5 +404,20 @@
     "save": "Change password",
     "done": "Password changed.",
     "failed": "Change failed."
+  },
+  "dash": {
+    "quick": "Quick access",
+    "start_title": "Getting started",
+    "step1": "Connect a provider",
+    "step2": "Create an API token",
+    "step3": "Set a budget",
+    "q_providers": "Connect and test AI providers (cloud & local).",
+    "q_tokens": "Create API tokens with limit and expiry.",
+    "q_usage": "Keep an eye on usage and requests.",
+    "q_costs": "Costs external vs. self-hosted, with CSV export.",
+    "q_budgets": "Cap spending, auto-stop and reset.",
+    "q_users": "Manage users, roles and tenants.",
+    "q_orgs": "Create and assign B2B tenants.",
+    "q_logs": "Trace all requests and events."
   }
 }
